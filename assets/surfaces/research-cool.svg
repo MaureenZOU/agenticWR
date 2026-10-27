@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="research-cool" data-surface="flowing-gradient" data-surface-color="#7846B8" data-surface-secondary="#00C2E2" data-surface-tertiary="#7FEA53">
+ <defs>
+  <linearGradient id="research-surface-0-base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7846B8" stop-opacity=".055"/><stop offset=".55" stop-color="#00C2E2" stop-opacity=".045"/><stop offset=".83" stop-color="#7FEA53" stop-opacity=".045"/><stop offset="1" stop-color="white"/></linearGradient>
+  <linearGradient id="research-surface-0-fold" x1="0" y1="0" x2="1" y2=".8"><stop stop-color="#7846B8" stop-opacity=".16"/><stop offset=".55" stop-color="#00C2E2" stop-opacity=".14"/><stop offset=".85" stop-color="#7FEA53" stop-opacity=".14"/><stop offset="1" stop-color="#7FEA53" stop-opacity=".035"/></linearGradient>
+  <linearGradient id="research-surface-0-shine" x1="0" y1="0" x2="1" y2="0"><stop stop-color="white" stop-opacity=".1"/><stop offset=".45" stop-color="white" stop-opacity=".85"/><stop offset="1" stop-color="white" stop-opacity=".2"/></linearGradient>
+  <linearGradient id="research-surface-0-fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="white" stop-opacity=".05"/><stop offset=".68" stop-color="white" stop-opacity="0"/><stop offset="1" stop-color="white" stop-opacity=".8"/></linearGradient>
+  <filter id="research-surface-0-soft" x="-25%" y="-40%" width="150%" height="180%"><feGaussianBlur stdDeviation="13"/></filter>
+
+ <linearGradient id="research-surface-0-edge-x" x1="0" y1="0" x2="1" y2="0"><stop stop-color="white"/><stop offset=".14" stop-color="white" stop-opacity="0"/><stop offset=".86" stop-color="white" stop-opacity="0"/><stop offset="1" stop-color="white"/></linearGradient><linearGradient id="research-surface-0-edge-y" x1="0" y1="0" x2="0" y2="1"><stop stop-color="white"/><stop offset=".18" stop-color="white" stop-opacity="0"/><stop offset=".82" stop-color="white" stop-opacity="0"/><stop offset="1" stop-color="white"/></linearGradient>
+ </defs>
+ <rect width="480" height="300" fill="white"/><rect width="480" height="300" fill="url(#research-surface-0-base)"/>
+ <g transform=""><path d="M-60 199C104 39 233 254 540 63L540 350H-60Z" fill="url(#research-surface-0-fold)" filter="url(#research-surface-0-soft)"/><path d="M-60 199C104 39 233 254 540 63" fill="none" stroke="url(#research-surface-0-shine)" stroke-width="34" transform="translate(0 -17)" filter="url(#research-surface-0-soft)"/></g>
+ <rect width="480" height="300" fill="url(#research-surface-0-fade)"/>
+ <g data-background-edge-fade="true"><rect width="480" height="300" fill="url(#research-surface-0-edge-x)"/><rect width="480" height="300" fill="url(#research-surface-0-edge-y)"/><rect width="480" height="300" fill="none" stroke="white" stroke-width="2"/></g>
+ </svg>

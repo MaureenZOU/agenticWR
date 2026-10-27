@@ -1,1 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agentic World Representation (AWR) connects structured object geometry to robot action through differentiable grasp optimization and policy learning.">
+  <meta name="theme-color" content="#7846B8">
+  <title>Agentic World Representation | AWR</title>
+  <meta property="og:title" content="Agentic World Representation">
+  <meta property="og:description" content="Structured object geometry for grasp optimization and robot policy learning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maureenzou.github.io/agenticWR/">
+  <link rel="canonical" href="https://maureenzou.github.io/agenticWR/">
+  <link rel="icon" href="assets/project-icon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/palette/style-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/story-layout.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body class="story-layout">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="header">
+  <div class="nav-wrap">
+    <a class="project-home" href="#pipeline" translate="no" aria-label="Agentic World Representation home">AWR<span class="brand-dot" aria-hidden="true">.</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">＋</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="#pipeline">Overview</a><a href="#reconstruction">Representation</a><a href="#zoo">Object Zoo</a><a href="#optimization">Action</a><a href="#experiments">Real robot</a><a href="#method">Results</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section id="pipeline" class="wrap story-hero" aria-labelledby="pipeline-title">
+    <div class="intro-grid">
+      <div class="intro-copy">
+        <p class="eyebrow">AWR · GEOMETRY FOR ROBOT INTERACTION</p>
+        <h1 id="pipeline-title">Agentic World<br><span>Representation</span></h1>
+        <p class="intro-lead">Learn object geometry. Use it to guide robot actions.</p>
+        <p class="intro-context">Agentic World Representation (AWR) learns structured object geometry from sparse keypoints. Robots use its geometric queries and gradients to optimize grasps, generate demonstrations, and learn policies.</p>
+        <div class="intro-actions"><a class="solid-link" href="#reconstruction">Explore the representation <span aria-hidden="true">↓</span></a><a class="text-link small-link" href="#experiments">See the real robot <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <figure class="intro-film recorded-media" data-recorded-media>
+        <div class="film-heading"><span class="mini-label">AWR ON THE REAL ROBOT</span><span class="film-tag"><i></i> Real robot</span></div>
+        <div class="intro-film-frame"><img src="assets/demos/execution/duck-execution-2x.gif" data-motion-src="assets/demos/execution/duck-execution-2x.gif" data-motion-poster="assets/demos/execution/duck-execution-poster.png" alt="Real XHand approaches, grasps and lifts a duck" width="288" height="512"><div class="film-margin-label" translate="no">AWR<br><span>Geometry<br>to action</span></div><button class="media-pause" data-media-toggle aria-pressed="false">Pause</button></div>
+        <figcaption><span>Approach → grasp → lift</span><span>Duck · OOD · 2× playback</span></figcaption>
+      </figure>
+    </div>
+    <div class="workflow-heading"><p class="mini-label">THE AWR WORKFLOW</p><span>Observe an object. Learn its geometry. Optimize an action.</span></div>
+    <ol class="story-workflow" aria-label="Agentic World Representation workflow">
+      <li><a href="#observations" data-open-detail="observations"><span>01</span><strong>Observe</strong><small>Track the object state</small><i aria-hidden="true">→</i></a></li>
+      <li><a href="#reconstruction"><span>02</span><strong>Represent</strong><small>Learn structured geometry</small><i aria-hidden="true">→</i></a></li>
+      <li><a href="#optimization" data-action-phase="0"><span>03</span><strong>Optimize</strong><small>Optimize grasp configurations</small><i aria-hidden="true">→</i></a></li>
+      <li><a href="#optimization" data-action-phase="2"><span>04</span><strong>Learn</strong><small>Learn from demonstrations</small><i aria-hidden="true">→</i></a></li>
+      <li><a href="#experiments"><span>05</span><strong>Deploy</strong><small>Evaluate on the real robot</small><i aria-hidden="true">↗</i></a></li>
+    </ol>
+  </section>
 
+  <section id="reconstruction" class="section wrap" aria-labelledby="reconstruction-title">
+    <div class="section-heading"><div><p class="eyebrow">02 / OBJECT REPRESENTATION</p><h2 id="reconstruction-title">Object geometry<br>that a robot can query.</h2></div><p>AWR conditions geometry on object structure and current keypoints. At any 3D query point, it predicts occupancy and signed distance, with surface normals derived from the distance field.</p></div>
+    <div class="field-interface"><div><span class="mini-label">CONDITION</span><p>Structure + current keypoints</p></div><span class="interface-plus" aria-hidden="true">+</span><div><span class="mini-label">QUERY</span><p>A location in 3D</p></div><span class="interface-arrow" aria-hidden="true">→</span><div class="interface-output"><span class="mini-label">AWR GEOMETRY</span><p>Occupancy · SDF · normal</p></div></div>
+    <div class="reconstruction-layout">
+      <div class="comparison-card"><div class="comparison-top"><span>ILLUSTRATED OBJECT</span><span>FIELD QUERIES</span></div><div class="compare-frame" id="compare-frame"><div class="compare-scene sim-scene" id="sim-scene"></div><div class="compare-scene real-scene" id="real-scene"></div><div class="compare-divider" aria-hidden="true"><span>‹ ›</span></div></div><div class="field-toolbar" role="group" aria-label="Neural geometry output"><button class="pill active" data-field="occupancy" aria-pressed="true">Occupancy</button><button class="pill" data-field="sdf" aria-pressed="false">SDF</button><button class="pill" data-field="normals" aria-pressed="false">Surface normal</button></div><div class="field-key" id="field-key">Occupancy · object surface</div><div class="compare-control"><label for="comparison">Compare representations</label><output for="comparison" id="compare-value">50% object / 50% field</output><input id="comparison" type="range" min="0" max="100" value="50" aria-label="Object and field comparison position"></div></div>
+      <div class="reconstruction-copy"><div class="pill-group" role="group" aria-label="Comparison object"><button class="pill active" data-compare-object="duck" aria-pressed="true">Duck</button><button class="pill" data-compare-object="bunny" aria-pressed="false">Bunny</button><button class="pill" data-compare-object="mug" aria-pressed="false">Mug</button></div><h3>Geometry for<br>contact and motion.</h3><div class="feature-line"><span>01</span><div><h4>Occupancy</h4><p>Query which locations belong to the reconstructed object geometry.</p></div></div><div class="feature-line"><span>02</span><div><h4>Signed distance</h4><p>Measure distance to the surface to guide contact and penalize penetration.</p></div></div><div class="feature-line"><span>03</span><div><h4>Surface normal</h4><p>Take the spatial gradient of signed distance to find the outward surface direction.</p></div></div></div>
+    </div>
+    <p class="illustration-note">Interactive geometry illustration · switch the object and query type to inspect the AWR interface.</p>
+    <div class="supporting-details">
+      <details id="observations" class="research-disclosure">
+        <summary><span><b>Observations for learning object geometry</b><small>RGB-D observations and tracked structure</small></span><i aria-hidden="true">＋</i></summary>
+        <div class="disclosure-content acquisition-content">
+          <figure class="acquisition-figure">
+            <div class="acquisition-figure-heading"><p class="mini-label">RGB-D OBSERVATIONS → TRACKED GEOMETRY</p><a class="text-link small-link" href="assets/research/worldstring-rgbd.jpg" target="_blank" rel="noopener">View full image <span aria-hidden="true">↗</span></a></div>
+            <a class="acquisition-image-link" href="assets/research/worldstring-rgbd.jpg" target="_blank" rel="noopener" aria-label="Open RGB-D observations figure at full resolution"><img src="assets/research/worldstring-rgbd.jpg" alt="RGB-D data preparation with object masks, correspondences and point clouds" width="2063" height="575" loading="lazy"></a>
+            <figcaption>Data preparation from WorldString [1], using PhysTwin source data.</figcaption>
+          </figure>
+          <div class="acquisition-grid">
+            <div class="acquisition-demo"><div id="capture-scene"></div><p class="illustration-note">Interactive capture illustration</p></div>
+            <div class="acquisition-copy"><p class="mini-label">OBSERVATIONS FOR AWR</p><h3>Object state and geometry</h3><p>AWR takes tracked structural points as the current object state. Geometry observations supervise the learned field.</p><p>The interactive illustration shows an object surrounded by capture cameras. Switch between its surface and point cloud to explore the geometry.</p></div>
+          </div>
+        </div>
+      </details>
+      <details id="architecture" class="research-disclosure"><summary><span><b>Inside the AWR representation</b><small>Shared geometry and gradients for action</small></span><i aria-hidden="true">＋</i></summary><div class="disclosure-content architecture-content">
+      <figure class="method-figure"><a href="assets/research/worldstring-method.png" target="_blank" rel="noopener" aria-label="Open original WorldString method figure at full resolution"><img src="assets/research/worldstring-method.png" width="3200" height="629" loading="lazy" alt="Original WorldString architecture: State Transformer produces state embeddings, Object Transformer builds structured embeddings, and Voxel Transformer predicts occupancy at queried positions."></a><figcaption>Original WorldString architecture [1], the structured transformer foundation for AWR. State Transformer → Object Transformer → Voxel Transformer.</figcaption></figure>
+        <div class="foundation-grid"><div><p class="mini-label">SHARED OBJECT GEOMETRY</p><h3>Structure and configuration</h3><p>AWR separates persistent object structure from the current keypoint configuration. A shared model within each object family predicts occupancy and signed distance; spatial distance gradients provide surface normals.</p></div><div><p class="mini-label">GRADIENTS FOR ACTION</p><h3>Optimize through frozen geometry</h3><p>AWR uses the action-differentiable neural object, denoted ∂Oθ, to connect geometry to interaction. Its learned weights stay fixed while task gradients update robot configurations.</p></div></div>
+      </div></details>
+    </div>
+    <p class="chapter-bridge"><span aria-hidden="true">↓</span> The same geometric query interface applies across the object families below.</p>
+  </section>
+
+  <section id="zoo" class="section wrap" aria-labelledby="zoo-title">
+    <div class="section-heading"><div><p class="eyebrow">03 / OBJECT ZOO</p><h2 id="zoo-title">AWR across<br>object families.</h2></div><p>AWR represents articulated mechanisms, skinned characters, and soft objects. Each family has its own shared model. These reconstructions show how geometry follows changes in object state.</p></div>
+    <div class="gallery-heading"><span class="mini-label">AWR RECONSTRUCTIONS</span><button class="text-button" id="zoo-motion" data-zoo-playback aria-pressed="false">Pause animations</button></div>
+    <div id="object-grid" class="object-grid"></div>
+    <div class="family-metrics"><div><p class="mini-label">AWR OCCUPANCY F1</p><a class="text-link small-link" href="#method" data-open-result="1">Protocols & comparisons <span aria-hidden="true">↗</span></a></div><dl><div><dt>Articulated / rigid</dt><dd>96.54<span>%</span></dd></div><div><dt>Skinned</dt><dd>95.02<span>%</span></dd></div><div><dt>Soft</dt><dd>96.47<span>%</span></dd></div></dl></div>
+    <details id="zoo-library" class="research-disclosure gallery-disclosure"><summary><span><b>Explore all 27 animated objects</b><small>10 articulated · 7 skinned · 10 soft</small></span><i aria-hidden="true">＋</i></summary><div class="disclosure-content">
+      <div class="zoo-toolbar"><div class="pill-group" role="group" aria-label="Filter reconstruction families"><button class="pill active" data-filter="all" aria-pressed="true">All families</button><button class="pill" data-filter="articulated" aria-pressed="false">Articulated</button><button class="pill" data-filter="skinned" aria-pressed="false">Skinned</button><button class="pill" data-filter="deformable" aria-pressed="false">Soft</button></div><p id="zoo-count" aria-live="polite">27 animated objects</p></div>
+<div id="zoo-browser" class="zoo-browser" hidden><div class="zoo-viewer"><div class="figure-heading"><div><p class="mini-label" id="zoo-family-label"></p><h3 id="zoo-object-name"></h3></div><button class="outline-button" id="zoo-library-motion" data-zoo-playback aria-pressed="false">Pause animations</button></div><button class="zoo-expand" id="zoo-expand" aria-label="Expand current object"><img id="zoo-animation" alt="" width="960" height="540"><span>Expand ↗</span></button></div><div id="zoo-thumbnails" class="zoo-thumbnails" role="group" aria-label="Choose an object"></div></div>
+    </div></details>
+    <p class="chapter-bridge"><span aria-hidden="true">↓</span> AWR geometry supplies the contact and distance terms needed to optimize a grasp.</p>
+  </section>
+
+  <section id="optimization" class="section wrap" aria-labelledby="optimization-title">
+    <div class="section-heading"><div><p class="eyebrow">04 / GEOMETRY TO ACTION</p><h2 id="optimization-title">Learn a grasping<br>policy with AWR.</h2></div><p>AWR connects grasp optimization to policy learning. Task losses guide hand configurations; the resulting trajectories supply demonstrations for a policy that acts on observed object states.</p></div>
+    <div class="frozen-premise"><span class="premise-dot" aria-hidden="true"></span><p><strong>Learn the geometry, then keep its weights fixed.</strong> Grasp losses pass through the AWR fields and hand kinematics to update the joint configuration.</p></div>
+    <div class="action-tabs" role="tablist" aria-label="AWR optimization and policy learning stages">
+      <button id="policy-tab-0" data-policy="0" role="tab" aria-selected="true" aria-controls="policy-panel"><span>01</span><strong>Optimize</strong><small>Geometry → grasp</small><i aria-hidden="true">→</i></button>
+      <button id="policy-tab-1" data-policy="1" role="tab" aria-selected="false" aria-controls="policy-panel" tabindex="-1"><span>02</span><strong>Demonstrate</strong><small>Trajectories → demonstrations</small><i aria-hidden="true">→</i></button>
+      <button id="policy-tab-2" data-policy="2" role="tab" aria-selected="false" aria-controls="policy-panel" tabindex="-1"><span>03</span><strong>Learn</strong><small>Demonstrations → policy</small><i aria-hidden="true">↗</i></button>
+    </div>
+    <div class="policy-layout" id="policy-panel" role="tabpanel" aria-labelledby="policy-tab-0" tabindex="0"><div class="policy-copy"><p class="mini-label" id="policy-kicker">01 / OPTIMIZE THE GRASP</p><h3 id="policy-title">Optimize the hand configuration.</h3><p id="policy-description"></p><dl class="io-list"><div><dt>Input</dt><dd id="policy-input"></dd></div><div><dt>Output</dt><dd id="policy-output"></dd></div></dl><button id="policy-next" class="outline-button">Next: demonstrations <span aria-hidden="true">→</span></button><p class="illustration-note">AWR method illustration</p></div><div class="policy-visual"><div id="policy-scene"></div></div></div>
+    <div class="action-evidence"><div><span class="mini-label">AWR GRASP OPTIMIZATION</span><p>Simulation · four objects</p></div><div><strong>94.23<span>%</span></strong><span>Grasp success</span></div><div><strong>1,084</strong><span>Mean capped convergence steps</span></div><a class="text-link small-link" href="#method" data-open-result="3">Full comparison <span aria-hidden="true">↗</span></a></div>
+    <p class="chapter-bridge"><span aria-hidden="true">↓</span> The policy trained on AWR demonstrations is evaluated on the real robot below.</p>
+  </section>
+
+  <section id="experiments" class="section wrap" aria-labelledby="experiments-title">
+    <div class="section-heading"><div><p class="eyebrow">05 / REAL-WORLD EVALUATION</p><h2 id="experiments-title">Deploy the policy<br>on a real robot.</h2></div><p>The policy learned from AWR demonstrations controls a robot arm and XHand. Motion capture supplies object-state observations; grasp success is measured at training-region and held-out placements.</p></div>
+    <div class="real-evaluation-grid">
+      <figure class="real-film recorded-media" data-recorded-media><div class="film-heading"><span class="mini-label">AWR POLICY · RECORDED EXECUTION</span><span class="film-tag"><i></i> OOD placement</span></div><div class="real-film-frame"><img src="assets/demos/execution/duck-execution-2x.gif" data-motion-src="assets/demos/execution/duck-execution-2x.gif" data-motion-poster="assets/demos/execution/duck-execution-poster.png" alt="Recorded XHand approaching, grasping, lifting and briefly holding a duck" width="288" height="512" loading="lazy"><button class="media-pause" data-media-toggle aria-pressed="false">Pause</button></div><figcaption><span>Approach → close → lift & hold</span><span>Duck · 2× playback</span></figcaption></figure>
+      <div class="real-evidence"><p class="mini-label">EVALUATING NEW OBJECT PLACEMENTS</p><h3>Grasping beyond<br>the training region.</h3><div class="pill-group" role="group" aria-label="Placement split"><button class="pill active" data-split="ood" aria-pressed="true">Out of distribution</button><button class="pill" data-split="id" aria-pressed="false">In distribution</button></div><div class="real-score"><strong id="real-success">78.85<span>%</span></strong><div><b>AWR policy grasp success</b><span id="real-trial-count">41 / 52 trials · four objects</span></div></div><p id="split-description" class="result-description">OOD: outside the 8 × 8 cm training square, within 24 × 24 cm.</p><div id="grasp-objects" class="grasp-objects"></div><a class="text-link small-link" href="#method" data-open-result="4">Compare all methods <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <details id="setup" class="research-disclosure"><summary><span><b>Robot setup and evaluation protocol</b><small>Robot arm · XHand · motion capture · ID/OOD regions</small></span><i aria-hidden="true">＋</i></summary><div class="disclosure-content setup-content"><img src="assets/research/robot-setup-annotated.png" alt="Annotated real-world experimental setup with cameras, robot arm, dexterous hand and placement regions" width="1655" height="1155" loading="lazy"><div><h3>Object observations drive the policy.</h3><p>Motion-capture cameras track the current object state. The policy learned from AWR demonstrations maps these observations to actions for the robot arm and XHand.</p><dl class="setup-facts"><div><dt>ID positions</dt><dd>Central 8 × 8 cm square</dd></div><div><dt>OOD positions</dt><dd>Outside ID, within 24 × 24 cm</dd></div><div><dt>Evaluation</dt><dd>13 trials per object and placement split</dd></div></dl></div></div></details>
+  </section>
+
+  <section id="method" class="section wrap" aria-labelledby="method-title">
+    <div class="section-heading"><div><p class="eyebrow">06 / DETAILED RESULTS</p><h2 id="method-title">Evaluate AWR.</h2></div><p>Compare AWR on geometry reconstruction, component ablations, simulated grasp optimization, and real-robot success. The tabs include evaluation protocols and baseline results.</p></div>
+    <div class="method-tabs" role="tablist" aria-label="Detailed paper results">
+      <button id="method-tab-1" role="tab" aria-controls="method-panel-1" aria-selected="true" data-method="1">Reconstruction</button>
+      <button id="method-tab-2" role="tab" aria-controls="method-panel-2" aria-selected="false" tabindex="-1" data-method="2">Ablations</button>
+      <button id="method-tab-3" role="tab" aria-controls="method-panel-3" aria-selected="false" tabindex="-1" data-method="3">Grasp optimization</button>
+      <button id="method-tab-4" role="tab" aria-controls="method-panel-4" aria-selected="false" tabindex="-1" data-method="4">Real robot</button>
+    </div>
+    <div class="method-panel" id="method-panel-1" role="tabpanel" aria-labelledby="method-tab-1" tabindex="0"><div class="result-placeholder">Loading reconstruction results…</div></div>
+    <div class="method-panel" id="method-panel-2" role="tabpanel" aria-labelledby="method-tab-2" tabindex="0" hidden><div class="result-placeholder">Loading ablation results…</div></div>
+    <div class="method-panel" id="method-panel-3" role="tabpanel" aria-labelledby="method-tab-3" tabindex="0" hidden><div class="result-placeholder">Loading grasp results…</div></div>
+    <div class="method-panel" id="method-panel-4" role="tabpanel" aria-labelledby="method-tab-4" tabindex="0" hidden><div class="result-placeholder">Loading real robot results…</div></div>
+    <div class="references" id="references"><div><p class="eyebrow">PROJECT & BACKGROUND</p><h3>Project and prior work</h3></div><div class="reference-slot" id="ref-2"><span>AWR</span><p>Agentic World Representation<small>Structured geometry for grasp optimization and policy learning</small></p></div><div class="reference-slot" id="ref-1"><span>[1]</span><p>WorldString: Actionable Object Representation<small>Prior work on object-specific reconstruction; source of the architecture and RGB-D figures above</small></p></div></div>
+  </section>
+</main>
+<footer class="footer project-footer wrap"><div class="footer-content"><p>Agentic World Representation</p><div class="footer-links"><a href="#references">Project & background</a><a href="#main">Back to top ↑</a></div></div></footer>
+<dialog id="object-dialog" aria-labelledby="object-dialog-title"><button id="dialog-close" class="dialog-close" aria-label="Close object details">×</button><div class="dialog-copy"><p class="eyebrow" id="object-dialog-category">OBJECT ZOO</p><h2 id="object-dialog-title"></h2><button class="text-button" id="dialog-motion" aria-pressed="false">Pause animation</button></div><div id="dialog-art"></div></dialog>
+<noscript><p class="noscript-note">JavaScript is disabled. The research outline is available above; enable JavaScript for the illustrated pipeline, comparison, and Object Zoo.</p></noscript>
+</body>
+</html>

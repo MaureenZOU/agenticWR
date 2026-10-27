@@ -1,0 +1,17 @@
+/* String visual tokens — website values plus current PPT surface recipes. */
+:root {
+ --string-purple: #7846B8;
+ --string-orange: #FF6841;
+ --string-red: #FF4935;
+ --string-green: #7FEA53;
+ --string-cyan: #00C2E2;
+ --string-ink: #2D233C;
+ --string-body: #796E85;
+ --string-muted-dark: #59545E;
+ --string-page: #FFFFFF;
+ --string-soft: #F7F3FA;
+ --string-font: Outfit, 'Noto Sans CJK SC', sans-serif;
+ --string-card-radius: 24px;
+ --string-ppt-cool: linear-gradient(90deg,#E9DEF5,#DFF0FA,#E1F1DF);
+ --string-ppt-warm: linear-gradient(90deg,#FFEBD9,#FADFDA,#F1E5EC);
+}

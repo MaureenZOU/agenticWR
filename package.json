@@ -1,0 +1,13 @@
+{
+  "name": "agentic-world-representation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agentic World Representation: structured geometry for grasp optimization and robot policy learning",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check app.js && node --check assets/interactive-scenes.js && node --check assets/overview.js && node --check assets/method-results.js && node --check assets/policy-motion.js && node --check assets/policy-scenes.js && node --check server.mjs",
+    "check:geometry": "node scripts/check-geometry.mjs && node scripts/check-policy-motion.mjs"
+  },
+  "type": "module"
+}

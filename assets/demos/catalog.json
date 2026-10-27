@@ -1,0 +1,218 @@
+[
+  {
+    "id": "cabinet",
+    "name": "Cabinet",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/cabinet.gif",
+    "poster": "assets/demos/reconstruction/articulated/cabinet.png",
+    "animated": true
+  },
+  {
+    "id": "clamp",
+    "name": "Clamp",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/clamp.gif",
+    "poster": "assets/demos/reconstruction/articulated/clamp.png",
+    "animated": true
+  },
+  {
+    "id": "foldingrule",
+    "name": "Folding Rule",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/foldingrule.gif",
+    "poster": "assets/demos/reconstruction/articulated/foldingrule.png",
+    "animated": true
+  },
+  {
+    "id": "microwave",
+    "name": "Microwave",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/microwave.gif",
+    "poster": "assets/demos/reconstruction/articulated/microwave.png",
+    "animated": true
+  },
+  {
+    "id": "partnet_faucet_1370",
+    "name": "Faucet",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/partnet_faucet_1370.gif",
+    "poster": "assets/demos/reconstruction/articulated/partnet_faucet_1370.png",
+    "animated": true
+  },
+  {
+    "id": "partnet_storagefurniture_46403",
+    "name": "Storage Furniture",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/partnet_storagefurniture_46403.gif",
+    "poster": "assets/demos/reconstruction/articulated/partnet_storagefurniture_46403.png",
+    "animated": true
+  },
+  {
+    "id": "partnet_window_103051",
+    "name": "Sliding Window",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/partnet_window_103051.gif",
+    "poster": "assets/demos/reconstruction/articulated/partnet_window_103051.png",
+    "animated": true
+  },
+  {
+    "id": "pliers",
+    "name": "Pliers",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/pliers.gif",
+    "poster": "assets/demos/reconstruction/articulated/pliers.png",
+    "animated": true
+  },
+  {
+    "id": "tripod",
+    "name": "Tripod",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/tripod.gif",
+    "poster": "assets/demos/reconstruction/articulated/tripod.png",
+    "animated": true
+  },
+  {
+    "id": "xhand_right",
+    "name": "XHand",
+    "family": "articulated",
+    "src": "assets/demos/reconstruction/articulated/xhand_right.gif",
+    "poster": "assets/demos/reconstruction/articulated/xhand_right.png",
+    "animated": true
+  },
+  {
+    "id": "smal_bovidae",
+    "name": "Bovidae",
+    "family": "skinned",
+    "src": "assets/demos/reconstruction/skinned/smal_bovidae.gif",
+    "poster": "assets/demos/reconstruction/skinned/smal_bovidae.png",
+    "animated": true
+  },
+  {
+    "id": "smal_canidae",
+    "name": "Canidae",
+    "family": "skinned",
+    "src": "assets/demos/reconstruction/skinned/smal_canidae.gif",
+    "poster": "assets/demos/reconstruction/skinned/smal_canidae.png",
+    "animated": true
+  },
+  {
+    "id": "smal_equidae",
+    "name": "Equidae",
+    "family": "skinned",
+    "src": "assets/demos/reconstruction/skinned/smal_equidae.gif",
+    "poster": "assets/demos/reconstruction/skinned/smal_equidae.png",
+    "animated": true
+  },
+  {
+    "id": "smal_felidae",
+    "name": "Felidae",
+    "family": "skinned",
+    "src": "assets/demos/reconstruction/skinned/smal_felidae.gif",
+    "poster": "assets/demos/reconstruction/skinned/smal_felidae.png",
+    "animated": true
+  },
+  {
+    "id": "smal_hippopotamidae",
+    "name": "Hippopotamidae",
+    "family": "skinned",
+    "src": "assets/demos/reconstruction/skinned/smal_hippopotamidae.gif",
+    "poster": "assets/demos/reconstruction/skinned/smal_hippopotamidae.png",
+    "animated": true
+  },
+  {
+    "id": "smpl_female",
+    "name": "SMPL Female",
+    "family": "skinned",
+    "src": "assets/demos/reconstruction/skinned/smpl_female.gif",
+    "poster": "assets/demos/reconstruction/skinned/smpl_female.png",
+    "animated": true
+  },
+  {
+    "id": "smpl_male",
+    "name": "SMPL Male",
+    "family": "skinned",
+    "src": "assets/demos/reconstruction/skinned/smpl_male.gif",
+    "poster": "assets/demos/reconstruction/skinned/smpl_male.png",
+    "animated": true
+  },
+  {
+    "id": "008-pink-cloth",
+    "name": "Pink Cloth",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/008-pink-cloth.gif",
+    "poster": "assets/demos/reconstruction/deformable/008-pink-cloth.png",
+    "animated": true
+  },
+  {
+    "id": "043-dog",
+    "name": "Dog Plush",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/043-dog.gif",
+    "poster": "assets/demos/reconstruction/deformable/043-dog.png",
+    "animated": true
+  },
+  {
+    "id": "045-cat",
+    "name": "Cat Plush",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/045-cat.gif",
+    "poster": "assets/demos/reconstruction/deformable/045-cat.png",
+    "animated": true
+  },
+  {
+    "id": "051-cube",
+    "name": "Soft Cube",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/051-cube.gif",
+    "poster": "assets/demos/reconstruction/deformable/051-cube.png",
+    "animated": true
+  },
+  {
+    "id": "056-makeup-sponge",
+    "name": "Makeup Sponge",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/056-makeup-sponge.gif",
+    "poster": "assets/demos/reconstruction/deformable/056-makeup-sponge.png",
+    "animated": true
+  },
+  {
+    "id": "081-stripe-rope",
+    "name": "Striped Rope",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/081-stripe-rope.gif",
+    "poster": "assets/demos/reconstruction/deformable/081-stripe-rope.png",
+    "animated": true
+  },
+  {
+    "id": "095-watermelon",
+    "name": "Watermelon",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/095-watermelon.gif",
+    "poster": "assets/demos/reconstruction/deformable/095-watermelon.png",
+    "animated": true
+  },
+  {
+    "id": "096-octopus",
+    "name": "Octopus Plush",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/096-octopus.gif",
+    "poster": "assets/demos/reconstruction/deformable/096-octopus.png",
+    "animated": true
+  },
+  {
+    "id": "121-croissant-plush",
+    "name": "Croissant Plush",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/121-croissant-plush.gif",
+    "poster": "assets/demos/reconstruction/deformable/121-croissant-plush.png",
+    "animated": true
+  },
+  {
+    "id": "164-sheep",
+    "name": "Sheep Plush",
+    "family": "deformable",
+    "src": "assets/demos/reconstruction/deformable/164-sheep.gif",
+    "poster": "assets/demos/reconstruction/deformable/164-sheep.png",
+    "animated": true
+  }
+]
