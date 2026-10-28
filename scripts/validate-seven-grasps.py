@@ -6,7 +6,9 @@ import mujoco
 fit=importlib.import_module('refine-seven-grasps');b=fit.b
 
 def score_replay(data):
-    p=data['physics'];k,n=data['hand'],data['object'];c=fit.Context(k,n,p['angle'],p['roll']);nj=c.n
+    p=data['physics'];k,n=data['hand'],data['object']
+    overview=p.get('style')=='duck-overview'
+    c=importlib.import_module('duck-overview-loss').Context(k,p['angle'],p['roll']) if overview else fit.Context(k,n,p['angle'],p['roll']);nj=c.n
     # Evaluate the actual named objective in the moving object's coordinates.
     max_self_penetration=0.
     for f in data['frames']:
@@ -22,6 +24,11 @@ def score_replay(data):
         'definition':'Sum of squared native digit landing, body contact, mesh penetration, fingertip separation, table/pregrasp clearance and pair-specific joint coordination residuals.',
         'chart':'The same pair-specific objective evaluated along the physical replay in the moving object frame; time is simulation time, not solver iterations.',
         'orientation':'Fixed frontal palm with tail toward arm' if n=='duck' else 'Fixed downward palm and vertical approach' if n=='apple' else 'Side cylindrical wrap of the shared bottle'}
+    if overview:
+        data['objective'].update(name='overview_cached_wrap',source='scripts/duck-overview-loss.py',
+            definition='Shared size-normalized cached finger-pad and palm contact, loose-tip attraction, doubled thumb weighting, probe penetration and contact closure, with overview keypoint retargeting and native mesh/table/finger clearance.',
+            chart='The same shared overview-wrap objective evaluated along each physical replay; native collision-geometry queries replace the source neural fields. Time is simulation time, not solver iterations.',
+            orientation='Overview wrist orientation: fingers bend horizontally around the body, palm faces the duck; native hand adapter only.')
     return data
 
 def validate(data):

@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 from PIL import Image,ImageDraw
 b=importlib.import_module('build-grasp-replays');Q=b.SITE/'.preview/seven-grasps-20261029'
 
-def render(record,path,with_arm=False):
+def render(record,path,with_arm=False,reference_view=False):
     p=record['physics'];kind,name=record['hand'],record['object']
     m,d,h,_,_,_,_,xml=b.build(kind,name,scale=p.get('scale',1),angle=p['angle'],roll=p['roll'],style=p.get('style'))
     if with_arm:
@@ -28,7 +28,8 @@ def render(record,path,with_arm=False):
     renderer=mujoco.Renderer(m,500,600);cam=mujoco.MjvCamera();cam.distance=1.15 if with_arm else .39;cam.elevation=-18
     adr=[m.jnt_qposadr[m.joint(n).id] for n in record['jointNames']]
     oa=int(m.jnt_qposadr[m.joint('object_free').id]);wa=int(m.jnt_qposadr[m.joint('wrist_free').id]);n=len(adr);imgs=[]
-    for t,az in [(0,135),(2.9,135),(6,135),(6,235)]:
+    views=[(0,315),(2.9,315),(6,315),(6,235)] if reference_view else [(0,135),(2.9,135),(6,135),(6,235)]
+    for t,az in views:
         f=record['frames'][int(t*50)];d.qpos[adr]=f[1:1+n]
         d.qpos[wa:wa+7]=np.r_[f[n+1:n+4],f[n+12:n+16]]
         d.mocap_pos[0]=f[n+1:n+4];d.mocap_quat[0]=f[n+12:n+16]
@@ -36,7 +37,7 @@ def render(record,path,with_arm=False):
         if with_arm:
             for j,q in enumerate(f[n+17:n+24]):d.qpos[m.jnt_qposadr[m.joint(f'review_arm_j{j}').id]]=q
             mujoco.mj_forward(m,d)
-        cam.lookat=d.xpos[m.body('object').id]+([.19,.05,.10] if with_arm else [.025,0,.04]);cam.azimuth=az
+        cam.lookat=d.xpos[m.body('object').id]+([.19,.05,.10] if with_arm else [-.015,0,.015] if reference_view else [.025,0,.04]);cam.azimuth=az
         renderer.update_scene(d,camera=cam);im=Image.fromarray(renderer.render())
         ImageDraw.Draw(im).text((15,15),f'{kind} / {name} | t={t}s | view={az}',fill='black');imgs.append(np.asarray(im))
     Image.fromarray(np.concatenate([np.concatenate(imgs[:2],axis=1),np.concatenate(imgs[2:],axis=1)],axis=0)).save(path)

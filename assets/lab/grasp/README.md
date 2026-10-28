@@ -8,13 +8,13 @@ All three ducks use the existing simulation mesh at its original **125 × 92.655
 
 The object is a free body under gravity. The controller commands bounded finger actuators and a dynamic wrist welded to a moving target. Cup closure uses bounded wrist compensation from measured object displacement to counter lateral drag. There is no object weld or object-pose command after reset. The xArm7 follows the wrist with offline inverse kinematics and native arm-mesh table clearance; this does not validate arm dynamics or hardware performance.
 
-Seven separate objectives in `scripts/seven-grasp-losses.py` optimize native joint angles and wrist translation. Palm orientation is fixed by the requested approach. Each objective specifies its own digit landing regions and joint coordination; they share native mesh contact, whole-finger separation, object penetration and table/pregrasp clearance calculations. Small physical refinements retain the same grasp family. No GPT or RL training was run.
+The three duck grasps share `scripts/duck-overview-loss.py`, retargeting the final accepted pose in the overview Keypoint optimization video. `assets/lab/duck-grasp-reference.json` records the source pose, native joint-name mapping, original cached XHand contact probes and weight constants. Fingers bend horizontally around the duck body, with an opposing thumb; the initial wrist pose changes accordingly. The common objective retains the original size-normalized pad (60), palm (12), loose-tip (3), probe-penetration (900) and closure (0.5) terms, with doubled thumb weights and the source R5 clearance of 0.005 times the object radius. Native collision-geometry queries replace the source neural fields; reference keypoint, whole-link, inter-finger and table-clearance terms adapt the pose to each hand and the physical tabletop. Cross-digit physical contacts are enabled for these three replays; overlapping same-digit links and palm mounts remain excluded by native anatomy. Other hands use native link-surface probes under the same formulas. The accepted apples and Shadow bottle retain their independent objectives in `scripts/seven-grasp-losses.py`. No GPT or RL training was run.
 
 | Pair | Objective |
 | --- | --- |
-| XHand / duck | Opposing thumb and four fingers around the rear body; coordinated proximal and distal flexion |
-| Allegro / duck | Raised thumb landing for its shorter thumb, three fingers spread around the body |
-| Shadow / duck | Four-finger basket, independent thumb opposition, coupled distal flexion |
+| XHand / duck | Shared overview wrap; original cached probes and reference joint pose |
+| Allegro / duck | Same overview wrap and weights, retargeted to three fingers and thumb |
+| Shadow / duck | Same overview wrap and weights, retargeted to four fingers and thumb |
 | XHand / apple | Opposing thumb and four fingers around the equator, coordinated flexion |
 | Allegro / apple | Thumb against a three-finger tripod below the stem |
 | Shadow / apple | Thumb/index opposition, remaining fingers around the shoulder |
@@ -24,7 +24,7 @@ For these seven pairs, the chart evaluates the named objective along the actual 
 
 All 15 trajectories are checked for retained contact through both shakes, lift, contact penetration, table clearance, and forward arm alignment. Cup and dumbbell runs additionally require handle-only and shaft-only contacts during the hold. Each replay retains its own measurements and provenance in `physics` and `provenance`.
 
-The revised pairs also check the required palm/approach direction, duck heading and exact source scale, shared bottle geometry, cross-finger separation, object tilt, and native arm IK. Shadow's bottle fingertip half-spaces are checked throughout the lift and hold. The Allegro duck scene sits 10 cm closer to the arm to keep its frontal wrist pose within reach. Arm dynamics and hardware performance are not validated. Human visual acceptance is still required for naturalness.
+The revised pairs also check the required palm/approach direction, duck heading and exact source scale, shared bottle geometry, cross-finger separation, object tilt, and native arm IK. Shadow's bottle fingertip half-spaces are checked throughout the lift and hold. Each duck also checks its wrist orientation against the overview reference. Allegro and Shadow duck scenes sit 10 cm closer to the fixed arm base for wrist reach and table clearance. Arm dynamics and hardware performance are not validated. Human visual acceptance is still required for naturalness.
 
 The joint chart shows one named joint per finger in degrees, with native joint identifiers in each legend tooltip. The grasp optimization loss chart uses time in seconds and the measured loss values, without forcing a monotonic curve.
 
@@ -42,6 +42,14 @@ simulator/.venv/bin/python agenticWR/scripts/validate-seven-grasps.py
 simulator/.venv/bin/python agenticWR/scripts/render-seven-grasps.py --final
 ```
 
-Candidate fitting writes only to `.preview/`. The current round uses `install-four-grasps.py`, which installs only the three native-duck pairs and Shadow bottle after validation and verifies that all eleven accepted trajectories, including the three apples, remain byte-identical. It writes its review sheet and validation to `.preview/four-grasps-20261029/`. None of these scripts commits, pushes, or deploys. The published baseline is commit `939984f`; the new iteration remains local pending approval.
+The final duck round uses:
+
+```sh
+simulator/.venv/bin/python agenticWR/scripts/refine-overview-ducks.py --seeds 3
+simulator/.venv/bin/python agenticWR/scripts/install-overview-ducks.py
+simulator/.venv/bin/python agenticWR/scripts/install-overview-ducks.py --install
+```
+
+Candidate fitting and staging write to `.preview/duck-overview-final-20261029/`. Installation verifies all twelve accepted non-duck trajectories against the pre-iteration snapshots, then writes only the three duck replays and their presets. Offline multi-view images and numerical reports are retained in that review directory. These scripts never commit, push or deploy. The pre-duck checkpoint was published as `88dc736`; the final duck update is authorized for publication after its checks pass.
 
 The website loads saved JSON locally; it needs no Python, MuJoCo, checkpoint, or inference server.

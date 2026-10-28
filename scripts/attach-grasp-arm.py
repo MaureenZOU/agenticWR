@@ -31,8 +31,10 @@ def arm_gaps():
 adr=np.array([m.jnt_qposadr[m.joint(j['name']).id] for j in joints]);bounds=np.array([j['range'] for j in joints]).T
 
 def attach(data):
- # The short Allegro palm's frontal duck pose needs 10 cm more arm reach margin.
- offset=np.array([.20 if data['hand']=='allegro' and data['physics'].get('style')=='duck-front' else .10,0,.75]);scene_rotation=R.identity();n=len(data['jointNames']);q=np.array([.2,.98,.4,1.94,.1,1.77,.55]);errors=[];orientation_errors=[];rot=scene_rotation*R.from_quat(data['wristQuaternion'],scalar_first=True)
+ # Shorter palms need the tabletop task 10 cm closer to the fixed arm base.
+ near=(data['hand']=='allegro' and data['physics'].get('style') in ('duck-front','duck-overview')) or (data['hand']=='shadow' and data['physics'].get('style')=='duck-overview')
+ reach_x=.20 if near else .10
+ offset=np.array([reach_x,0,.75]);scene_rotation=R.identity();n=len(data['jointNames']);q=np.array([.2,.98,.4,1.94,.1,1.77,.55]);errors=[];orientation_errors=[];rot=scene_rotation*R.from_quat(data['wristQuaternion'],scalar_first=True)
  # Shadow has a ninety-degree palm adapter; arm flange orientation is common.
  if data['hand']=='shadow':rot=rot*R.from_euler('z',-np.pi/2)
  for f in data['frames']:
@@ -50,7 +52,7 @@ def attach(data):
   clearance=min(clearance,float(arm_gaps().min()))
   reach=d.xpos[tip]-np.array(arm['mount']['pos'])
   # A frontal duck grasp points its palm (not its downward fingers) forward.
-  axis=([0,-1,0] if data['hand']=='shadow' else [1,0,0]) if data['physics'].get('style')=='duck-front' else [0,0,1]
+  axis=([0,-1,0] if data['hand']=='shadow' else [1,0,0]) if data['physics'].get('style') in ('duck-front','duck-overview') else [0,0,1]
   direction=scene_rotation.apply(R.from_quat(f[n+12:n+16],scalar_first=True).apply(axis))
   forward=min(forward,float(reach@direction/np.linalg.norm(reach)))
  data['sceneOffset']=offset.tolist();data['sceneQuaternion']=scene_rotation.as_quat(scalar_first=True).tolist();data['armJoints']=7

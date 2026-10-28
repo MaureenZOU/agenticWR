@@ -16,7 +16,7 @@ if __name__=='__main__':
  for data in results:
   data=arm.attach(data);n=len(data['jointNames']);held=[f for f in data['frames'] if f[0]>=5]
   excursion=max(f[n+4] for f in held)-min(f[n+4] for f in held)
-  if excursion<.045 or data['physics']['arm_ik_max_error_m']>.003 or data['physics']['arm_surface_clearance_m']<.001 or (data['physics'].get('style')!='duck-front' and data['physics']['forward_reach_alignment']<.3):raise RuntimeError('Shake, forward reach, or arm clearance failed')
+  if excursion<.045 or data['physics']['arm_ik_max_error_m']>.003 or data['physics']['arm_surface_clearance_m']<.001 or (data['physics'].get('style') not in ('duck-front','duck-overview') and data['physics']['forward_reach_alignment']<.3):raise RuntimeError('Shake, forward reach, or arm clearance failed')
   data['physics']['shake_excursion_m']=excursion
   path=build.OUT/f"{data['hand']}-{data['object']}.json"
   data['graspStyle']={'mug':'side-facing handle grasp','duck':'forward body grasp','dumbbell':'palm-up shaft grasp','bottle':'side bottle wrap','apple':'forward apple wrap'}[data['object']]
@@ -27,5 +27,9 @@ if __name__=='__main__':
    data['provenance']['grasp_selection']='Independent hand/object objective, native digit landing regions and joint coordination; physical lift-and-shake validation.'
    data['provenance']['loss']=data['objective']['chart']
    data['optimizationSummary']=next(p['optimizationSummary'] for p in presets if p['hand']==data['hand'] and p['object']==data['object'])
+   if data['physics'].get('style')=='duck-overview':
+    data['graspStyle']='overview reference: horizontal finger wrap with opposing thumb'
+    data['graspReference']={'asset':'duck-grasp-reference.json',**build.duck_reference()['source']}
+    data['provenance']['grasp_selection']='Shared overview cached-wrap objective, retargeted to native hand geometry with the reference wrist orientation.'
   path.write_text(json.dumps(data,separators=(',',':')))
   print(path.name,'lift',round(data['physics']['lift_min'],3),'m',flush=True)

@@ -21,6 +21,10 @@ fmt=lambda v:' '.join(str(float(x)) for x in np.asarray(v).ravel())
 def native_duck():
  return json.loads((SITE/'assets/lab/duck-native.json').read_text())
 
+@lru_cache(maxsize=1)
+def duck_reference():
+ return json.loads((SITE/'assets/lab/duck-grasp-reference.json').read_text())
+
 def config(kind,name=None,angle=None,roll=0,style=None):
  h=RIGS['right']['hand'] if kind=='xhand' else RIGS[kind]
  local={'xhand':[.052,0,.135],'allegro':[.046,0,.067],'shadow':[0,-.047,.135]}[kind]
@@ -31,6 +35,8 @@ def config(kind,name=None,angle=None,roll=0,style=None):
  if style=='duck-front':
   # Palm normal faces -X (away from the arm); fingers point down around the body.
   rot=R.from_euler('y',tilt,degrees=True).as_matrix()@np.diag([-1.,1.,-1.])
+ elif style=='duck-overview':
+  rot=R.from_euler('x',roll,degrees=True).as_matrix()@R.from_euler('y',tilt,degrees=True).as_matrix()@np.array(duck_reference()['rotation'])
  elif style=='apple-top':
   # Native +X is the palm normal. Keep it downward, fingers toward -X.
   rot=R.from_euler('z',tilt,degrees=True).as_matrix()@np.array([[0.,0.,-1.],[0.,-1.,0.],[-1.,0.,0.]])
@@ -38,7 +44,7 @@ def config(kind,name=None,angle=None,roll=0,style=None):
  return h,np.array(local),rot
 
 def shape(name,scale=1,style=None):
- if name=='duck' and style=='duck-front':
+ if name=='duck' and style in ('duck-front','duck-overview'):
   if scale!=1:raise ValueError('Use the original simulation duck size for every hand')
   return native_duck()['collision']
  # Coordinates relative to the free body's centre, in metres.
@@ -82,10 +88,20 @@ def build(kind,name,scale=1,angle=None,roll=0,style=None):
   ET.SubElement(node,'inertial',pos='0 0 0',mass='.035' if i else '.25',diaginertia='.00003 .00003 .00003')
   for gi,g in enumerate(b['geoms']):
    meshname=f'm{i}_{gi}';ET.SubElement(asset,'mesh',name=meshname,vertex=fmt(np.array(g['vertices']).reshape(-1,3)),face=' '.join(map(str,g['faces'])))
-   ET.SubElement(node,'geom',name=meshname,type='mesh',mesh=meshname,pos=fmt(g['pos']),quat=fmt(g['quat']),contype='2',conaffinity='1',mass='0')
+   ET.SubElement(node,'geom',name=meshname,type='mesh',mesh=meshname,pos=fmt(g['pos']),quat=fmt(g['quat']),contype='2',conaffinity='3' if style=='duck-overview' else '1',mass='0')
    vertices=np.array(g['vertices']).reshape(-1,3);take=np.linspace(0,len(vertices)-1,min(90,len(vertices)),dtype=int);pts=R.from_quat(g['quat'],scalar_first=True).apply(vertices[take])+g['pos'];samples.append((b['name'],pts))
+ if style=='duck-overview':
+  # Enable physical contact across distinct digits. Adjacent links and palm
+  # mounts overlap by construction, so exclude only those anatomical pairs.
+  contact=ET.SubElement(root,'contact')
+  def digit(body):
+   name=body['name'].lower()
+   return next((x for x in (['thumb','index','mid','ring','pinky'] if kind=='xhand' else ['th','ff','mf','rf','lf']) if x in name),None)
+  for i,aa in enumerate(h['bodies']):
+   for bb in h['bodies'][i+1:]:
+    if digit(aa) is None or digit(bb) is None or digit(aa)==digit(bb):ET.SubElement(contact,'exclude',body1=aa['name'],body2=bb['name'])
  obj=ET.SubElement(world,'body',name='object');ET.SubElement(obj,'freejoint',name='object_free')
- is_native_duck=name=='duck' and style=='duck-front'
+ is_native_duck=name=='duck' and style in ('duck-front','duck-overview')
  if is_native_duck:
   duck=native_duck();ET.SubElement(obj,'inertial',**duck['inertial'])
   ET.SubElement(asset,'mesh',name='duck_visual',vertex=fmt(duck['vertices']),face=' '.join(map(str,duck['faces'])))
@@ -173,6 +189,7 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
  bottom=min(support(p) for p in parts)
  center=np.array([0.,0.,-bottom+.001]);local=local+offset;target_offset=np.array({'mug':[0,.076,.025],'duck':[0,0,-.008],'bottle':[0,0,-.012]}.get(name,[0,0,0]));wrist=center+target_offset-rot@local;approach=-rot[:,2]*.10+np.array([0,0,.008]);quat=R.from_matrix(rot).as_quat(scalar_first=True)
  if style=='duck-front':approach=np.array([.11,0,.025])
+ elif style=='duck-overview':approach=-rot@np.array([0,-1,0] if kind=='shadow' else [1,0,0])*.11+np.array([0,0,.012])
  elif style=='apple-top':approach=np.array([0,0,.12])
  elif style=='bottle-wrap':approach=-rot@np.array([0,-1,0] if kind=='shadow' else [1,0,0])*.11+np.array([0,0,.008])
  d.qpos[oa:oa+3]=center;d.qpos[oa+3:oa+7]=[1,0,0,0];d.qpos[adr]=qopen;d.mocap_pos[0]=wrist+approach;d.mocap_quat[0]=quat;d.qpos[wa:wa+7]=np.r_[d.mocap_pos[0],quat];d.ctrl[:]=qopen;mujoco.mj_forward(m,d)
@@ -239,7 +256,7 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
  result={'hand':kind,'object':name,'offset':list(offset),'scale':scale,'closure':close_scale,'qtarget':qclose.tolist(),'qopen':qopen.tolist(),'angle':angle or 0,'roll':roll,'style':style,'close_start':close_start,'close_end':close_end,'lift_min':round(min(lifts),5),'lift_max':round(max(lifts),5),'contacts_min':min(contacts),'max_penetration':round(pen,5),'slip_max':round(max(slips),5),'tilt_max_deg':round(max(tilts),2),'table_penetration_m':round(table_pen,6),'prelift_drift_m':round(prelift_drift,5),'region_contacts_min':min(region_contacts),'wrong_contacts_max':max(wrong_contacts),'success':(name!='mug' or (min(region_contacts)>0 and max(wrong_contacts)==0)) and (name!='dumbbell' or min(region_contacts)>0) and min(lifts)>.12 and min(contacts)>0 and pen<.004 and table_pen<.003 and (name=='apple' or max(tilts)<28) and prelift_drift<.045}
  if record:
   result['replay']={'hand':kind,'object':name,'fps':50,'duration':8,'wristQuaternion':quat.tolist(),'parts':parts,'jointNames':[j['name'] for j in h['joints']],'frames':frames,'optimization':history,'frameLayout':'time, hand qpos, wrist position(3), object position(3), object quaternion wxyz(4), phase, wrist quaternion wxyz(4), grasp optimization loss, arm qpos(7)', 'physics':{k:v for k,v in result.items() if k!='replay'}}
-  if name=='duck' and style=='duck-front':result['replay']['objectMesh']='duck-native.json';result['replay']['objectGeometry']=native_duck()['provenance']
+  if name=='duck' and style in ('duck-front','duck-overview'):result['replay']['objectMesh']='duck-native.json';result['replay']['objectGeometry']=native_duck()['provenance']
  return result
 
 if __name__=='__main__':

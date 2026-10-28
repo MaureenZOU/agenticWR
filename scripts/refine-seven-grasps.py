@@ -24,9 +24,9 @@ def opened(q,kind,amount):
     return out
 
 class Context:
-    def __init__(self,kind,name,angle,roll):
+    def __init__(self,kind,name,angle,roll,style=None):
         self.kind,self.name=kind,name
-        self.style={'duck':'duck-front','apple':'apple-top','bottle':'bottle-wrap'}[name]
+        self.style=style or {'duck':'duck-front','apple':'apple-top','bottle':'bottle-wrap'}[name]
         self.m,self.d,self.h,self.local,self.rot,self.parts,samples,_=b.build(kind,name,angle=angle,roll=roll,style=self.style)
         self.n=len(self.h['joints']);self.adr=[self.m.jnt_qposadr[self.m.joint(j['name']).id] for j in self.h['joints']]
         self.wa=int(self.m.jnt_qposadr[self.m.joint('wrist_free').id]);self.oa=int(self.m.jnt_qposadr[self.m.joint('object_free').id])
