@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agentic World Representation (AWR) connects structured object geometry to robot action through differentiable grasp optimization and policy learning.">
+  <meta name="theme-color" content="#7846B8">
+  <title>Representation | Agentic World Representation</title>
+  <meta property="og:title" content="Representation | Agentic World Representation">
+  <meta property="og:description" content="Structured object geometry for grasp optimization and robot policy learning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maureenzou.github.io/agenticWR/representation.html">
+  <link rel="canonical" href="https://maureenzou.github.io/agenticWR/representation.html">
+  <link rel="icon" href="assets/project-icon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/palette/style-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/story-layout.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link rel="stylesheet" href="assets/representation.css">
+  <script type="module" src="app.js"></script>
+  <link rel="stylesheet" href="assets/research-pages.css">
+</head>
+<body class="story-layout multipage-layout" data-page="representation">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="header">
+  <div class="nav-wrap">
+    <a class="project-home" href="index.html" translate="no" aria-label="Agentic World Representation home">Agentic World Representation</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">＋</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="representation.html" class="active" aria-current="page">Representation</a>
+      <a href="zoo.html">Object Zoo</a>
+      <a href="action.html">Action</a>
+      <a href="real-robot.html">Real robot</a>
+      <a href="method.html">Method</a>
+      <a href="results.html">Results</a>
+    </nav>
+    <span class="lab-name" translate="no">IEI Lab</span>
+  </div>
+</header>
+<main id="main">
+  <section class="representation-page wrap" aria-labelledby="representation-title">
+    <div class="representation-heading">
+      <h1 id="representation-title">Object geometry that a robot can query.</h1>
+      <p>AWR conditions geometry on object structure and current keypoints. At any 3D query point, it predicts occupancy and signed distance, with surface normals derived from the distance field.</p>
+    </div>
+    <div class="representation-workbench" id="representation-workbench" aria-label="Interactive object representations">
+      <div class="representation-viewer" id="representation-viewer">
+        <div class="representation-canvas" id="representation-canvas" aria-label="Interactive 3D object; drag a keypoint to change its pose"></div>
+        <div class="representation-handles" id="representation-handles"></div>
+        <h2 id="representation-object-name">Horse</h2>
+        <button type="button" class="representation-view-reset" id="representation-view-reset" aria-label="Reset camera view" title="Reset view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4M16 4h4v4M20 16v4h-4M8 20H4v-4M8 8h8v8H8Z"/></svg></button>
+        <div class="representation-loading" id="representation-loading" role="status">Loading geometry…</div>
+      </div>
+      <div class="representation-picker" id="representation-picker" role="group" aria-label="Choose an object"></div>
+      <div class="representation-controls">
+        <div class="representation-formats" role="group" aria-label="Output format">
+          <button type="button" data-representation-mode="occupancy" aria-pressed="false">Occupancy</button>
+          <button type="button" data-representation-mode="sdf" class="active" aria-pressed="true">SDF</button>
+        </div>
+        <label class="representation-normals" id="representation-normal-option"><input id="representation-normal-toggle" type="checkbox">Surface normal</label>
+        <button type="button" class="representation-pose-reset" id="representation-pose-reset">Reset pose</button>
+      </div>
+    </div>
+  </section>
+</main>
+<nav class="page-pagination wrap" aria-label="Page navigation">
+  <a class="previous-page" href="index.html"><span aria-hidden="true">←</span><span><small>Previous</small>Overview</span></a>
+  <a class="next-page" href="zoo.html"><span><small>Next</small>Object Zoo</span><span aria-hidden="true">→</span></a>
+</nav>
+<footer class="footer project-footer wrap"><div class="footer-content"><p>Agentic World Representation</p><div class="footer-links"><a href="method.html">Method</a><a href="#main">Back to top ↑</a></div></div></footer>
+<noscript><p class="noscript-note">Enable JavaScript for interactive geometry, animations, and result tables. The navigation links work without JavaScript.</p></noscript>
+</body>
+</html>

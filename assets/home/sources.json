@@ -1,0 +1,41 @@
+{
+  "capture": {
+    "presentation": "Illustration of a six-object scene and three cameras. The depth view is computed from the same geometry in camera space, not a real sensor recording.",
+    "objects": [
+      "duck",
+      "mug",
+      "XHand",
+      "bottle",
+      "faucet",
+      "pliers"
+    ],
+    "geometry": "Native MuJoCo duck and XHand; original PartNet-Mobility 811 faucet and RBO pliers from the local reconstruction workbench; smooth procedural mug and bottle. Articulated motion follows source joint limits and FK."
+  },
+  "representation": {
+    "presentation": "Surface-sampled point clouds and mesh surface normals of the same objects. The XHand uses native mesh/link poses exported from the MuJoCo demo. These explanatory views are not claimed learned reconstruction outputs.",
+    "asset": "scene-meshes.json",
+    "articulated_asset": "articulated-meshes.json",
+    "label": "SDF / Normal; the lower row retains its surface-normal visualization."
+  },
+  "optimization": {
+    "asset": "xhand-optimization.mp4",
+    "source_host": "HAO-L40-2",
+    "source_run": "/workspace/worldstring-demos/duck-cup-optimization/online_grasp_comparison_demo/results/6b66822839a4477b8d8908ebcfaebdfd",
+    "method": "cached_fk432_restored_loose_v1",
+    "presentation": "MuJoCo renders the recorded reach and accepted WS optimizer states. No old procedural teaching hand is used.",
+    "native_joint_dofs": 12,
+    "keypoints": 18,
+    "gradient_arrows": "Actual frozen-objective negative joint gradient mapped through the XHand FK Jacobian, with a common per-frame display scale.",
+    "loss_curve": "Re-evaluated original objective, preserving recorded contact-activation state.",
+    "fps": 25,
+    "frames": 250,
+    "duration_seconds": 10,
+    "scope": "Optimizer replay; not a new MuJoCo dynamics, force-closure or collision-free grasp validation."
+  },
+  "execution": {
+    "asset": "duck-real.mp4",
+    "source": "supp/media/execution/ours-ood.mp4",
+    "presentation": "Recorded real XHand duck approach, grasp and lift; loop synchronized to the 10-second figure."
+  },
+  "generation": "No AI-generated imagery. First two panels are code-rendered illustrations; third is native MuJoCo rendering; fourth is the supplied hardware recording."
+}

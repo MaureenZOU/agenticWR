@@ -1,0 +1,303 @@
+{
+  "source_host": "HAO-L40-2",
+  "run": "/workspace/worldstring-demos/page-hd-20261028",
+  "objects": [
+    {
+      "id": "cabinet",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 26336284,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "clamp",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 16038097,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "foldingrule",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 11220341,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "microwave",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 30664224,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "partnet_faucet_1370",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 24246367,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "partnet_storagefurniture_46403",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 18188454,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "partnet_window_103051",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 25433044,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "pliers",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 18403847,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "tripod",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 27586690,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "xhand_right",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 53571389,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "smal_bovidae",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 46389531,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "smal_canidae",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 48139046,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "smal_equidae",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 48580067,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "smal_felidae",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 44480205,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "smal_hippopotamidae",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 54328243,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "smpl_female",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 23930202,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "smpl_male",
+      "size": [
+        1920,
+        1080
+      ],
+      "frames": 240,
+      "bytes": 23219581,
+      "source": "Original 2560 x 1440 reconstruction recording, downsampled to 1920 x 1080",
+      "new_training": false
+    },
+    {
+      "id": "008-pink-cloth",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 34,
+      "bytes": 1546413,
+      "source": "Previously saved learned surface sequence, re-rendered at native 1440 x 800",
+      "new_training": false
+    },
+    {
+      "id": "043-dog",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 12,
+      "bytes": 802312,
+      "source": "12 source-ordered held-out poses queried with the existing frozen 40k checkpoint at 256 cubed",
+      "new_training": false
+    },
+    {
+      "id": "045-cat",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 12,
+      "bytes": 689511,
+      "source": "12 source-ordered held-out poses queried with the existing frozen 40k checkpoint at 256 cubed",
+      "new_training": false
+    },
+    {
+      "id": "051-cube",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 26,
+      "bytes": 2163964,
+      "source": "Previously saved learned surface sequence, re-rendered at native 1440 x 800",
+      "new_training": false
+    },
+    {
+      "id": "056-makeup-sponge",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 23,
+      "bytes": 1684671,
+      "source": "Previously saved learned surface sequence, re-rendered at native 1440 x 800",
+      "new_training": false
+    },
+    {
+      "id": "081-stripe-rope",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 30,
+      "bytes": 703370,
+      "source": "Previously saved learned surface sequence, re-rendered at native 1440 x 800",
+      "new_training": false
+    },
+    {
+      "id": "095-watermelon",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 12,
+      "bytes": 804202,
+      "source": "12 source-ordered held-out poses queried with the existing frozen 40k checkpoint at 256 cubed",
+      "new_training": false
+    },
+    {
+      "id": "096-octopus",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 29,
+      "bytes": 1793290,
+      "source": "Previously saved learned surface sequence, re-rendered at native 1440 x 800",
+      "new_training": false
+    },
+    {
+      "id": "121-croissant-plush",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 12,
+      "bytes": 782756,
+      "source": "12 source-ordered held-out poses queried with the existing frozen 40k checkpoint at 256 cubed",
+      "new_training": false
+    },
+    {
+      "id": "164-sheep",
+      "size": [
+        1440,
+        800
+      ],
+      "frames": 12,
+      "bytes": 822270,
+      "source": "12 source-ordered held-out poses queried with the existing frozen 40k checkpoint at 256 cubed",
+      "new_training": false
+    }
+  ]
+}

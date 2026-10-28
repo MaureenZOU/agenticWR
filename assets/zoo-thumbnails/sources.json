@@ -1,0 +1,137 @@
+[
+  {
+    "object": "cabinet",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/cabinet.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "clamp",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/clamp.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "foldingrule",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/foldingrule.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "microwave",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/microwave.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "partnet_faucet_1370",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/partnet_faucet_1370.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "partnet_storagefurniture_46403",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/partnet_storagefurniture_46403.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "partnet_window_103051",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/partnet_window_103051.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "pliers",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/pliers.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "tripod",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/tripod.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "xhand_right",
+    "source": "Native XHand URDF/STL",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "smal_bovidae",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_bovidae.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "smal_canidae",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_canidae.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "smal_equidae",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_equidae.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "smal_felidae",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_felidae.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "smal_hippopotamidae",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_hippopotamidae.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "smpl_female",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smpl_female.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "smpl_male",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smpl_male.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "008-pink-cloth",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/008-pink-cloth.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "043-dog",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/043-dog.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "045-cat",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/045-cat.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "051-cube",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/051-cube.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "056-makeup-sponge",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/056-makeup-sponge.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "081-stripe-rope",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/081-stripe-rope.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "095-watermelon",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/095-watermelon.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "096-octopus",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/096-octopus.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "121-croissant-plush",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/121-croissant-plush.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  },
+  {
+    "object": "164-sheep",
+    "source": "reports/three_page_refinement_20261028/zoo-native-sources/164-sheep.npz",
+    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+  }
+]

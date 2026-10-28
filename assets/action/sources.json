@@ -1,0 +1,25 @@
+{
+  "optimize": {
+    "source": "/Users/zhangshaoqiu/Desktop/courses/self-projects/worldstring/simulator/recovered_replays/20261017_success9/trajectories/execution/cup_heldout20_four_conditions_v1/episodes/ws_open_v2/15400.json",
+    "method": "Native XHand FK keypoint-target loss, actual autograd and Adam updates; target keypoints from recorded grasp. Visualization demonstration, not AWR model inference or new physical success.",
+    "loss_start": 18.407155990600586,
+    "loss_end": 0.0009361639386042953
+  },
+  "demonstrate": {
+    "source": "/Users/zhangshaoqiu/Desktop/courses/self-projects/worldstring/simulator/recovered_replays/20261017_success9/trajectories/execution/cup_heldout20_four_conditions_v1/episodes/ws_open_v2/15400.json",
+    "mode": "Saved native MuJoCo trajectory replay, no new dynamics"
+  },
+  "learn": {
+    "source": "/Users/zhangshaoqiu/Desktop/courses/self-projects/worldstring/simulator/recovered_replays/20261017_success9/trajectories/execution/hemisphere_heldout6_v1/episodes/seed05_repaired_loss/measured_feedback_40ik/15901/episode.json",
+    "mode": "Native manipulation trajectory illustrates the observation-action execution loop; not a new learned-policy evaluation"
+  },
+  "presentation": {
+    "resolution": [
+      1280,
+      800
+    ],
+    "scene_cleanup": "Camera-node and calibration-shell geometry hidden only in the offline renderer; trajectories and robot geometry unchanged.",
+    "hand_detail": "Close view of the same native XHand keypoint-loss optimization.",
+    "left_diagram": "Animated conceptual method diagram of gradients through frozen neural object/hand fields; this diagram is distinct from the native FK demonstration in the video."
+  }
+}

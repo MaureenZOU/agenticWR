@@ -1,0 +1,38 @@
+.multipage-layout .nav-wrap { width:92%; max-width:1440px; gap:20px; }
+.multipage-layout .project-home { font-size:18px; letter-spacing:-.025em; }
+.multipage-layout .header nav { margin-left:auto; gap:2px; }
+.multipage-layout .header nav a { padding-inline:10px; font-size:13px; }
+.lab-name { font-size:15px; font-weight:500; white-space:nowrap; }
+body[data-page="zoo"] .section,body[data-page="action"] .section { width:92%; max-width:1280px; padding-top:30px; }
+.stacked-heading { display:block; margin-bottom:28px; }
+.stacked-heading h1 { font-size:clamp(29px,3.4vw,44px); font-weight:500; line-height:1.18; letter-spacing:-.035em; }
+.stacked-heading p { max-width:1050px; font-size:18px; line-height:1.65; color:#84708f; margin-top:14px; }
+.zoo-workbench { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:24px; align-items:start; }
+.zoo-stage { height:560px; position:sticky; top:96px; display:flex; align-items:center; justify-content:center; border:1px solid #eae6ef; border-radius:18px; overflow:hidden; background:#fff; }
+.zoo-stage h2 { position:absolute; z-index:1; top:20px; left:24px; font-size:22px; font-weight:450; color:#594766; }
+.zoo-stage>img { width:100%; height:100%; object-fit:contain; padding:45px 12px 30px; }
+.zoo-stage>button,#action-playback { position:absolute; bottom:15px; right:18px; border:1px solid #e8e1ed; border-radius:8px; padding:6px 12px; background:#ffffffeb; color:#76568b; font-size:13px; }
+.zoo-filters { display:flex; gap:6px; margin-bottom:12px; }
+.zoo-filters button { flex:1; border:1px solid #eae6ef; border-radius:8px; padding:9px 5px; background:#fff; font-size:13px; color:#7a648b; }
+.zoo-filters button[aria-pressed="true"] { background:#f3ecf9; border-color:#a384ba; }
+#zoo-tiles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; max-height:510px; overflow-y:auto; padding:1px 5px 2px 1px; scrollbar-width:thin; scrollbar-color:#d4c6df transparent; }
+#zoo-tiles button { min-width:0; border:1px solid #ece7f1; border-radius:9px; background:#fff; padding:5px 4px 7px; cursor:pointer; }
+#zoo-tiles button.active { border-color:#926bb4; background:#faf7fd; box-shadow:inset 0 0 0 1px #926bb4; }
+#zoo-tiles img { display:block; width:100%; height:66px; object-fit:contain; }
+#zoo-tiles span { display:block; color:#756680; font-size:11px; line-height:1.2; margin-top:3px; }
+body[data-page="action"] .action-tabs { margin:26px 0 24px; }
+body[data-page="action"] .action-tabs button { min-height:74px; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; }
+body[data-page="action"] .action-tabs strong { font-size:20px; }
+body[data-page="action"] .policy-layout { grid-template-columns:minmax(240px,.72fr) minmax(0,1.65fr); gap:36px; align-items:center; }
+body[data-page="action"] .policy-copy { padding:10px 0; }
+body[data-page="action"] .policy-copy h3 { font-size:29px; line-height:1.22; }
+body[data-page="action"] .policy-copy>p { font-size:16px; line-height:1.7; }
+body[data-page="action"] .policy-visual { min-height:0; position:relative; border:1px solid #eae6ef; border-radius:18px; background:white; overflow:hidden; }
+#action-video { display:block; width:100%; aspect-ratio:16/10; object-fit:contain; background:white; }
+#action-gradient { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 20px 16px; color:#6d4d87; font-size:16px; }
+#action-gradient[hidden] { display:none; }
+#action-loss { width:38%; height:45px; }
+#action-playback { top:15px; bottom:auto; }
+body[data-page="zoo"] .page-pagination,body[data-page="action"] .page-pagination,body[data-page="zoo"] .footer-content,body[data-page="action"] .footer-content { border:0; }
+@media(max-width:1200px){.multipage-layout .nav-wrap{display:grid;grid-template-columns:1fr auto;height:auto;padding-block:13px 9px;gap:8px 20px}.lab-name{grid-column:2;grid-row:1}.multipage-layout .header nav{grid-column:1/-1;grid-row:2;justify-self:end}.zoo-workbench{grid-template-columns:minmax(0,1fr) 310px}}
+@media(max-width:760px){.multipage-layout .project-home{font-size:16px;max-width:230px}.multipage-layout .menu-toggle{display:flex;grid-column:2;grid-row:2;gap:12px;border:0;padding:0;background:none;font-size:12px;color:var(--purple)}.multipage-layout .header nav{display:none;position:absolute;top:100%;left:0;right:0;padding:14px 5%;margin:0;background:white;border-bottom:1px solid var(--line)}.multipage-layout .header nav.open{display:grid}.zoo-workbench{grid-template-columns:1fr;gap:20px}.zoo-stage{position:relative;top:auto;height:340px}#zoo-tiles{max-height:340px}#zoo-tiles img{height:78px}body[data-page="action"] .policy-layout{grid-template-columns:1fr;gap:20px}body[data-page="action"] .action-tabs button{padding:16px 10px;min-height:60px}body[data-page="action"] .action-tabs strong{font-size:16px}.stacked-heading p{font-size:16px}.policy-visual{grid-row:1}#action-gradient{font-size:13px;padding-inline:12px}}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agentic World Representation (AWR) connects structured object geometry to robot action through differentiable grasp optimization and policy learning.">
+  <meta name="theme-color" content="#7846B8">
+  <title>Object Zoo | Agentic World Representation</title>
+  <meta property="og:title" content="Object Zoo | Agentic World Representation">
+  <meta property="og:description" content="Structured object geometry for grasp optimization and robot policy learning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maureenzou.github.io/agenticWR/zoo.html">
+  <link rel="canonical" href="https://maureenzou.github.io/agenticWR/zoo.html">
+  <link rel="icon" href="assets/project-icon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/palette/style-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/story-layout.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link rel="stylesheet" href="assets/refined-pages.css">
+  <script type="module" src="app.js"></script>
+  <link rel="stylesheet" href="assets/research-pages.css">
+</head>
+<body class="story-layout multipage-layout" data-page="zoo">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="header">
+  <div class="nav-wrap">
+    <a class="project-home" href="index.html" translate="no" aria-label="Agentic World Representation home">Agentic World Representation</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">＋</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="representation.html">Representation</a>
+      <a href="zoo.html" class="active" aria-current="page">Object Zoo</a>
+      <a href="action.html">Action</a>
+      <a href="real-robot.html">Real robot</a>
+      <a href="method.html">Method</a>
+      <a href="results.html">Results</a>
+    </nav>
+    <span class="lab-name" translate="no">IEI Lab</span>
+  </div>
+</header>
+<main id="main"><section id="zoo" class="section wrap" aria-labelledby="zoo-title">
+    <div class="stacked-heading"><h1 id="zoo-title">AWR across object families.</h1><p>AWR represents articulated mechanisms, skinned characters, and soft objects. Each family has its own shared model. Geometry follows changes in object state.</p></div>
+    <div class="zoo-workbench">
+      <div class="zoo-stage"><img id="zoo-animation" src="assets/demos/hd/cabinet.gif" alt="Cabinet reconstruction animation"><button id="zoo-playback" type="button" aria-label="Pause animation">Pause</button></div>
+      <aside class="zoo-selector" aria-label="Object selection">
+        <div class="zoo-filters" role="group" aria-label="Filter objects"><button data-zoo-family="articulated" aria-pressed="false">Articulated</button><button data-zoo-family="skinned" aria-pressed="false">Skinning</button><button data-zoo-family="deformable" aria-pressed="false">Soft</button></div>
+        <div id="zoo-tiles" role="group" aria-label="Choose an object"></div>
+      </aside>
+    </div>
+  </section></main>
+<nav class="page-pagination wrap" aria-label="Page navigation">
+  <a class="previous-page" href="representation.html"><span aria-hidden="true">←</span><span><small>Previous</small>Representation</span></a>
+  <a class="next-page" href="action.html"><span><small>Next</small>Action</span><span aria-hidden="true">→</span></a>
+</nav>
+<footer class="footer project-footer wrap"><div class="footer-content"><p>Agentic World Representation</p><div class="footer-links"><a href="method.html">Method</a><a href="#main">Back to top ↑</a></div></div></footer>
+<noscript><p class="noscript-note">Enable JavaScript for interactive geometry, animations, and result tables. The navigation links work without JavaScript.</p></noscript>
+</body>
+</html>

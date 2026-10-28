@@ -1,0 +1,89 @@
+/* Homepage only: one four-stage figure beneath the project title. */
+.multipage-layout .nav-wrap { width: 92%; max-width: 1440px; gap: 20px; }
+.multipage-layout .project-home { font-size: 18px; letter-spacing: -.025em; }
+.multipage-layout .header nav { margin-left: auto; gap: 2px; }
+.multipage-layout .header nav a { padding-inline: 10px; font-size: 13px; }
+.lab-name { font-size: 15px; font-weight: 500; white-space: nowrap; }
+.home-hero { max-width: 1440px; width: 92%; }
+.story-layout #pipeline.home-hero { padding-top: 42px; }
+.home-heading { text-align: center; margin-bottom: 38px; }
+.home-heading h1 { font-size: clamp(36px, 4.35vw, 66px); line-height: 1.13; letter-spacing: -.045em; font-weight: 500; }
+.home-credits { margin-top: 24px; }
+.home-authors, .home-affiliations, .home-author-roles { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; }
+.home-authors { gap: 8px 24px; font-size: 19px; color: #4e3d5b; line-height: 1.6; }
+.home-authors > span { white-space: nowrap; }
+.home-credits sup { font-size: .63em; vertical-align: super; line-height: 0; margin-left: 2px; }
+.home-affiliations { gap: 6px 24px; margin-top: 10px; font-size: 15px; color: #756580; }
+.home-author-roles { gap: 8px 22px; margin-top: 8px; font-size: 13px; color: #8a7c92; }
+.home-flow { position: relative; margin: 0; padding-bottom: 30px; }
+.flow-grid { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 0; padding: 0; }
+.flow-stage { position: relative; min-width: 0; }
+.flow-stage h2 { font-size: clamp(16px, 1.43vw, 22px); letter-spacing: -.025em; font-weight: 500; min-height: 58px; line-height: 1.4; }
+.stage-number { color: #a58eb8; font-size: 12px; margin-right: 7px; letter-spacing: .02em; font-weight: 400; }
+.stage-media { height: clamp(330px, 31vw, 440px); border-radius: 12px; overflow: hidden; position: relative; background: #fff; }
+.hero-canvas { position: absolute; inset: 0; }
+.hero-canvas canvas { display: block; width: 100%; height: 100%; }
+.view-label { position: absolute; left: 10px; background: rgba(255,255,255,.9); padding: 1px 7px; border-radius: 4px; font-size: 12px; color: #6c577d; line-height: 1.65; pointer-events: none; }
+.row-label { top: 8px; }
+.second-row-label { top: calc(50% + 12px); }
+.stage-arrow { position: absolute; left: calc(100% + 6px); top: calc(50% + 20px); color: #ac8ec1; font-size: 23px; line-height: 1; }
+.optimization-media { background: white; border: 1px solid #f0ebf4; }
+.optimization-media video { display: block; width: 100%; height: calc(100% - 65px); object-fit: cover; }
+.keypoint-overlay { position: absolute; inset: 0 0 65px; width: 100%; height: calc(100% - 65px); pointer-events: none; overflow: hidden; }
+.optimization-label { position: absolute; top: 14px; left: 14px; color: #8c67a7; font-size: 14px; letter-spacing: .02em; }
+.home-loss { position: absolute; bottom: 10px; left: 14px; right: 14px; display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: center; }
+.home-loss > div { display: grid; font-size: 12px; color: #877493; }
+.home-loss output { font-size: 17px; color: #65427e; font-variant-numeric: tabular-nums; }
+.home-loss svg { width: 100%; height: 48px; }
+.execution-media { background: #1d201e; }
+.execution-media video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.flow-controls { display: flex; justify-content: flex-end; gap: 11px; position: absolute; right: 0; bottom: -13px; }
+.flow-controls button { border: 0; border-radius: 6px; padding: 4px 7px; background: none; color: #9578aa; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; }
+.flow-controls button:hover { color: #4f286e; background: #f6f1fa; }
+.flow-controls button > span { font-size: 23px; line-height: 1; }
+.flow-controls svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.7; fill: none; }
+body[data-page="overview"] .project-footer { margin-top: 22px; padding-top: 18px; border: 0; }
+body[data-page="overview"] .project-footer .footer-content { border: 0; }
+@media (min-width: 761px) and (max-width: 1200px) {
+  .multipage-layout .nav-wrap { display: grid; grid-template-columns: 1fr auto; height: auto; padding-block: 13px 9px; gap: 8px 20px; }
+  .lab-name { grid-column: 2; grid-row: 1; }
+  .multipage-layout .header nav { grid-column: 1 / -1; grid-row: 2; justify-self: end; }
+}
+@media (min-width: 761px) and (max-width: 1080px) {
+  .flow-grid { gap: 24px; }
+  .flow-stage h2 { font-size: 16px; min-height: 58px; }
+  .stage-number { font-size: 10px; }
+  .stage-arrow { left: calc(100% + 3px); font-size: 19px; }
+  .home-loss { gap: 5px; left: 9px; right: 9px; }
+}
+@media (max-width: 760px) {
+  .multipage-layout .nav-wrap { display: grid; grid-template-columns: 1fr auto; height: auto; min-height: 94px; gap: 5px 16px; padding-block: 13px 8px; }
+  .multipage-layout .project-home { font-size: 16px; max-width: 230px; }
+  .lab-name { grid-column: 2; grid-row: 1; font-size: 14px; }
+  .multipage-layout .menu-toggle { display: flex; grid-column: 2; grid-row: 2; align-items: center; justify-content: flex-end; gap: 12px; border: 0; padding: 0; background: none; font-size: 12px; color: var(--purple); }
+  .multipage-layout .header nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 14px 5%; margin: 0; background: white; border-bottom: 1px solid var(--line); }
+  .multipage-layout .header nav.open { display: grid; }
+  .story-layout #pipeline.home-hero { padding-top: 32px; }
+  .home-hero { width: 90%; }
+  .home-heading { margin-bottom: 29px; }
+  .home-heading h1 { font-size: clamp(35px, 6.8vw, 48px); }
+  .home-credits { margin-top: 20px; }
+  .home-authors { gap: 7px 18px; font-size: 17px; }
+  .home-affiliations { gap: 5px 18px; font-size: 14px; }
+  .flow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 22px; }
+  .flow-stage h2 { font-size: 17px; min-height: 57px; }
+  .stage-number { font-size: 11px; }
+  .stage-media { height: clamp(300px, 48vw, 380px); }
+  .stage-arrow { left: calc(100% + 2px); font-size: 19px; }
+  .flow-stage:nth-child(2) .stage-arrow { display: none; }
+  .home-loss { left: 9px; right: 9px; gap: 4px; grid-template-columns: 40px 1fr; }
+  .home-loss output { font-size: 15px; }
+  .optimization-label { font-size: 12px; left: 10px; }
+}
+@media (max-width: 440px) {
+  .flow-grid { grid-template-columns: 1fr; gap: 28px; }
+  .flow-stage h2 { min-height: auto; font-size: 21px; margin-bottom: 12px; }
+  .stage-number { font-size: 13px; }
+  .stage-media { height: 420px; }
+  .stage-arrow { display: none; }
+}

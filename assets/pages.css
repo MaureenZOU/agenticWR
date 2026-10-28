@@ -1,0 +1,35 @@
+/* Independent pages share the original research-page visual system. */
+.multipage-layout { min-height: 100vh; display: flex; flex-direction: column; }
+.multipage-layout main { flex: 1; }
+.multipage-layout .nav-wrap { gap: 24px; }
+.multipage-layout .header nav { gap: 5px; }
+.multipage-layout .header nav a { padding: 10px 15px; border-radius: 9px; white-space: nowrap; }
+.multipage-layout .header nav a:hover { background: #faf7fc; }
+.multipage-layout .header nav a.active { background: #f3edf9; color: var(--purple); }
+.multipage-layout .header nav a.active::before { left: 15px; bottom: 4px; width: calc(100% - 30px); height: 2px; border-radius: 2px; }
+.multipage-layout main > .section { padding-top: 48px; }
+.multipage-layout .section-heading h1 { font-size: clamp(32px, 3.2vw, 44px); line-height: 1.12; }
+.multipage-layout .project-footer { padding-top: 36px; padding-bottom: 25px; margin-top: 24px; }
+.multipage-layout .project-footer .footer-content { border-top: 1px solid var(--line); padding-top: 22px; }
+.page-pagination { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 22px; margin-top: 38px; border-top: 1px solid var(--line); }
+.page-pagination a { display: inline-flex; align-items: center; gap: 16px; color: var(--purple); font-size: 15px; }
+.page-pagination a:hover { color: #512c80; }
+.page-pagination a > span[aria-hidden] { color: var(--orange); font-size: 22px; }
+.page-pagination small { display: block; color: #94839f; font-size: 10px; line-height: 1.6; margin-bottom: 2px; }
+.next-page { margin-left: auto; text-align: right; }
+.multipage-layout .page-pagination + .project-footer { padding-top: 14px; margin-top: 20px; }
+.multipage-layout .page-pagination + .project-footer .footer-content { border-top: 0; }
+
+@media (min-width: 761px) and (max-width: 1050px) {
+  .multipage-layout .header nav a { padding-inline: 10px; font-size: 12px; }
+  .multipage-layout .header nav a.active::before { left: 10px; width: calc(100% - 20px); }
+}
+@media (max-width: 760px) {
+  .multipage-layout main > .section { padding-top: 32px; }
+  .multipage-layout .header nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .multipage-layout .header nav a { min-width: 0; padding: 11px 14px; white-space: normal; overflow-wrap: anywhere; line-height: 1.5; }
+  .multipage-layout .header nav a.active::before { left: 14px; width: 20px; }
+  .multipage-layout .project-footer { padding-top: 24px; margin-top: 20px; }
+  .page-pagination { margin-top: 28px; gap: 18px; }
+  .page-pagination a { font-size: 13px; gap: 10px; }
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "Self-contained illustrative website demo; no inference requests.",
+  "rigid": "Original RBO and PartNet assets, native workbench keypoints, FK and joint limits.",
+  "skinned": "Cached workbench SDF zero surfaces with simplified display geometry. Browser bone weights approximate transport of these cached surfaces; they are not fresh model predictions.",
+  "occupancy": "Surface-band point samples of the same displayed geometry.",
+  "sdf": "Zero-isosurface display; optional normals from current displayed triangles.",
+  "constraints": "Copied workbench projection descriptor and bounded local solver.",
+  "source_version": "showcase-8-20261020-v1",
+  "xhand": "Native XHand right URDF/STL meshes, 12 joint limits, surface handles and bounded finger-chain inverse kinematics."
+}

@@ -1,0 +1,17 @@
+{
+  "method_figures": [
+    "paper/figures/teaser.pdf",
+    "ws-paper/imgs/awr_method1.pdf",
+    "paper/figures/method1.pdf",
+    "paper/figures/method2.pdf"
+  ],
+  "method_text": "paper/sections/03-method_new.tex",
+  "results_tables": [
+    "paper/tables/multi-head-results.tex",
+    "paper/tables/shape-code-ablation.tex",
+    "paper/tables/training-stage-ablation.tex",
+    "paper/tables/policy-results.tex",
+    "paper/tables/real-world-results.tex"
+  ],
+  "aggregate_charts": "Equal object means computed from the reported table entries. Missing SDF entries are omitted, not treated as zero. All detailed rows remain in the collapsed tables."
+}

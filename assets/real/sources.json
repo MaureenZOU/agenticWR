@@ -1,0 +1,13 @@
+{
+  "clips": {
+    "ours-id": "supp/media/execution/ours-id.mp4",
+    "ours-ood": "supp/media/execution/ours-ood.mp4",
+    "mujoco-id": "supp/media/execution/mujoco-id.mp4",
+    "mujoco-ood": "supp/media/execution/mujoco-ood.mp4",
+    "pi05-id": "supp/media/execution/pi05-id.mp4",
+    "pi05-ood": "supp/media/execution/pi05-ood.mp4"
+  },
+  "missing": [],
+  "excluded": [],
+  "reason": "User requested Ours, MuJoCo and pi0.5 columns, each with the original ID and OOD duck recording."
+}

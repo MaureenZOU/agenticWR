@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
-    "check": "node --check app.js && node --check assets/interactive-scenes.js && node --check assets/overview.js && node --check assets/method-results.js && node --check assets/policy-motion.js && node --check assets/policy-scenes.js && node --check server.mjs",
+    "check": "node --check app.js && node --check assets/interactive-scenes.js && node --check assets/overview.js && node --check assets/method-results.js && node --check assets/policy-motion.js && node --check assets/policy-scenes.js && node --check assets/representation-workbench.js && node --check assets/representation-constraints.js && node --check assets/representation-splats.js && node --check assets/representation-splat-sort.js && node --check assets/results-page.js && node --check assets/action-page.js && node --check assets/zoo-page.js && node --check server.mjs",
     "check:geometry": "node scripts/check-geometry.mjs && node scripts/check-policy-motion.mjs"
   },
   "type": "module"
