@@ -1,0 +1,11 @@
+{
+  "rigs": "Original local MuJoCo xArm7 and independently exported native left/right XHand models; arm configuration fixed.",
+  "additional_hands": {
+    "allegro": "https://github.com/google-deepmind/mujoco_menagerie/tree/main/wonik_allegro",
+    "shadow": "https://github.com/google-deepmind/mujoco_menagerie/tree/main/shadow_hand"
+  },
+  "objects": "Original assets from reports/three_page_refinement_20261028/zoo-native-sources; constrained shapes reuse existing static website geometry.",
+  "motion": "Native constrained FK where available. Other object keypoint deformations are illustrative transport of existing mesh surfaces, not fresh neural inference.",
+  "optimization": "Offline native-hand MuJoCo contact replays for 15 tuned hand/object combinations; compound object collision geometry and object-specific geometric/contact loss. Website playback does not run learned AWR inference. Native xArm follows wrist by IK; arm dynamics are not evaluated.",
+  "gradient_diagram_source": "worldstring-plus/grasp_opt/common/ws_direct_grasp_loss.py and solvers.py; both fields frozen while preserving input gradients."
+}

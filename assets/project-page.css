@@ -1,0 +1,29 @@
+/* Three page navigation and the five chapters of the Overview. */
+:root { --site-header-height: 78px; --chapter-nav-height: 52px; }
+html:has(.combined-project) { scroll-padding-top: 0; }
+.chapter-nav { position: sticky; top: var(--site-header-height); z-index: 15; background: rgba(255,255,255,.97); border-bottom: 1px solid #f1edf5; }
+.chapter-nav-inner { display: flex; gap: 28px; width: 92%; max-width: 1280px; margin-inline: auto; overflow-x: auto; scrollbar-width: none; }
+.chapter-nav-inner::-webkit-scrollbar { display: none; }
+.chapter-nav a { padding: 16px 0 13px; flex: 0 0 auto; font-size: 14px; color: #8a7895; border-bottom: 2px solid transparent; white-space: nowrap; }
+.chapter-nav a:hover,.chapter-nav a[aria-current="location"] { color: #70488b; border-bottom-color: #a389bb; }
+.combined-project [data-chapter] { scroll-margin-top: calc(var(--site-header-height) + var(--chapter-nav-height) + 24px); }
+.combined-project #pipeline { scroll-margin-top: calc(var(--site-header-height) + var(--chapter-nav-height)); }
+.combined-project main > .project-chapter { width: 92%; max-width: 1280px; margin-top: 80px; padding-top: 32px; }
+.combined-project #experiments { margin-bottom: 32px; }
+.combined-project .zoo-stage { top: calc(var(--site-header-height) + var(--chapter-nav-height) + 20px); }
+.combined-project .page-pagination { border: 0; width: 92%; max-width: 1280px; }
+.gradient-flow.is-paused * { animation-play-state: paused; }
+
+@media (min-width: 761px) {
+  .multipage-layout .nav-wrap { display: flex; min-height: 76px; height: auto; padding-block: 12px; gap: 20px; }
+  .multipage-layout .header nav { margin-left: auto; }
+  .multipage-layout .header nav a { padding-inline: 15px; font-size: 14px; }
+}
+@media (max-width: 760px) {
+  .combined-project .header { position: sticky; top: 0; }
+  .multipage-layout .header nav.open { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .chapter-nav-inner { gap: 22px; }
+  .chapter-nav a { font-size: 13px; padding-block: 13px 11px; }
+  .combined-project main > .project-chapter { margin-top: 48px; padding-top: 20px; }
+  .combined-project .zoo-stage { position: relative; top: auto; }
+}

@@ -30,13 +30,18 @@ $$('[data-recorded-media]').forEach(container => {
 const menu=$('.menu-toggle');function closeMenu(){menu.setAttribute('aria-expanded','false');$('#navigation').classList.remove('open');}menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));$('#navigation').classList.toggle('open',open);});$$('#navigation a').forEach(link=>link.addEventListener('click',closeMenu));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){closeMenu();menu.focus();}});
 
 async function initRepresentation() {
-  const { mountRepresentationWorkbench } = await import('./assets/representation-workbench.js');
-  await mountRepresentationWorkbench();
+  const { mountObjectLab } = await import('./assets/object-lab.js');
+  await mountObjectLab();
+}
+
+async function initOverview() {
+  const { mountProjectPage } = await import('./assets/project-page.js');
+  mountProjectPage({ representation: initRepresentation, action: initAction });
 }
 
 async function initAction() {
-  const {mountAction} = await import('./assets/action-page.js');
-  await mountAction();
+  const {mountGraspLab} = await import('./assets/grasp-lab.js');
+  await mountGraspLab();
 }
 async function initZoo() {
   const {mountZoo} = await import('./assets/zoo-page.js');
@@ -49,8 +54,9 @@ async function initResults() {
  await mountResults();
 }
 
-// Each URL contains one chapter and only loads the modules that chapter needs.
+// The Overview loads each interactive chapter as it approaches the viewport.
 const initializers = {
+  overview: initOverview,
   representation: initRepresentation,
   action: initAction,
   zoo: initZoo,
@@ -65,17 +71,18 @@ function openLinkedDetail() {
   requestAnimationFrame(() => detail.scrollIntoView({ block: 'start' }));
 }
 
-// Previously shared section URLs still lead to their new standalone page.
-const legacyPages = {
-  reconstruction: 'representation.html', observations: 'representation.html',
-  architecture: 'representation.html', zoo: 'zoo.html', 'zoo-library': 'zoo.html',
-  optimization: 'action.html', experiments: 'real-robot.html', setup: 'real-robot.html',
-  method: 'method.html', references: 'method.html'
-};
-const legacyPage = document.body.dataset.page === 'overview' && legacyPages[location.hash.slice(1)];
+const legacyPages = { method: 'method.html', references: 'method.html' };
+const legacySections = { reconstruction: 'representation', observations: 'representation', architecture: 'representation', zoo: 'representation', 'zoo-library': 'representation', setup: 'experiments' };
+const isOverview = document.body.dataset.page === 'overview';
+const legacyPage = isOverview && legacyPages[location.hash.slice(1)];
 if (legacyPage) {
-  location.replace(legacyPage + location.hash);
+  location.replace(legacyPage);
 } else {
+  const section = isOverview && legacySections[location.hash.slice(1)];
+  if (section) {
+    history.replaceState(null, '', location.pathname + location.search + '#' + section);
+    requestAnimationFrame(() => document.getElementById(section)?.scrollIntoView());
+  }
   await initializers[document.body.dataset.page]?.();
   openLinkedDetail();
   window.addEventListener('hashchange', openLinkedDetail);

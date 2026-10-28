@@ -1,0 +1,218 @@
+[
+  {
+    "id": "cabinet",
+    "name": "Cabinet",
+    "family": "articulated",
+    "color": "#96704c",
+    "thumbnail": "assets/zoo-thumbnails/cabinet.png",
+    "geometry": "cabinet.json"
+  },
+  {
+    "id": "clamp",
+    "name": "Clamp",
+    "family": "articulated",
+    "color": "#506477",
+    "thumbnail": "assets/zoo-thumbnails/clamp.png",
+    "geometry": "clamp.json"
+  },
+  {
+    "id": "foldingrule",
+    "name": "Folding Rule",
+    "family": "articulated",
+    "color": "#ceb55c",
+    "thumbnail": "assets/zoo-thumbnails/foldingrule.png",
+    "geometry": "foldingrule.json"
+  },
+  {
+    "id": "microwave",
+    "name": "Microwave",
+    "family": "articulated",
+    "color": "#9eabb6",
+    "thumbnail": "assets/zoo-thumbnails/microwave.png",
+    "geometry": "microwave.json"
+  },
+  {
+    "id": "partnet_faucet_1370",
+    "name": "Faucet",
+    "family": "articulated",
+    "color": "#abb1b7",
+    "thumbnail": "assets/zoo-thumbnails/partnet_faucet_1370.png",
+    "constrained": "faucet"
+  },
+  {
+    "id": "partnet_storagefurniture_46403",
+    "name": "Storage Furniture",
+    "family": "articulated",
+    "color": "#b89769",
+    "thumbnail": "assets/zoo-thumbnails/partnet_storagefurniture_46403.png",
+    "constrained": "cabinet"
+  },
+  {
+    "id": "partnet_window_103051",
+    "name": "Sliding Window",
+    "family": "articulated",
+    "color": "#b3c9d1",
+    "thumbnail": "assets/zoo-thumbnails/partnet_window_103051.png",
+    "geometry": "partnet_window_103051.json"
+  },
+  {
+    "id": "pliers",
+    "name": "Pliers",
+    "family": "articulated",
+    "color": "#536776",
+    "thumbnail": "assets/zoo-thumbnails/pliers.png",
+    "constrained": "pliers"
+  },
+  {
+    "id": "tripod",
+    "name": "Tripod",
+    "family": "articulated",
+    "color": "#424c55",
+    "thumbnail": "assets/zoo-thumbnails/tripod.png",
+    "geometry": "tripod.json"
+  },
+  {
+    "id": "xhand_right",
+    "name": "XHand",
+    "family": "articulated",
+    "color": "#353b45",
+    "thumbnail": "assets/zoo-thumbnails/xhand_right.png",
+    "constrained": "xhand"
+  },
+  {
+    "id": "smal_bovidae",
+    "name": "Bovidae",
+    "family": "skinned",
+    "color": "#66503d",
+    "thumbnail": "assets/zoo-thumbnails/smal_bovidae.png",
+    "constrained": "cow"
+  },
+  {
+    "id": "smal_canidae",
+    "name": "Canidae",
+    "family": "skinned",
+    "color": "#aa8058",
+    "thumbnail": "assets/zoo-thumbnails/smal_canidae.png",
+    "geometry": "smal_canidae.json"
+  },
+  {
+    "id": "smal_equidae",
+    "name": "Equidae",
+    "family": "skinned",
+    "color": "#8b542d",
+    "thumbnail": "assets/zoo-thumbnails/smal_equidae.png",
+    "constrained": "horse"
+  },
+  {
+    "id": "smal_felidae",
+    "name": "Felidae",
+    "family": "skinned",
+    "color": "#c3a16b",
+    "thumbnail": "assets/zoo-thumbnails/smal_felidae.png",
+    "geometry": "smal_felidae.json"
+  },
+  {
+    "id": "smal_hippopotamidae",
+    "name": "Hippopotamidae",
+    "family": "skinned",
+    "color": "#858084",
+    "thumbnail": "assets/zoo-thumbnails/smal_hippopotamidae.png",
+    "constrained": "hippo"
+  },
+  {
+    "id": "smpl_female",
+    "name": "SMPL Female",
+    "family": "skinned",
+    "color": "#c29376",
+    "thumbnail": "assets/zoo-thumbnails/smpl_female.png",
+    "constrained": "human"
+  },
+  {
+    "id": "smpl_male",
+    "name": "SMPL Male",
+    "family": "skinned",
+    "color": "#af7d61",
+    "thumbnail": "assets/zoo-thumbnails/smpl_male.png",
+    "constrained": "human"
+  },
+  {
+    "id": "008-pink-cloth",
+    "name": "Pink Cloth",
+    "family": "deformable",
+    "color": "#e2a4b4",
+    "thumbnail": "assets/zoo-thumbnails/008-pink-cloth.png",
+    "geometry": "008-pink-cloth.json"
+  },
+  {
+    "id": "043-dog",
+    "name": "Dog Plush",
+    "family": "deformable",
+    "color": "#b89b78",
+    "thumbnail": "assets/zoo-thumbnails/043-dog.png",
+    "geometry": "043-dog.json"
+  },
+  {
+    "id": "045-cat",
+    "name": "Cat Plush",
+    "family": "deformable",
+    "color": "#c4afa1",
+    "thumbnail": "assets/zoo-thumbnails/045-cat.png",
+    "geometry": "045-cat.json"
+  },
+  {
+    "id": "051-cube",
+    "name": "Soft Cube",
+    "family": "deformable",
+    "color": "#86a7bb",
+    "thumbnail": "assets/zoo-thumbnails/051-cube.png",
+    "geometry": "051-cube.json"
+  },
+  {
+    "id": "056-makeup-sponge",
+    "name": "Makeup Sponge",
+    "family": "deformable",
+    "color": "#dc91a7",
+    "thumbnail": "assets/zoo-thumbnails/056-makeup-sponge.png",
+    "geometry": "056-makeup-sponge.json"
+  },
+  {
+    "id": "081-stripe-rope",
+    "name": "Striped Rope",
+    "family": "deformable",
+    "color": "#b4ac85",
+    "thumbnail": "assets/zoo-thumbnails/081-stripe-rope.png",
+    "geometry": "081-stripe-rope.json"
+  },
+  {
+    "id": "095-watermelon",
+    "name": "Watermelon",
+    "family": "deformable",
+    "color": "#5d9256",
+    "thumbnail": "assets/zoo-thumbnails/095-watermelon.png",
+    "geometry": "095-watermelon.json"
+  },
+  {
+    "id": "096-octopus",
+    "name": "Octopus Plush",
+    "family": "deformable",
+    "color": "#aa94c3",
+    "thumbnail": "assets/zoo-thumbnails/096-octopus.png",
+    "geometry": "096-octopus.json"
+  },
+  {
+    "id": "121-croissant-plush",
+    "name": "Croissant Plush",
+    "family": "deformable",
+    "color": "#c39258",
+    "thumbnail": "assets/zoo-thumbnails/121-croissant-plush.png",
+    "geometry": "121-croissant-plush.json"
+  },
+  {
+    "id": "164-sheep",
+    "name": "Sheep Plush",
+    "family": "deformable",
+    "color": "#d0c6b3",
+    "thumbnail": "assets/zoo-thumbnails/164-sheep.png",
+    "geometry": "164-sheep.json"
+  }
+]

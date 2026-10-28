@@ -24,7 +24,7 @@ export function decodeGeometry(buffer) {
   return {positions,indices,joints,weights,count};
 }
 
-function geometryFor(data) {
+export function geometryFor(data) {
   const geometry=new THREE.BufferGeometry();
   geometry.setAttribute('position',new THREE.BufferAttribute(data.positions.slice(),3).setUsage(THREE.DynamicDrawUsage));
   geometry.setIndex(new THREE.BufferAttribute(data.indices,1));
@@ -32,7 +32,7 @@ function geometryFor(data) {
   return geometry;
 }
 
-function orientation(id, descriptor) {
+export function orientation(id, descriptor) {
   const up=id==='human' ? new THREE.Quaternion() : new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),-Math.PI/2);
   if (id==='xhand') return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().set(0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,1));
   if (descriptor.type==='partnet') up.multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,0,1),Math.PI*.75));
@@ -54,7 +54,7 @@ function cameraFit(camera, bounds, id, aspect, padding=1.35) {
   return center;
 }
 
-function sampleSurface(geometry,count=14000) {
+export function sampleSurface(geometry,count=14000) {
   const p=geometry.attributes.position,index=geometry.index;
   const areas=new Float64Array(index.count/3);let area=0;
   const a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3();
@@ -74,7 +74,7 @@ function sampleSurface(geometry,count=14000) {
   return {count,triangles,weights,area,positions:new Float32Array(count*3),normals:new Float32Array(count*3),quaternions:new Float32Array(count*4)};
 }
 
-function updateSamples(samples, geometry) {
+export function updateSamples(samples, geometry) {
   const p=geometry.attributes.position.array,n=geometry.attributes.normal.array;
   const normal=new THREE.Vector3(),q=new THREE.Quaternion(),z=new THREE.Vector3(0,0,1);
   for(let i=0;i<samples.count;i++) {
@@ -89,7 +89,7 @@ function updateSamples(samples, geometry) {
   }
 }
 
-function normalLines(samples) {
+export function normalLines(samples) {
   const positions=[];const p=new THREE.Vector3(),n=new THREE.Vector3(),side=new THREE.Vector3();
   for(let i=0;i<samples.count;i+=87) {
     p.fromArray(samples.positions,i*3);n.fromArray(samples.normals,i*3);
@@ -100,7 +100,7 @@ function normalLines(samples) {
   return new THREE.Float32BufferAttribute(positions,3);
 }
 
-function deform(data, projector, state, geometry, restFrames) {
+export function deform(data, projector, state, geometry, restFrames) {
   const preview=projector.preview(state),source=data.positions,out=geometry.attributes.position.array;
   if(projector.descriptor.type==='skinning') {
     const d=projector.descriptor,t=projector.transforms;

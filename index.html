@@ -17,12 +17,16 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="assets/story-layout.css">
   <link rel="stylesheet" href="assets/pages.css">
+  <link rel="stylesheet" href="assets/refined-pages.css">
+  <link rel="stylesheet" href="assets/representation.css">
   <link rel="stylesheet" href="assets/homepage.css">
   <script type="module" src="app.js"></script>
   <script type="module" src="assets/homepage.js"></script>
   <link rel="stylesheet" href="assets/research-pages.css">
+  <link rel="stylesheet" href="assets/project-page.css">
+  <link rel="stylesheet" href="assets/lab.css">
 </head>
-<body class="story-layout multipage-layout" data-page="overview">
+<body class="story-layout multipage-layout combined-project" data-page="overview">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="header">
   <div class="nav-wrap">
@@ -30,10 +34,6 @@
     <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">＋</span></button>
     <nav id="navigation" aria-label="Main navigation">
       <a href="index.html" class="active" aria-current="page">Overview</a>
-      <a href="representation.html">Representation</a>
-      <a href="zoo.html">Object Zoo</a>
-      <a href="action.html">Action</a>
-      <a href="real-robot.html">Real robot</a>
       <a href="method.html">Method</a>
       <a href="results.html">Results</a>
     </nav>
@@ -41,7 +41,8 @@
   </div>
 </header>
 <main id="main">
-  <section id="pipeline" class="wrap home-hero" aria-labelledby="pipeline-title">
+<nav class="chapter-nav" aria-label="On this page"><div class="chapter-nav-inner"><a href="#pipeline" aria-current="location">Overview</a><a href="#representation">Objects</a><a href="#optimization">Optimization</a><a href="#experiments">Real Robot</a></div></nav>
+<section data-chapter="overview" id="pipeline" class="wrap home-hero" aria-labelledby="pipeline-title">
     <div class="home-heading">
       <h1 id="pipeline-title" translate="no">Agentic World <span>Representation</span></h1>
       <div class="home-credits notranslate" translate="no" aria-label="Authors and affiliations">
@@ -62,7 +63,7 @@
     <figure class="home-flow" aria-label="Real-to-Sim-to-Real workflow">
       <ol class="flow-grid">
         <li class="flow-stage">
-          <h2><span class="stage-number">01</span> RGB-D capture</h2>
+          <h2>RGBD video stream</h2>
           <div class="stage-media capture-media">
             <div id="home-capture" class="hero-canvas" role="img" aria-label="Illustrative multi-object scene observed by three cameras, with the corresponding rendered depth view"></div>
             <span class="view-label row-label">RGB</span><span class="view-label second-row-label">Depth</span>
@@ -70,7 +71,7 @@
           <span class="stage-arrow" aria-hidden="true">→</span>
         </li>
         <li class="flow-stage">
-          <h2><span class="stage-number">02</span> Representation</h2>
+          <h2>Neural simulation object</h2>
           <div class="stage-media representation-media">
             <div id="home-representations" class="hero-canvas" role="img" aria-label="The same six objects, including the native XHand, as moving point clouds above and surface normals below"></div>
             <span class="view-label row-label">Point clouds</span><span class="view-label second-row-label">SDF / Normal</span>
@@ -78,7 +79,7 @@
           <span class="stage-arrow" aria-hidden="true">→</span>
         </li>
         <li class="flow-stage">
-          <h2><span class="stage-number">03</span> Grasp optimization</h2>
+          <h2>Keypoint optimization</h2>
           <div class="stage-media optimization-media">
             <video id="home-optimization-video" muted playsinline loop preload="auto" poster="assets/home/xhand-optimization-poster.jpg" aria-label="MuJoCo replay of native XHand duck-grasp optimization, with model keypoints and actual gradient directions"><source src="assets/home/xhand-optimization.mp4" type="video/mp4"></video>
             <svg id="home-keypoints" class="keypoint-overlay" viewBox="0 0 560 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><marker id="joint-gradient-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#ed8652"/></marker></defs><g id="home-gradient-vectors" fill="none" stroke="#ed8652" stroke-width="2.5" marker-end="url(#joint-gradient-arrow)"></g><g id="home-keypoint-dots" fill="#bd8de0" stroke="#fff" stroke-width="1.1"></g></svg>
@@ -91,7 +92,7 @@
           <span class="stage-arrow" aria-hidden="true">→</span>
         </li>
         <li class="flow-stage">
-          <h2><span class="stage-number">04</span> Real-world execution</h2>
+          <h2>Real robot deployment</h2>
           <div class="stage-media execution-media">
             <video id="home-robot" muted playsinline loop preload="auto" poster="assets/demos/execution/duck-execution-poster.png" aria-label="Recorded real XHand approaching, grasping and lifting a duck"><source src="assets/home/duck-real.mp4" type="video/mp4"></video>
           </div>
@@ -103,7 +104,55 @@
       </div>
     </figure>
   </section>
+
+<section id="representation" data-chapter="representation" class="project-chapter section wrap" aria-labelledby="objects-title">
+ <div class="stacked-heading"><h2 id="objects-title">Neural simulation objects</h2><p>Explore the workspace, move a keypoint, and see the geometry respond.</p></div>
+ <div id="object-lab" class="object-lab">
+  <article class="lab-pane" aria-label="Interactive simulation workspace">
+   <div class="lab-viewport"><div class="lab-canvas" aria-label="Orbit, pan, and zoom the simulation; select an object to move its keypoints"></div><div class="lab-keypoints lab-object-handles"></div><div class="lab-keypoints lab-hand-handles hand-points"></div><span class="lab-loading" role="status">Loading workspace…</span><div class="lab-view-actions"><button type="button" id="lab-overview">Whole scene</button><button type="button" data-lab-play>Pause</button><button type="button" data-lab-reset>Reset</button></div></div>
+   <div class="lab-toolbar"><div id="lab-focus-list" role="group" aria-label="Focus an object or hand"></div><div class="lab-display-controls"><span id="lab-focus-name">Workspace</span><div class="lab-format" role="group" aria-label="Selected object format"><button type="button" data-lab-mode="occupancy" aria-pressed="false">Occupancy</button><button type="button" data-lab-mode="sdf" aria-pressed="true">SDF</button></div><label class="lab-normal"><input type="checkbox">Normal</label></div></div>
+  </article>
+  <aside class="object-drawer" aria-label="Object Zoo">
+   <h3 class="lab-zoo-heading">Object Zoo</h3>
+   <div class="lab-pca-player"><img id="lab-pca-image" src="assets/demos/hd/cabinet.gif" alt="Cabinet projected PCA keypoints and corresponding occupancy animation"><button type="button" id="lab-pca-play" aria-label="Pause PCA animation">Pause</button></div>
+   <div class="lab-families" role="group" aria-label="Object family"><button type="button" data-lab-family="all" aria-pressed="true">All</button><button type="button" data-lab-family="articulated" aria-pressed="false">Articulated</button><button type="button" data-lab-family="skinned" aria-pressed="false">Skinning</button><button type="button" data-lab-family="deformable" aria-pressed="false">Soft</button></div>
+   <div id="lab-object-list" role="group" aria-label="Choose a PCA animation"></div>
+  </aside>
+ </div>
+</section>
+
+<section data-chapter="action" id="optimization" class="project-chapter section wrap" aria-labelledby="optimization-title">
+ <div class="stacked-heading"><h2 id="optimization-title">Optimize a grasp through geometry.</h2><p>Choose a hand and an object. Optimize the grasp, lift, and hold through two gentle shakes.</p></div>
+ <div class="grasp-layout" id="grasp-lab">
+  <div class="grasp-workbench">
+   <div class="grasp-choices"><div class="grasp-choice-row"><span>Object</span><div id="grasp-objects" role="group" aria-label="Optimization object"></div></div><div class="grasp-choice-row"><span>Hand</span><div id="grasp-hands" role="group" aria-label="Optimization hand model"></div></div></div>
+   <div class="grasp-viewport"><div id="grasp-canvas" aria-label="Native single-arm MuJoCo grasp, lift, and shake replay"></div><div id="grasp-handles" class="lab-keypoints hand-points"></div><div class="grasp-scene-heading"><strong id="grasp-scene-title">XHand · Cup</strong><span id="grasp-iteration">Iteration 0</span></div><span id="grasp-loading" class="lab-loading" role="status">Loading hand…</span><input id="grasp-timeline" type="range" min="0" max="8" step="0.02" value="0" aria-label="Grasp replay time"><div class="grasp-playback"><button type="button" id="grasp-restart" aria-label="Restart optimization">Restart</button><button type="button" id="grasp-play">Pause</button></div></div>
+   <div class="grasp-charts"><div><h4>Finger joint angles <span>degrees</span></h4><div class="grasp-joint-plot"><ul id="grasp-joint-legend" aria-label="Joint curve legend"></ul><svg id="grasp-joints" viewBox="0 0 260 148" aria-label="Named finger joint angles over time"></svg></div></div><div><h4>Grasp optimization loss <output id="grasp-loss-value">0</output></h4><svg id="grasp-loss" viewBox="0 0 350 148" aria-label="Grasp optimization loss with time and loss axes"></svg></div></div>
+  </div>
+  <aside class="grasp-method" id="gradient-flow">
+   <h3>From geometry to joint updates</h3>
+   <p>The hand and object networks stay frozen. Gradients pass through both fields to the hand keypoints, then through hand kinematics to finger joint angles.</p>
+   <svg class="grasp-gradient" viewBox="0 0 420 465" role="img" aria-label="Loss gradients split through the frozen hand network and frozen object network in parallel, combine at hand keypoints, and backpropagate through forward kinematics to finger joint angles q.">
+    <defs><marker id="lab-flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#a38ab5"/></marker></defs>
+    <g class="gradient-node loss"><rect x="100" y="18" width="220" height="66" rx="12"/><text x="210" y="46">Grasp loss</text><text class="gradient-detail" x="210" y="66">Contact · balance · penetration</text></g>
+    <path class="gradient-wire" d="M210 85V107H103V135M210 107H317V135"/>
+    <g class="gradient-node"><rect x="12" y="143" width="183" height="76" rx="12"/><text x="103" y="173">Hand network</text><text class="gradient-frozen" x="103" y="199">FROZEN</text></g>
+    <g class="gradient-node"><rect x="225" y="143" width="183" height="76" rx="12"/><text x="317" y="173">Object network</text><text class="gradient-frozen" x="317" y="199">FROZEN</text></g>
+    <path class="gradient-wire" d="M103 220V254H210V283M317 220V254H210"/>
+    <g class="gradient-node keypoints"><rect x="90" y="291" width="240" height="58" rx="12"/><text x="210" y="326">Hand keypoints</text></g>
+    <path class="gradient-wire" d="M210 350V395"/>
+    <text class="gradient-detail" x="282" y="376">Kinematics</text>
+    <g class="gradient-node joints"><rect x="90" y="404" width="240" height="50" rx="12"/><text x="210" y="435">Finger joint angles · q</text></g>
+   </svg>
+  </aside>
+ </div>
+</section>
+
+<section data-chapter="real-robot" class="project-chapter section wrap" id="experiments"><div class="stacked-heading"><h2>From simulation to the real robot.</h2></div><div class="real-comparison-layout"><div class="real-comparison"><div class="real-column-titles"><span>Ours</span><span>MuJoCo</span><span>π0.5</span></div><h2 class="split-label">In-distribution</h2><div class="real-video-row"><div class="real-video-cell"><video src="assets/real/ours-id.mp4" aria-label="ours In-distribution duck grasp" loop muted playsinline controls preload="none"></video></div><div class="real-video-cell"><video src="assets/real/mujoco-id.mp4" aria-label="mujoco In-distribution duck grasp" loop muted playsinline controls preload="none"></video></div><div class="real-video-cell"><video src="assets/real/pi05-id.mp4" aria-label="π0.5 In-distribution duck grasp" loop muted playsinline controls preload="none"></video></div></div><h2 class="split-label">Out-of-distribution</h2><div class="real-video-row"><div class="real-video-cell"><video src="assets/real/ours-ood.mp4" aria-label="ours Out-of-distribution duck grasp" loop muted playsinline controls preload="none"></video></div><div class="real-video-cell"><video src="assets/real/mujoco-ood.mp4" aria-label="mujoco Out-of-distribution duck grasp" loop muted playsinline controls preload="none"></video></div><div class="real-video-cell"><video src="assets/real/pi05-ood.mp4" aria-label="π0.5 Out-of-distribution duck grasp" loop muted playsinline controls preload="none"></video></div></div></div><aside class="real-sidebar">
+<div class="real-transfer-copy"><h2>Learn in simulation. Deploy on the robot.</h2><p>We train grasping policies in simulation with AWR and deploy them on the real robot. In our <a href="results.html#real-world-transfer">four-object grasping experiments</a>, they achieve higher success rates than the MuJoCo-trained policy and π0.5, including at placements outside the training region.</p></div>
+<div class="real-object-grid" role="group" aria-label="Evaluation objects"><figure><img src="assets/research/duck.jpg" alt="Duck"><figcaption>Duck</figcaption></figure><figure><img src="assets/research/piggy-bank.jpg" alt="Piggy bank"><figcaption>Piggy bank</figcaption></figure><figure><img src="assets/research/trophy.jpg" alt="Trophy"><figcaption>Trophy</figcaption></figure><figure><img src="assets/research/apple.jpg" alt="Apple"><figcaption>Apple</figcaption></figure></div></aside></div></section>
 </main>
+<nav class="page-pagination wrap" aria-label="Page navigation"><a class="next-page" href="method.html"><span><small>Next</small>Method</span><span aria-hidden="true">→</span></a></nav>
 
 <footer class="footer project-footer wrap"><div class="footer-content"><p>Agentic World Representation</p><div class="footer-links"><a href="method.html">Method</a><a href="#main">Back to top ↑</a></div></div></footer>
 <noscript><p class="noscript-note">Enable JavaScript for interactive geometry, animations, and result tables. The navigation links work without JavaScript.</p></noscript>

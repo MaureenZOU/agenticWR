@@ -7,7 +7,7 @@ body[data-page="representation"] #main { scroll-margin-top: 100px; }
 .lab-name { font-size: 15px; font-weight: 500; white-space: nowrap; }
 .representation-page { width: 92%; max-width: 1280px; padding-top: 30px; }
 .representation-heading { margin-bottom: 24px; }
-.representation-heading h1 { font-size: clamp(29px, 3.4vw, 44px); font-weight: 500; line-height: 1.18; letter-spacing: -.035em; }
+.representation-heading :is(h1,h2) { font-size: clamp(29px, 3.4vw, 44px); font-weight: 500; line-height: 1.18; letter-spacing: -.035em; }
 .representation-heading p { font-size: 19px; margin-top: 14px; color: #84708f; }
 .representation-workbench { display: grid; grid-template-columns: minmax(0,1fr) 154px; grid-template-areas: "viewer picker" "controls picker"; gap: 18px 24px; }
 .representation-viewer { grid-area: viewer; height: clamp(380px, calc(100svh - 310px), 560px); background: #fff; border: 1px solid #eae6ef; border-radius: 18px; position: relative; overflow: hidden; }

@@ -1,0 +1,77 @@
+[
+  {
+    "hand": "xhand",
+    "object": "mug",
+    "src": "xhand-mug.json"
+  },
+  {
+    "hand": "xhand",
+    "object": "duck",
+    "src": "xhand-duck.json"
+  },
+  {
+    "hand": "xhand",
+    "object": "dumbbell",
+    "src": "xhand-dumbbell.json"
+  },
+  {
+    "hand": "xhand",
+    "object": "bottle",
+    "src": "xhand-bottle.json"
+  },
+  {
+    "hand": "xhand",
+    "object": "apple",
+    "src": "xhand-apple.json"
+  },
+  {
+    "hand": "allegro",
+    "object": "mug",
+    "src": "allegro-mug.json"
+  },
+  {
+    "hand": "allegro",
+    "object": "duck",
+    "src": "allegro-duck.json"
+  },
+  {
+    "hand": "allegro",
+    "object": "dumbbell",
+    "src": "allegro-dumbbell.json"
+  },
+  {
+    "hand": "allegro",
+    "object": "bottle",
+    "src": "allegro-bottle.json"
+  },
+  {
+    "hand": "allegro",
+    "object": "apple",
+    "src": "allegro-apple.json"
+  },
+  {
+    "hand": "shadow",
+    "object": "mug",
+    "src": "shadow-mug.json"
+  },
+  {
+    "hand": "shadow",
+    "object": "duck",
+    "src": "shadow-duck.json"
+  },
+  {
+    "hand": "shadow",
+    "object": "dumbbell",
+    "src": "shadow-dumbbell.json"
+  },
+  {
+    "hand": "shadow",
+    "object": "bottle",
+    "src": "shadow-bottle.json"
+  },
+  {
+    "hand": "shadow",
+    "object": "apple",
+    "src": "shadow-apple.json"
+  }
+]
