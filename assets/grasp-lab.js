@@ -4,6 +4,7 @@ const names={xhand:'XHand',allegro:'Allegro',shadow:'Shadow Hand'};
 function propMesh(parts){
  const group=new THREE.Group();
  for(const part of parts){const s=part.size;let g;
+  if(part.visible===false)continue;
   if(part.type==='box')g=new THREE.BoxGeometry(s[0]*2,s[1]*2,s[2]*2);
   else if(part.type==='cylinder')g=new THREE.CylinderGeometry(s[0],s[0],s[1]*2,40).rotateX(Math.PI/2);
   else if(part.type==='capsule')g=new THREE.CapsuleGeometry(s[0],s[1]*2,6,12).rotateX(Math.PI/2);
@@ -65,7 +66,8 @@ export async function mountGraspLab(){
     const body=new THREE.Mesh(new THREE.LatheGeometry(profile,64).rotateX(Math.PI/2),material(color));body.castShadow=true;body.receiveShadow=true;prop.add(body);
     const handleParts=replay.parts.slice(25),curve=new THREE.CatmullRomCurve3(handleParts.map(p=>new THREE.Vector3(...p.pos)));const handle=new THREE.Mesh(new THREE.TubeGeometry(curve,64,handleParts[0].size[0],12,false),material(color));handle.castShadow=true;prop.add(handle);experiment.add(prop);
    }
-   if(object==='duck'){const scale=replay.physics.scale||1;for(const y of [-.018,.018]){const eye=new THREE.Mesh(new THREE.SphereGeometry(.0026*scale,12,10),material(0x262d30));eye.position.set(.034*scale,y*scale,.039*scale);prop.add(eye);}}
+   if(replay.objectMesh){const source=await resource(`./lab/${replay.objectMesh}`);if(token!==selection)return;const mesh=new THREE.Mesh(geometry(source),material(source.color));mesh.castShadow=true;mesh.receiveShadow=true;prop.add(mesh);}
+   else if(object==='duck'){const scale=replay.physics.scale||1,head=replay.parts[1];for(const y of [-.018,.018]){const eye=new THREE.Mesh(new THREE.SphereGeometry(.0026*scale,12,10),material(0x262d30));eye.position.set(.012*scale,y*scale,.012*scale).applyQuaternion(quaternion(head.quat)).add(new THREE.Vector3(...head.pos));prop.add(eye);}}
    data=replay;setupCharts();experiment.position.fromArray(data.sceneOffset);experiment.quaternion.copy(quaternion(data.sceneQuaternion));time=0;playing=true;root._chartIndex=-1;root.dataset.hand=kind;root.dataset.object=object;root.dataset.physicsValidated=String(data.physics.success);root.dataset.minimumLift=String(data.physics.lift_min);
    $('#grasp-scene-title').textContent=`${names[kind]} · ${objects.find(o=>o[0]===object)[1]}`;
    const center=new THREE.Vector3(data.sceneOffset[0],.93,-data.sceneOffset[1]);

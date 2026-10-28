@@ -31,7 +31,8 @@ def arm_gaps():
 adr=np.array([m.jnt_qposadr[m.joint(j['name']).id] for j in joints]);bounds=np.array([j['range'] for j in joints]).T
 
 def attach(data):
- offset=np.array([.10,0,.75]);scene_rotation=R.identity();n=len(data['jointNames']);q=np.array([.2,.98,.4,1.94,.1,1.77,.55]);errors=[];rot=scene_rotation*R.from_quat(data['wristQuaternion'],scalar_first=True)
+ # The short Allegro palm's frontal duck pose needs 10 cm more arm reach margin.
+ offset=np.array([.20 if data['hand']=='allegro' and data['physics'].get('style')=='duck-front' else .10,0,.75]);scene_rotation=R.identity();n=len(data['jointNames']);q=np.array([.2,.98,.4,1.94,.1,1.77,.55]);errors=[];orientation_errors=[];rot=scene_rotation*R.from_quat(data['wristQuaternion'],scalar_first=True)
  # Shadow has a ninety-degree palm adapter; arm flange orientation is common.
  if data['hand']=='shadow':rot=rot*R.from_euler('z',-np.pi/2)
  for f in data['frames']:
@@ -42,15 +43,18 @@ def attach(data):
   def fun(x):
    d.qpos[adr]=x;mujoco.mj_kinematics(m,d)
    return np.r_[(d.xpos[tip]-target)*10,(rot.inv()*R.from_matrix(d.xmat[tip].reshape(3,3))).as_rotvec(),np.minimum(arm_gaps()-.006,0)*40]
-  fit=least_squares(fun,q,bounds=bounds,max_nfev=150 if not errors else 50,ftol=1e-8,xtol=1e-8,gtol=1e-8);q=fit.x;err=np.linalg.norm(fun(q)[:3])/10;errors.append(float(err));f.extend(np.round(q,6).tolist())
+  fit=least_squares(fun,q,bounds=bounds,max_nfev=150 if not errors else 50,ftol=1e-8,xtol=1e-8,gtol=1e-8);q=fit.x;residual=fun(q);err=np.linalg.norm(residual[:3])/10;errors.append(float(err));orientation_errors.append(float(np.degrees(np.linalg.norm(residual[3:6]))));f.extend(np.round(q,6).tolist())
  clearance=float('inf');forward=1.
  for f in data['frames'][::10]:
   d.qpos[adr]=f[n+17:n+24];mujoco.mj_kinematics(m,d)
   clearance=min(clearance,float(arm_gaps().min()))
-  reach=d.xpos[tip]-np.array(arm['mount']['pos']);direction=scene_rotation.apply(R.from_quat(f[n+12:n+16],scalar_first=True).apply([0,0,1]))
+  reach=d.xpos[tip]-np.array(arm['mount']['pos'])
+  # A frontal duck grasp points its palm (not its downward fingers) forward.
+  axis=([0,-1,0] if data['hand']=='shadow' else [1,0,0]) if data['physics'].get('style')=='duck-front' else [0,0,1]
+  direction=scene_rotation.apply(R.from_quat(f[n+12:n+16],scalar_first=True).apply(axis))
   forward=min(forward,float(reach@direction/np.linalg.norm(reach)))
  data['sceneOffset']=offset.tolist();data['sceneQuaternion']=scene_rotation.as_quat(scalar_first=True).tolist();data['armJoints']=7
- data['physics'].update(arm_ik_max_error_m=max(errors),arm_surface_clearance_m=clearance,forward_reach_alignment=forward)
+ data['physics'].update(arm_ik_max_error_m=max(errors),arm_orientation_max_error_deg=max(orientation_errors),arm_surface_clearance_m=clearance,forward_reach_alignment=forward)
  return data
 if __name__=='__main__':
  (SITE/'assets/lab/arm.json').write_text(json.dumps(arm,separators=(',',':')))

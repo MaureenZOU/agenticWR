@@ -1,7 +1,8 @@
 """Offline native-hand contact demonstrations for the static project page.
 The object is a gravity-driven free body. Only hand actuators and the mocap
 wrist are commanded after reset; no object weld, force, or pose following.
- Geometry loss uses sampled link surfaces and analytic object collision fields.
+Geometry loss uses sampled link surfaces, analytic primitives or native duck
+collision-mesh half-spaces, together with native MuJoCo collision distances.
 """
 from pathlib import Path
 import json,sys,argparse
@@ -10,22 +11,36 @@ import numpy as np
 import mujoco
 from scipy.spatial.transform import Rotation as R
 from scipy.optimize import minimize
+from functools import lru_cache
 ROOT=Path(__file__).resolve().parents[2]; SITE=ROOT/'agenticWR'; OUT=SITE/'assets/lab/grasp';OUT.mkdir(exist_ok=True)
 QA=SITE/'.preview/forward-grasps-20261029'; QA.mkdir(exist_ok=True)
 RIGS=json.loads((SITE/'assets/lab/rigs.json').read_text())
 fmt=lambda v:' '.join(str(float(x)) for x in np.asarray(v).ravel())
 
-def config(kind,name=None,angle=None,roll=0):
+@lru_cache(maxsize=1)
+def native_duck():
+ return json.loads((SITE/'assets/lab/duck-native.json').read_text())
+
+def config(kind,name=None,angle=None,roll=0,style=None):
  h=RIGS['right']['hand'] if kind=='xhand' else RIGS[kind]
  local={'xhand':[.052,0,.135],'allegro':[.046,0,.067],'shadow':[0,-.047,.135]}[kind]
  tilt=angle if angle is not None else 0
  # Fingers point forward; thumb points up at roll=0, palm up at roll=-90.
  forward=np.array([[0.,0.,-1.],[-1.,0.,0.],[0.,1.,0.]])
  rot=R.from_euler('x',roll,degrees=True).as_matrix()@R.from_euler('y',tilt,degrees=True).as_matrix()@forward
+ if style=='duck-front':
+  # Palm normal faces -X (away from the arm); fingers point down around the body.
+  rot=R.from_euler('y',tilt,degrees=True).as_matrix()@np.diag([-1.,1.,-1.])
+ elif style=='apple-top':
+  # Native +X is the palm normal. Keep it downward, fingers toward -X.
+  rot=R.from_euler('z',tilt,degrees=True).as_matrix()@np.array([[0.,0.,-1.],[0.,-1.,0.],[-1.,0.,0.]])
  if kind=='shadow':rot=rot@R.from_euler('z',np.pi/2).as_matrix()
  return h,np.array(local),rot
 
-def shape(name,scale=1):
+def shape(name,scale=1,style=None):
+ if name=='duck' and style=='duck-front':
+  if scale!=1:raise ValueError('Use the original simulation duck size for every hand')
+  return native_duck()['collision']
  # Coordinates relative to the free body's centre, in metres.
  parts=[]
  def add(t,size,pos=(0,0,0),quat=(1,0,0,0),color=(.5,.6,.7,1)):
@@ -48,16 +63,13 @@ def shape(name,scale=1):
  if name in ['dumbbell','mug']:
   yaw=R.from_euler('z',np.pi/2)
   for p in parts:p['pos']=yaw.apply(p['pos']).tolist();p['quat']=(yaw*R.from_quat(p['quat'],scalar_first=True)).as_quat(scalar_first=True).tolist()
+ if name=='duck' and style=='duck-front':
+  yaw=R.from_euler('z',np.pi)
+  for p in parts:p['pos']=yaw.apply(p['pos']).tolist();p['quat']=(yaw*R.from_quat(p['quat'],scalar_first=True)).as_quat(scalar_first=True).tolist()
  return parts
 
-def build(kind,name,scale=1,angle=None,roll=0):
- h,local,rot=config(kind,name,angle,roll); parts=shape(name,scale)
- if kind=='shadow' and name=='bottle':
-  # A short, wide bottle fits the Shadow palm and avoids grasping only the cap.
-  for p in parts:
-   p['pos'][2]*=.65
-   if p['type']=='cylinder':p['size'][0]*=1.5;p['size'][1]*=.65
-   elif p['type']=='ellipsoid':p['size']=[p['size'][0]*1.5,p['size'][1]*1.5,p['size'][2]*.65]
+def build(kind,name,scale=1,angle=None,roll=0,style=None):
+ h,local,rot=config(kind,name,angle,roll,style); parts=shape(name,scale,style)
  root=ET.Element('mujoco',model=f'{kind}_{name}');ET.SubElement(root,'compiler',angle='radian',autolimits='true',balanceinertia='true');ET.SubElement(root,'option',timestep='.002',gravity='0 0 -9.81',integrator='implicitfast',cone='elliptic',iterations='60',impratio='8')
  defs=ET.SubElement(root,'default');ET.SubElement(defs,'geom',friction='1.6 .02 .001',solref='.008 1',solimp='.95 .99 .001');ET.SubElement(defs,'joint',damping='.06',armature='.003',frictionloss='0')
  asset=ET.SubElement(root,'asset');world=ET.SubElement(root,'worldbody');ET.SubElement(world,'geom',name='floor',type='plane',size='2 2 .1',contype='1',conaffinity='3')
@@ -72,18 +84,39 @@ def build(kind,name,scale=1,angle=None,roll=0):
    meshname=f'm{i}_{gi}';ET.SubElement(asset,'mesh',name=meshname,vertex=fmt(np.array(g['vertices']).reshape(-1,3)),face=' '.join(map(str,g['faces'])))
    ET.SubElement(node,'geom',name=meshname,type='mesh',mesh=meshname,pos=fmt(g['pos']),quat=fmt(g['quat']),contype='2',conaffinity='1',mass='0')
    vertices=np.array(g['vertices']).reshape(-1,3);take=np.linspace(0,len(vertices)-1,min(90,len(vertices)),dtype=int);pts=R.from_quat(g['quat'],scalar_first=True).apply(vertices[take])+g['pos'];samples.append((b['name'],pts))
- obj=ET.SubElement(world,'body',name='object');ET.SubElement(obj,'freejoint',name='object_free');ET.SubElement(obj,'inertial',pos='0 0 0',mass='.07' if name!='dumbbell' else '.12',diaginertia='.00005 .00005 .00005')
- for i,p in enumerate(parts):ET.SubElement(obj,'geom',name=f'object_{i}',type=p['type'],size=fmt(p['size']),pos=fmt(p['pos']),quat=fmt(p['quat']),rgba=fmt(p['color']),contype='1',conaffinity='3')
+ obj=ET.SubElement(world,'body',name='object');ET.SubElement(obj,'freejoint',name='object_free')
+ is_native_duck=name=='duck' and style=='duck-front'
+ if is_native_duck:
+  duck=native_duck();ET.SubElement(obj,'inertial',**duck['inertial'])
+  ET.SubElement(asset,'mesh',name='duck_visual',vertex=fmt(duck['vertices']),face=' '.join(map(str,duck['faces'])))
+  ET.SubElement(obj,'geom',name='duck_visual',type='mesh',mesh='duck_visual',rgba=fmt(duck['color']),contype='0',conaffinity='0',mass='0')
+ else:ET.SubElement(obj,'inertial',pos='0 0 0',mass='.07' if name!='dumbbell' else '.12',diaginertia='.00005 .00005 .00005')
+ for i,p in enumerate(parts):
+  attrs=dict(name=f'object_{i}',type=p['type'],pos=fmt(p['pos']),quat=fmt(p['quat']),rgba=fmt(p['color']),contype='1',conaffinity='3')
+  if p['type']=='mesh':
+   meshname=f'duck_collision_{i}';ET.SubElement(asset,'mesh',name=meshname,vertex=fmt(p['vertices']),face=' '.join(map(str,p['faces'])));attrs.update(mesh=meshname,group='3',mass='0')
+  else:attrs['size']=fmt(p['size'])
+  ET.SubElement(obj,'geom',**attrs)
  act=ET.SubElement(root,'actuator')
  for j in h['joints']:ET.SubElement(act,'position',name='a_'+j['name'],joint=j['name'],kp='12',kv='.35',ctrlrange=fmt(j['range']),forcerange='-1.5 1.5')
  xml=ET.tostring(root,encoding='unicode');m=mujoco.MjModel.from_xml_string(xml);d=mujoco.MjData(m)
  samples=[(m.body(name).id,pts) for name,pts in samples];return m,d,h,local,rot,parts,samples,xml
 
-def sdf(points,parts):
+_mesh_query_cache={}
+def sdf(points,parts,penetration_only=False):
  vals=[]
  for p in parts:
   v=R.from_quat(p['quat'],scalar_first=True).inv().apply(points-np.array(p['pos']));s=np.array(p['size']);t=p['type']
-  if t=='sphere':dist=np.linalg.norm(v,axis=1)-s[0]
+  if t=='mesh':
+   if id(p) not in _mesh_query_cache:
+    vv=np.asarray(p['vertices']).reshape(-1,3);_mesh_query_cache[id(p)]=(np.asarray(p['planes']),vv.min(0),vv.max(0))
+   planes,lo,hi=_mesh_query_cache[id(p)]
+   if penetration_only:
+    dist=np.linalg.norm(np.maximum(np.maximum(lo-v,v-hi),0),axis=1)
+    near=np.all((v>=lo-.002)&(v<=hi+.002),axis=1)
+    if np.any(near):dist[near]=np.max(v[near]@planes[:,:3].T+planes[:,3],axis=1)
+   else:dist=np.max(v@planes[:,:3].T+planes[:,3],axis=1)
+  elif t=='sphere':dist=np.linalg.norm(v,axis=1)-s[0]
   elif t=='ellipsoid':
    k0=np.linalg.norm(v/s,axis=1);k1=np.linalg.norm(v/(s*s),axis=1);dist=k0*(k0-1)/np.maximum(k1,1e-8)
   elif t=='box':
@@ -120,8 +153,8 @@ def initial(h,kind):
   closed[i]=np.clip(closed[i],lo,hi)
  return q,closed
 
-def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=False,custom=None,custom_open=None,angle=None,roll=0,close_start=1.2,close_end=3.):
- m,d,h,local,rot,parts,samples,xml=build(kind,name,scale,angle,roll)
+def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=False,custom=None,custom_open=None,angle=None,roll=0,close_start=1.2,close_end=3.,style=None):
+ m,d,h,local,rot,parts,samples,xml=build(kind,name,scale,angle,roll,style)
  adr=np.array([m.jnt_qposadr[m.joint(j['name']).id] for j in h['joints']]);oa=int(m.jnt_qposadr[m.joint('object_free').id]);bid=m.body('object').id
  wa=int(m.jnt_qposadr[m.joint('wrist_free').id]);wb=m.body('dynamic_wrist').id
  qopen,qclose=initial(h,kind);qclose=np.array([np.clip(x*close_scale,*j['range']) for x,j in zip(qclose,h['joints'])]);
@@ -129,6 +162,7 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
  if custom_open is not None:qopen=np.array(custom_open)
  # Compute support height from the exact primitive union.
  def support(p):
+  if p['type']=='mesh':return float(np.min(np.asarray(p['vertices']).reshape(-1,3)[:,2]))
   axis=R.from_quat(p['quat'],scalar_first=True).as_matrix()[2];s=p['size'];t=p['type']
   if t=='sphere':radius=s[0]
   elif t=='ellipsoid':radius=np.linalg.norm(axis*np.array(s))
@@ -138,6 +172,9 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
   return p['pos'][2]-radius
  bottom=min(support(p) for p in parts)
  center=np.array([0.,0.,-bottom+.001]);local=local+offset;target_offset=np.array({'mug':[0,.076,.025],'duck':[0,0,-.008],'bottle':[0,0,-.012]}.get(name,[0,0,0]));wrist=center+target_offset-rot@local;approach=-rot[:,2]*.10+np.array([0,0,.008]);quat=R.from_matrix(rot).as_quat(scalar_first=True)
+ if style=='duck-front':approach=np.array([.11,0,.025])
+ elif style=='apple-top':approach=np.array([0,0,.12])
+ elif style=='bottle-wrap':approach=-rot@np.array([0,-1,0] if kind=='shadow' else [1,0,0])*.11+np.array([0,0,.008])
  d.qpos[oa:oa+3]=center;d.qpos[oa+3:oa+7]=[1,0,0,0];d.qpos[adr]=qopen;d.mocap_pos[0]=wrist+approach;d.mocap_quat[0]=quat;d.qpos[wa:wa+7]=np.r_[d.mocap_pos[0],quat];d.ctrl[:]=qopen;mujoco.mj_forward(m,d)
  history=[]
  # Surface/keypoint objective is evaluated at the planned palm pose.
@@ -199,9 +236,10 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
    xyz=np.concatenate([pts@d.xmat[body].reshape(3,3).T+d.xpos[body] for body,pts in samples if body!=3]);ds=sdf((xyz-d.xpos[bid])@d.xmat[bid].reshape(3,3),parts)
    nearest=np.sort(np.abs(ds))[:40];measured=float(1e4*(np.mean(nearest**2)+10*np.mean(np.minimum(ds,0)**2)))
    frames.append([round(t,4),*np.round(d.qpos[adr],6).tolist(),*np.round(d.xpos[wb],6).tolist(),*np.round(d.xpos[bid],6).tolist(),*np.round(d.xquat[bid],7).tolist(),phase,*np.round(d.xquat[wb],7).tolist(),round(measured,7)])
- result={'hand':kind,'object':name,'offset':list(offset),'scale':scale,'closure':close_scale,'qtarget':qclose.tolist(),'qopen':qopen.tolist(),'angle':angle or 0,'roll':roll,'close_start':close_start,'close_end':close_end,'lift_min':round(min(lifts),5),'lift_max':round(max(lifts),5),'contacts_min':min(contacts),'max_penetration':round(pen,5),'slip_max':round(max(slips),5),'tilt_max_deg':round(max(tilts),2),'table_penetration_m':round(table_pen,6),'prelift_drift_m':round(prelift_drift,5),'region_contacts_min':min(region_contacts),'wrong_contacts_max':max(wrong_contacts),'success':(name!='mug' or (min(region_contacts)>0 and max(wrong_contacts)==0)) and (name!='dumbbell' or min(region_contacts)>0) and min(lifts)>.12 and min(contacts)>0 and pen<.004 and table_pen<.003 and (name=='apple' or max(tilts)<28) and prelift_drift<.045}
+ result={'hand':kind,'object':name,'offset':list(offset),'scale':scale,'closure':close_scale,'qtarget':qclose.tolist(),'qopen':qopen.tolist(),'angle':angle or 0,'roll':roll,'style':style,'close_start':close_start,'close_end':close_end,'lift_min':round(min(lifts),5),'lift_max':round(max(lifts),5),'contacts_min':min(contacts),'max_penetration':round(pen,5),'slip_max':round(max(slips),5),'tilt_max_deg':round(max(tilts),2),'table_penetration_m':round(table_pen,6),'prelift_drift_m':round(prelift_drift,5),'region_contacts_min':min(region_contacts),'wrong_contacts_max':max(wrong_contacts),'success':(name!='mug' or (min(region_contacts)>0 and max(wrong_contacts)==0)) and (name!='dumbbell' or min(region_contacts)>0) and min(lifts)>.12 and min(contacts)>0 and pen<.004 and table_pen<.003 and (name=='apple' or max(tilts)<28) and prelift_drift<.045}
  if record:
   result['replay']={'hand':kind,'object':name,'fps':50,'duration':8,'wristQuaternion':quat.tolist(),'parts':parts,'jointNames':[j['name'] for j in h['joints']],'frames':frames,'optimization':history,'frameLayout':'time, hand qpos, wrist position(3), object position(3), object quaternion wxyz(4), phase, wrist quaternion wxyz(4), grasp optimization loss, arm qpos(7)', 'physics':{k:v for k,v in result.items() if k!='replay'}}
+  if name=='duck' and style=='duck-front':result['replay']['objectMesh']='duck-native.json';result['replay']['objectGeometry']=native_duck()['provenance']
  return result
 
 if __name__=='__main__':
