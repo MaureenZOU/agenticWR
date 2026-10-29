@@ -1,137 +1,711 @@
-[
-  {
-    "object": "cabinet",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/cabinet.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
+{
+  "source_figure": "paper/figures/assets.png",
+  "reference": "paper/sections/appendix.tex",
+  "counts": {
+    "articulated": 30,
+    "skinned": 7,
+    "deformable": 13
   },
-  {
-    "object": "clamp",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/clamp.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "foldingrule",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/foldingrule.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "microwave",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/microwave.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "partnet_faucet_1370",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/partnet_faucet_1370.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "partnet_storagefurniture_46403",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/partnet_storagefurniture_46403.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "partnet_window_103051",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/partnet_window_103051.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "pliers",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/pliers.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "tripod",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/tripod.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "xhand_right",
-    "source": "Native XHand URDF/STL",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "smal_bovidae",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_bovidae.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "smal_canidae",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_canidae.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "smal_equidae",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_equidae.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "smal_felidae",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_felidae.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "smal_hippopotamidae",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smal_hippopotamidae.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "smpl_female",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smpl_female.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "smpl_male",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/smpl_male.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "008-pink-cloth",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/008-pink-cloth.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "043-dog",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/043-dog.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "045-cat",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/045-cat.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "051-cube",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/051-cube.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "056-makeup-sponge",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/056-makeup-sponge.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "081-stripe-rope",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/081-stripe-rope.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "095-watermelon",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/095-watermelon.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "096-octopus",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/096-octopus.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "121-croissant-plush",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/121-croissant-plush.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  },
-  {
-    "object": "164-sheep",
-    "source": "reports/three_page_refinement_20261028/zoo-native-sources/164-sheep.npz",
-    "source_type": "Original object geometry rendered independently; not extracted from a GIF"
-  }
-]
+  "objects": [
+    {
+      "id": "unitree_go2",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 0,
+      "crop_pixels": [
+        1152,
+        146,
+        1477,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "unitree_h1",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 1,
+      "crop_pixels": [
+        1485,
+        146,
+        1810,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "spot_with_arm",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 2,
+      "crop_pixels": [
+        1817,
+        146,
+        2142,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "anymal_c",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 3,
+      "crop_pixels": [
+        2149,
+        146,
+        2475,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "aloha",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 4,
+      "crop_pixels": [
+        2482,
+        146,
+        2807,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "franka_panda",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 5,
+      "crop_pixels": [
+        2814,
+        146,
+        3140,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "kinova_gen3",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 6,
+      "crop_pixels": [
+        3147,
+        146,
+        3472,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "shadow_dexee",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 7,
+      "crop_pixels": [
+        3479,
+        146,
+        3804,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "allegro_hand_v3",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 8,
+      "crop_pixels": [
+        3812,
+        146,
+        4137,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "xhand_right",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 0,
+      "column": 9,
+      "crop_pixels": [
+        4144,
+        146,
+        4469,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "book",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 1,
+      "column": 0,
+      "crop_pixels": [
+        1152,
+        408,
+        1477,
+        663
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "cabinet",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 1,
+      "column": 1,
+      "crop_pixels": [
+        1485,
+        408,
+        1810,
+        663
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "cardboardbox",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 1,
+      "column": 2,
+      "crop_pixels": [
+        1817,
+        408,
+        2142,
+        663
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "clamp",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 1,
+      "column": 3,
+      "crop_pixels": [
+        2149,
+        408,
+        2475,
+        663
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "foldingrule",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 1,
+      "column": 4,
+      "crop_pixels": [
+        2482,
+        408,
+        2807,
+        663
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "globe",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 1,
+      "column": 5,
+      "crop_pixels": [
+        2814,
+        408,
+        3140,
+        663
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "laptop",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 1,
+      "column": 8,
+      "crop_pixels": [
+        3812,
+        408,
+        4137,
+        663
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "microwave",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 1,
+      "column": 9,
+      "crop_pixels": [
+        4144,
+        408,
+        4469,
+        663
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "pliers",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 2,
+      "column": 0,
+      "crop_pixels": [
+        1152,
+        671,
+        1477,
+        925
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "rubikscube",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 2,
+      "column": 1,
+      "crop_pixels": [
+        1485,
+        671,
+        1810,
+        925
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "treasurebox",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 2,
+      "column": 2,
+      "crop_pixels": [
+        1817,
+        671,
+        2142,
+        925
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "tripod",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 2,
+      "column": 3,
+      "crop_pixels": [
+        2149,
+        671,
+        2475,
+        925
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "partnet_dishwasher_11622",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 2,
+      "column": 4,
+      "crop_pixels": [
+        2482,
+        671,
+        2807,
+        925
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "partnet_door_8997",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 4,
+      "column": 0,
+      "crop_pixels": [
+        1152,
+        1197,
+        1477,
+        1451
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "partnet_faucet_1370",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 4,
+      "column": 9,
+      "crop_pixels": [
+        4144,
+        1197,
+        4469,
+        1451
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "partnet_lamp_16208",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 5,
+      "column": 0,
+      "crop_pixels": [
+        1152,
+        1459,
+        1477,
+        1714
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "partnet_oven_7187",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 5,
+      "column": 5,
+      "crop_pixels": [
+        2814,
+        1459,
+        3140,
+        1714
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "partnet_switch_100935",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 8,
+      "column": 0,
+      "crop_pixels": [
+        1152,
+        2248,
+        1477,
+        2502
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "partnet_toilet_102676",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 8,
+      "column": 8,
+      "crop_pixels": [
+        3812,
+        2248,
+        4137,
+        2502
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "partnet_window_103051",
+      "source": "paper/figures/assets.png",
+      "panel": "articulated",
+      "row": 9,
+      "column": 9,
+      "crop_pixels": [
+        4144,
+        2510,
+        4469,
+        2765
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "smal_bovidae",
+      "source": "paper/figures/assets.png",
+      "panel": "skinned",
+      "row": 0,
+      "column": 3,
+      "crop_pixels": [
+        5589,
+        149,
+        5914,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "smal_canidae",
+      "source": "paper/figures/assets.png",
+      "panel": "skinned",
+      "row": 0,
+      "column": 1,
+      "crop_pixels": [
+        4924,
+        149,
+        5249,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "smal_equidae",
+      "source": "paper/figures/assets.png",
+      "panel": "skinned",
+      "row": 0,
+      "column": 2,
+      "crop_pixels": [
+        5257,
+        149,
+        5582,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "smal_felidae",
+      "source": "paper/figures/assets.png",
+      "panel": "skinned",
+      "row": 0,
+      "column": 0,
+      "crop_pixels": [
+        4592,
+        149,
+        4917,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "smal_hippopotamidae",
+      "source": "paper/figures/assets.png",
+      "panel": "skinned",
+      "row": 0,
+      "column": 4,
+      "crop_pixels": [
+        5921,
+        149,
+        6247,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "smpl_female",
+      "source": "paper/figures/assets.png",
+      "panel": "skinned",
+      "row": 0,
+      "column": 5,
+      "crop_pixels": [
+        6254,
+        149,
+        6579,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "smpl_male",
+      "source": "paper/figures/assets.png",
+      "panel": "skinned",
+      "row": 0,
+      "column": 6,
+      "crop_pixels": [
+        6586,
+        149,
+        6912,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "008-pink-cloth",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 0,
+      "column": 1,
+      "crop_pixels": [
+        361,
+        146,
+        686,
+        400
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "043-dog",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 2,
+      "column": 1,
+      "crop_pixels": [
+        361,
+        671,
+        686,
+        925
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "045-cat",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 3,
+      "column": 0,
+      "crop_pixels": [
+        27,
+        934,
+        352,
+        1188
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "051-cube",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 4,
+      "column": 0,
+      "crop_pixels": [
+        27,
+        1197,
+        352,
+        1451
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "056-makeup-sponge",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 4,
+      "column": 1,
+      "crop_pixels": [
+        361,
+        1197,
+        686,
+        1451
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "081-stripe-rope",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 5,
+      "column": 0,
+      "crop_pixels": [
+        27,
+        1459,
+        352,
+        1714
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "095-watermelon",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 5,
+      "column": 2,
+      "crop_pixels": [
+        695,
+        1459,
+        1020,
+        1714
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "096-octopus",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 6,
+      "column": 0,
+      "crop_pixels": [
+        27,
+        1722,
+        352,
+        1976
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "121-croissant-plush",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 7,
+      "column": 1,
+      "crop_pixels": [
+        361,
+        1985,
+        686,
+        2239
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "164-sheep",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 8,
+      "column": 2,
+      "crop_pixels": [
+        695,
+        2248,
+        1020,
+        2502
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "049-ball",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 3,
+      "column": 1,
+      "crop_pixels": [
+        361,
+        934,
+        686,
+        1188
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "097-pillow",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 6,
+      "column": 1,
+      "crop_pixels": [
+        361,
+        1722,
+        686,
+        1976
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    },
+    {
+      "id": "188-foam-roll-small",
+      "source": "paper/figures/assets.png",
+      "panel": "deformable",
+      "row": 9,
+      "column": 2,
+      "crop_pixels": [
+        695,
+        2510,
+        1020,
+        2765
+      ],
+      "image_kind": "original source photograph or native material render; not a field reconstruction"
+    }
+  ]
+}

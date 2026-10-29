@@ -20,11 +20,11 @@
   <link rel="stylesheet" href="assets/refined-pages.css">
   <link rel="stylesheet" href="assets/representation.css">
   <link rel="stylesheet" href="assets/homepage.css">
-  <script type="module" src="app.js"></script>
+  <script type="module" src="app.js?v=20261029-library50-sharpa"></script>
   <script type="module" src="assets/homepage.js"></script>
   <link rel="stylesheet" href="assets/research-pages.css">
-  <link rel="stylesheet" href="assets/project-page.css">
-  <link rel="stylesheet" href="assets/lab.css">
+  <link rel="stylesheet" href="assets/project-page.css?v=20261029-library50-sharpa">
+  <link rel="stylesheet" href="assets/lab.css?v=20261029-library50-sharpa">
 </head>
 <body class="story-layout multipage-layout combined-project" data-page="overview">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -41,7 +41,6 @@
   </div>
 </header>
 <main id="main">
-<nav class="chapter-nav" aria-label="On this page"><div class="chapter-nav-inner"><a href="#pipeline" aria-current="location">Overview</a><a href="#representation">Objects</a><a href="#optimization">Optimization</a><a href="#experiments">Real Robot</a></div></nav>
 <section data-chapter="overview" id="pipeline" class="wrap home-hero" aria-labelledby="pipeline-title">
     <div class="home-heading">
       <h1 id="pipeline-title" translate="no">Agentic World <span>Representation</span></h1>
@@ -115,7 +114,7 @@
   <aside class="object-drawer" aria-label="Object Zoo">
    <h3 class="lab-zoo-heading">Object Zoo</h3>
    <div class="lab-pca-player"><img id="lab-pca-image" src="assets/demos/hd/cabinet.gif" alt="Cabinet projected PCA keypoints and corresponding occupancy animation"><button type="button" id="lab-pca-play" aria-label="Pause PCA animation">Pause</button></div>
-   <div class="lab-families" role="group" aria-label="Object family"><button type="button" data-lab-family="all" aria-pressed="true">All</button><button type="button" data-lab-family="articulated" aria-pressed="false">Articulated</button><button type="button" data-lab-family="skinned" aria-pressed="false">Skinning</button><button type="button" data-lab-family="deformable" aria-pressed="false">Soft</button></div>
+   <div class="lab-families" role="group" aria-label="Object family"><button type="button" data-lab-family="all" aria-pressed="true">All 50</button><button type="button" data-lab-family="articulated" aria-pressed="false">Rigid 30</button><button type="button" data-lab-family="skinned" aria-pressed="false">Skinned 7</button><button type="button" data-lab-family="deformable" aria-pressed="false">Soft 13</button></div>
    <div id="lab-object-list" role="group" aria-label="Choose a PCA animation"></div>
   </aside>
  </div>
@@ -134,15 +133,15 @@
    <p>The hand and object networks stay frozen. Gradients pass through both fields to the hand keypoints, then through hand kinematics to finger joint angles.</p>
    <svg class="grasp-gradient" viewBox="0 0 420 465" role="img" aria-label="Loss gradients split through the frozen hand network and frozen object network in parallel, combine at hand keypoints, and backpropagate through forward kinematics to finger joint angles q.">
     <defs><marker id="lab-flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#a38ab5"/></marker></defs>
-    <g class="gradient-node loss"><rect x="100" y="18" width="220" height="66" rx="12"/><text x="210" y="46">Grasp loss</text><text class="gradient-detail" x="210" y="66">Contact · balance · penetration</text></g>
-    <path class="gradient-wire" d="M210 85V107H103V135M210 107H317V135"/>
-    <g class="gradient-node"><rect x="12" y="143" width="183" height="76" rx="12"/><text x="103" y="173">Hand network</text><text class="gradient-frozen" x="103" y="199">FROZEN</text></g>
-    <g class="gradient-node"><rect x="225" y="143" width="183" height="76" rx="12"/><text x="317" y="173">Object network</text><text class="gradient-frozen" x="317" y="199">FROZEN</text></g>
-    <path class="gradient-wire" d="M103 220V254H210V283M317 220V254H210"/>
-    <g class="gradient-node keypoints"><rect x="90" y="291" width="240" height="58" rx="12"/><text x="210" y="326">Hand keypoints</text></g>
-    <path class="gradient-wire" d="M210 350V395"/>
-    <text class="gradient-detail" x="282" y="376">Kinematics</text>
-    <g class="gradient-node joints"><rect x="90" y="404" width="240" height="50" rx="12"/><text x="210" y="435">Finger joint angles · q</text></g>
+    <g class="gradient-node loss"><rect x="100" y="381" width="220" height="66" rx="12"/><text x="210" y="409">Grasp loss</text><text class="gradient-detail" x="210" y="429">Contact · balance · penetration</text></g>
+    <path class="gradient-wire" d="M210 380V358H103V330"/><path class="gradient-wire" d="M210 380V358H317V330"/>
+    <g class="gradient-node"><rect x="12" y="246" width="183" height="76" rx="12"/><text x="103" y="276">Hand network</text><text class="gradient-frozen" x="103" y="302">FROZEN</text></g>
+    <g class="gradient-node"><rect x="225" y="246" width="183" height="76" rx="12"/><text x="317" y="276">Object network</text><text class="gradient-frozen" x="317" y="302">FROZEN</text></g>
+    <path class="gradient-wire" d="M103 245V211H210V182"/><path class="gradient-wire" d="M317 245V211H210V182"/>
+    <g class="gradient-node keypoints"><rect x="90" y="116" width="240" height="58" rx="12"/><text x="210" y="151">Hand keypoints</text></g>
+    <path class="gradient-wire" d="M210 115V70"/>
+    <text class="gradient-detail" x="282" y="89">Kinematics</text>
+    <g class="gradient-node joints"><rect x="90" y="11" width="240" height="50" rx="12"/><text x="210" y="42">Finger joint angles · q</text></g>
    </svg>
   </aside>
  </div>

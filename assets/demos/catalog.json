@@ -1,11 +1,107 @@
 [
   {
+    "id": "unitree_go2",
+    "name": "Go2",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/unitree_go2.gif",
+    "poster": "assets/demos/library50/unitree_go2.png"
+  },
+  {
+    "id": "unitree_h1",
+    "name": "H1",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/unitree_h1.gif",
+    "poster": "assets/demos/library50/unitree_h1.png"
+  },
+  {
+    "id": "spot_with_arm",
+    "name": "Spot",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/spot_with_arm.gif",
+    "poster": "assets/demos/library50/spot_with_arm.png"
+  },
+  {
+    "id": "anymal_c",
+    "name": "ANYmal",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/anymal_c.gif",
+    "poster": "assets/demos/library50/anymal_c.png"
+  },
+  {
+    "id": "aloha",
+    "name": "ALOHA",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/aloha.gif",
+    "poster": "assets/demos/library50/aloha.png"
+  },
+  {
+    "id": "franka_panda",
+    "name": "Panda",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/franka_panda.gif",
+    "poster": "assets/demos/library50/franka_panda.png"
+  },
+  {
+    "id": "kinova_gen3",
+    "name": "Kinova",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/kinova_gen3.gif",
+    "poster": "assets/demos/library50/kinova_gen3.png"
+  },
+  {
+    "id": "shadow_dexee",
+    "name": "Dexee",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/shadow_dexee.gif",
+    "poster": "assets/demos/library50/shadow_dexee.png"
+  },
+  {
+    "id": "allegro_hand_v3",
+    "name": "Allegro",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/allegro_hand_v3.gif",
+    "poster": "assets/demos/library50/allegro_hand_v3.png"
+  },
+  {
+    "id": "xhand_right",
+    "name": "XHand",
+    "family": "articulated",
+    "src": "assets/demos/hd/xhand_right.gif",
+    "poster": "assets/demos/hd/xhand_right.png",
+    "animated": true
+  },
+  {
+    "id": "book",
+    "name": "Book",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/book.gif",
+    "poster": "assets/demos/library50/book.png"
+  },
+  {
     "id": "cabinet",
     "name": "Cabinet",
     "family": "articulated",
     "src": "assets/demos/hd/cabinet.gif",
     "poster": "assets/demos/hd/cabinet.png",
     "animated": true
+  },
+  {
+    "id": "cardboardbox",
+    "name": "Box",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/cardboardbox.gif",
+    "poster": "assets/demos/library50/cardboardbox.png"
   },
   {
     "id": "clamp",
@@ -17,11 +113,27 @@
   },
   {
     "id": "foldingrule",
-    "name": "Folding Rule",
+    "name": "Folding rule",
     "family": "articulated",
     "src": "assets/demos/hd/foldingrule.gif",
     "poster": "assets/demos/hd/foldingrule.png",
     "animated": true
+  },
+  {
+    "id": "globe",
+    "name": "Globe",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/globe.gif",
+    "poster": "assets/demos/library50/globe.png"
+  },
+  {
+    "id": "laptop",
+    "name": "Laptop",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/laptop.gif",
+    "poster": "assets/demos/library50/laptop.png"
   },
   {
     "id": "microwave",
@@ -29,30 +141,6 @@
     "family": "articulated",
     "src": "assets/demos/hd/microwave.gif",
     "poster": "assets/demos/hd/microwave.png",
-    "animated": true
-  },
-  {
-    "id": "partnet_faucet_1370",
-    "name": "Faucet",
-    "family": "articulated",
-    "src": "assets/demos/hd/partnet_faucet_1370.gif",
-    "poster": "assets/demos/hd/partnet_faucet_1370.png",
-    "animated": true
-  },
-  {
-    "id": "partnet_storagefurniture_46403",
-    "name": "Storage Furniture",
-    "family": "articulated",
-    "src": "assets/demos/hd/partnet_storagefurniture_46403.gif",
-    "poster": "assets/demos/hd/partnet_storagefurniture_46403.png",
-    "animated": true
-  },
-  {
-    "id": "partnet_window_103051",
-    "name": "Sliding Window",
-    "family": "articulated",
-    "src": "assets/demos/hd/partnet_window_103051.gif",
-    "poster": "assets/demos/hd/partnet_window_103051.png",
     "animated": true
   },
   {
@@ -64,6 +152,22 @@
     "animated": true
   },
   {
+    "id": "rubikscube",
+    "name": "Rubik\u2019s cube",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/rubikscube.gif",
+    "poster": "assets/demos/library50/rubikscube.png"
+  },
+  {
+    "id": "treasurebox",
+    "name": "Treasure box",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/treasurebox.gif",
+    "poster": "assets/demos/library50/treasurebox.png"
+  },
+  {
     "id": "tripod",
     "name": "Tripod",
     "family": "articulated",
@@ -72,11 +176,67 @@
     "animated": true
   },
   {
-    "id": "xhand_right",
-    "name": "XHand",
+    "id": "partnet_dishwasher_11622",
+    "name": "Dishwasher",
     "family": "articulated",
-    "src": "assets/demos/hd/xhand_right.gif",
-    "poster": "assets/demos/hd/xhand_right.png",
+    "animated": true,
+    "src": "assets/demos/library50/partnet_dishwasher_11622.gif",
+    "poster": "assets/demos/library50/partnet_dishwasher_11622.png"
+  },
+  {
+    "id": "partnet_door_8997",
+    "name": "Door",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/partnet_door_8997.gif",
+    "poster": "assets/demos/library50/partnet_door_8997.png"
+  },
+  {
+    "id": "partnet_faucet_1370",
+    "name": "Faucet",
+    "family": "articulated",
+    "src": "assets/demos/hd/partnet_faucet_1370.gif",
+    "poster": "assets/demos/hd/partnet_faucet_1370.png",
+    "animated": true
+  },
+  {
+    "id": "partnet_lamp_16208",
+    "name": "Lamp",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/partnet_lamp_16208.gif",
+    "poster": "assets/demos/library50/partnet_lamp_16208.png"
+  },
+  {
+    "id": "partnet_oven_7187",
+    "name": "Oven",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/partnet_oven_7187.gif",
+    "poster": "assets/demos/library50/partnet_oven_7187.png"
+  },
+  {
+    "id": "partnet_switch_100935",
+    "name": "Switch",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/partnet_switch_100935.gif",
+    "poster": "assets/demos/library50/partnet_switch_100935.png"
+  },
+  {
+    "id": "partnet_toilet_102676",
+    "name": "Toilet",
+    "family": "articulated",
+    "animated": true,
+    "src": "assets/demos/library50/partnet_toilet_102676.gif",
+    "poster": "assets/demos/library50/partnet_toilet_102676.png"
+  },
+  {
+    "id": "partnet_window_103051",
+    "name": "Window",
+    "family": "articulated",
+    "src": "assets/demos/hd/partnet_window_103051.gif",
+    "poster": "assets/demos/hd/partnet_window_103051.png",
     "animated": true
   },
   {
@@ -214,5 +374,29 @@
     "src": "assets/demos/hd/164-sheep.gif",
     "poster": "assets/demos/hd/164-sheep.png",
     "animated": true
+  },
+  {
+    "id": "049-ball",
+    "name": "Soft ball",
+    "family": "deformable",
+    "animated": true,
+    "src": "assets/demos/library50/049-ball.gif",
+    "poster": "assets/demos/library50/049-ball.png"
+  },
+  {
+    "id": "097-pillow",
+    "name": "Pillow",
+    "family": "deformable",
+    "animated": true,
+    "src": "assets/demos/library50/097-pillow.gif",
+    "poster": "assets/demos/library50/097-pillow.png"
+  },
+  {
+    "id": "188-foam-roll-small",
+    "name": "Foam roll",
+    "family": "deformable",
+    "animated": true,
+    "src": "assets/demos/library50/188-foam-roll-small.gif",
+    "poster": "assets/demos/library50/188-foam-roll-small.png"
   }
 ]

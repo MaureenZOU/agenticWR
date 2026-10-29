@@ -1,34 +1,10 @@
 export function mountProjectPage(mounts) {
   const root = document.documentElement;
   const header = document.querySelector('.header');
-  const navigation = document.querySelector('.chapter-nav');
-  const links = [...navigation.querySelectorAll('a')];
-  const sections = links.map(link => document.querySelector(link.hash));
-
-  function updateNavigation() {
-    const offset = header.offsetHeight + navigation.offsetHeight + 45;
-    let active = sections[0];
-    for (const section of sections) {
-      if (section.getBoundingClientRect().top <= offset) active = section;
-    }
-    for (const link of links) {
-      if (link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    }
-  }
   const resize = new ResizeObserver(() => {
     root.style.setProperty('--site-header-height', `${header.offsetHeight}px`);
-    root.style.setProperty('--chapter-nav-height', `${navigation.offsetHeight}px`);
-    updateNavigation();
   });
   resize.observe(header);
-  resize.observe(navigation);
-  let frame = 0;
-  addEventListener('scroll', () => {
-    if (frame) return;
-    frame = requestAnimationFrame(() => { frame = 0; updateNavigation(); });
-  }, { passive: true });
-  updateNavigation();
 
   const loader = new IntersectionObserver(entries => {
     for (const entry of entries) {
@@ -57,7 +33,7 @@ export function mountProjectPage(mounts) {
       states.get(entry.target).visible = entry.isIntersecting;
       updateVideo(entry.target);
     }
-  }, { rootMargin: `-${header.offsetHeight + navigation.offsetHeight}px 0px 0px` });
+  }, { rootMargin: `-${header.offsetHeight}px 0px 0px` });
   document.querySelectorAll('[data-chapter="real-robot"] video').forEach(video => {
     const state = { visible: false, resume: true };
     states.set(video, state);

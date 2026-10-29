@@ -1,6 +1,6 @@
 import {THREE,resource,geometry,material,createStage,NativeHand,quaternion} from './lab-scene.js';
 const objects=[['mug','Cup'],['duck','Duck'],['dumbbell','Dumbbell'],['bottle','Bottle'],['apple','Apple']];
-const names={xhand:'XHand',allegro:'Allegro',shadow:'Shadow Hand'};
+const names={xhand:'XHand',allegro:'Allegro',sharpa:'Sharpa'};
 function propMesh(parts){
  const group=new THREE.Group();
  for(const part of parts){const s=part.size;let g;
@@ -16,7 +16,7 @@ function propMesh(parts){
 function dispose(group){group?.traverse(o=>{o.geometry?.dispose();if(o.material)for(const m of Array.isArray(o.material)?o.material:[o.material])m.dispose();});group?.removeFromParent();}
 export async function mountGraspLab(){
  const root=document.querySelector('#grasp-lab'),$=s=>root.querySelector(s),stage=createStage($('#grasp-canvas'),{compact:true});
- const [rigs,armData]=await Promise.all([resource('./lab/rigs.json'),resource('./lab/arm.json')]);
+ const [rigs,armData]=await Promise.all([resource('./lab/rigs.json?v=20261029-library50-sharpa'),resource('./lab/arm.json')]);
  const arm=new NativeHand(armData);arm.root.position.fromArray(armData.mount.pos);arm.root.quaternion.copy(quaternion(armData.mount.quat));stage.native.add(arm.root);
  const experiment=new THREE.Group();stage.native.add(experiment);
  const points=new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({color:0x58aab5,size:.008,sizeAttenuation:true,depthTest:false,depthWrite:false,transparent:true,opacity:.9}));points.frustumCulled=false;points.renderOrder=20;stage.scene.add(points);
@@ -26,8 +26,8 @@ export async function mountGraspLab(){
  const jointColors=['#8b6bb1','#438f91','#c88c42','#5e80b5','#b76b7c'];
  let chartJoints=[];
  function setupCharts(){
-  const targets=kind==='xhand'?['thumb_bend_joint','index_joint1','mid_joint1','ring_joint1','pinky_joint1']:kind==='allegro'?['thj1','ffj1','mfj1','rfj1']:['rh_THJ4','rh_FFJ3','rh_MFJ3','rh_RFJ3','rh_LFJ3'];
-  const labels=kind==='shadow'?['Thumb J4','Index J3','Middle J3','Ring J3','Little J3']:kind==='allegro'?['Thumb J1','Index J1','Middle J1','Ring J1']:['Thumb bend','Index base','Middle base','Ring base','Little base'];
+  const targets=kind==='xhand'?['thumb_bend_joint','index_joint1','mid_joint1','ring_joint1','pinky_joint1']:kind==='allegro'?['thj1','ffj1','mfj1','rfj1']:['right_thumb_CMC_FE','right_index_MCP_FE','right_middle_MCP_FE','right_ring_MCP_FE','right_pinky_MCP_FE'];
+  const labels=kind==='sharpa'?['Thumb CMC','Index MCP','Middle MCP','Ring MCP','Little MCP']:kind==='allegro'?['Thumb J1','Index J1','Middle J1','Ring J1']:['Thumb bend','Index base','Middle base','Ring base','Little base'];
   chartJoints=targets.map((suffix,i)=>({index:hand.joints.findIndex(j=>j.name.endsWith(suffix)),label:labels[i],color:jointColors[i]})).filter(j=>j.index>=0);
   $('#grasp-joint-legend').innerHTML=chartJoints.map(j=>`<li title="${hand.joints[j.index].name}"><i style="background:${j.color}"></i><span>${j.label}</span></li>`).join('');
  }
@@ -58,7 +58,7 @@ export async function mountGraspLab(){
  }
  async function choose(){const token=++selection;playing=false;data=null;$('#grasp-loading').hidden=false;$('#grasp-loading').textContent='Loading grasp…';sync();
   try{const replay=await resource(`./lab/grasp/${kind}-${object}.json`);if(token!==selection)return;
-   dispose(hand?.root);dispose(prop);hand=new NativeHand(kind==='xhand'?rigs.right.hand:rigs[kind]);hand.root.traverse(o=>{if(o.isMesh)o.material.color.set(kind==='xhand'?0x343b44:kind==='allegro'?0x42484c:0x78838c);});experiment.add(hand.root);prop=propMesh(replay.parts);experiment.add(prop);
+   dispose(hand?.root);dispose(prop);hand=new NativeHand(kind==='xhand'?rigs.right.hand:rigs[kind]);hand.root.traverse(o=>{if(o.isMesh&&kind!=='sharpa')o.material.color.set(kind==='xhand'?0x343b44:kind==='allegro'?0x42484c:0x78838c);});experiment.add(hand.root);prop=propMesh(replay.parts);experiment.add(prop);
    // A continuous cup rim and handle cover the same compound collision surface.
    if(object==='mug'){
     dispose(prop);prop=new THREE.Group();const color=0x629cc2,base=replay.parts[0],wall=replay.parts[1],radius=base.size[0],bottom=base.pos[2]-base.size[1],top=wall.size[2],inner=radius-2*wall.size[0];
@@ -71,7 +71,7 @@ export async function mountGraspLab(){
    data=replay;setupCharts();experiment.position.fromArray(data.sceneOffset);experiment.quaternion.copy(quaternion(data.sceneQuaternion));time=0;playing=true;root._chartIndex=-1;root.dataset.hand=kind;root.dataset.object=object;root.dataset.physicsValidated=String(data.physics.success);root.dataset.minimumLift=String(data.physics.lift_min);
    $('#grasp-scene-title').textContent=`${names[kind]} · ${objects.find(o=>o[0]===object)[1]}`;
    const center=new THREE.Vector3(data.sceneOffset[0],.93,-data.sceneOffset[1]);
-   const view=object==='dumbbell'?[-.70,.34,.32]:[-.48,.32,.62];
+   const view=object==='dumbbell'?[-.70,.34,-.32]:[-.48,.32,-.62];
    stage.controls.target.copy(center);stage.camera.position.copy(center).add(new THREE.Vector3(...view));stage.controls.update();$('#grasp-loading').hidden=true;showFrame();sync();
   }catch(error){$('#grasp-loading').textContent='This replay could not be loaded. Select another object or retry.';console.error(error);}
  }

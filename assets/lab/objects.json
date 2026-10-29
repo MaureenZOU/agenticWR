@@ -1,11 +1,85 @@
 [
   {
+    "id": "unitree_go2",
+    "name": "Go2",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/unitree_go2.png"
+  },
+  {
+    "id": "unitree_h1",
+    "name": "H1",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/unitree_h1.png"
+  },
+  {
+    "id": "spot_with_arm",
+    "name": "Spot",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/spot_with_arm.png"
+  },
+  {
+    "id": "anymal_c",
+    "name": "ANYmal",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/anymal_c.png"
+  },
+  {
+    "id": "aloha",
+    "name": "ALOHA",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/aloha.png"
+  },
+  {
+    "id": "franka_panda",
+    "name": "Panda",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/franka_panda.png"
+  },
+  {
+    "id": "kinova_gen3",
+    "name": "Kinova",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/kinova_gen3.png"
+  },
+  {
+    "id": "shadow_dexee",
+    "name": "Dexee",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/shadow_dexee.png"
+  },
+  {
+    "id": "allegro_hand_v3",
+    "name": "Allegro",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/allegro_hand_v3.png"
+  },
+  {
+    "id": "xhand_right",
+    "name": "XHand",
+    "family": "articulated",
+    "color": "#353b45",
+    "thumbnail": "assets/zoo-thumbnails/xhand_right.png",
+    "constrained": "xhand"
+  },
+  {
+    "id": "book",
+    "name": "Book",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/book.png"
+  },
+  {
     "id": "cabinet",
     "name": "Cabinet",
     "family": "articulated",
     "color": "#96704c",
     "thumbnail": "assets/zoo-thumbnails/cabinet.png",
     "geometry": "cabinet.json"
+  },
+  {
+    "id": "cardboardbox",
+    "name": "Box",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/cardboardbox.png"
   },
   {
     "id": "clamp",
@@ -17,11 +91,23 @@
   },
   {
     "id": "foldingrule",
-    "name": "Folding Rule",
+    "name": "Folding rule",
     "family": "articulated",
     "color": "#ceb55c",
     "thumbnail": "assets/zoo-thumbnails/foldingrule.png",
     "geometry": "foldingrule.json"
+  },
+  {
+    "id": "globe",
+    "name": "Globe",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/globe.png"
+  },
+  {
+    "id": "laptop",
+    "name": "Laptop",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/laptop.png"
   },
   {
     "id": "microwave",
@@ -32,36 +118,24 @@
     "geometry": "microwave.json"
   },
   {
-    "id": "partnet_faucet_1370",
-    "name": "Faucet",
-    "family": "articulated",
-    "color": "#abb1b7",
-    "thumbnail": "assets/zoo-thumbnails/partnet_faucet_1370.png",
-    "constrained": "faucet"
-  },
-  {
-    "id": "partnet_storagefurniture_46403",
-    "name": "Storage Furniture",
-    "family": "articulated",
-    "color": "#b89769",
-    "thumbnail": "assets/zoo-thumbnails/partnet_storagefurniture_46403.png",
-    "constrained": "cabinet"
-  },
-  {
-    "id": "partnet_window_103051",
-    "name": "Sliding Window",
-    "family": "articulated",
-    "color": "#b3c9d1",
-    "thumbnail": "assets/zoo-thumbnails/partnet_window_103051.png",
-    "geometry": "partnet_window_103051.json"
-  },
-  {
     "id": "pliers",
     "name": "Pliers",
     "family": "articulated",
     "color": "#536776",
     "thumbnail": "assets/zoo-thumbnails/pliers.png",
     "constrained": "pliers"
+  },
+  {
+    "id": "rubikscube",
+    "name": "Rubik\u2019s cube",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/rubikscube.png"
+  },
+  {
+    "id": "treasurebox",
+    "name": "Treasure box",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/treasurebox.png"
   },
   {
     "id": "tripod",
@@ -72,12 +146,56 @@
     "geometry": "tripod.json"
   },
   {
-    "id": "xhand_right",
-    "name": "XHand",
+    "id": "partnet_dishwasher_11622",
+    "name": "Dishwasher",
     "family": "articulated",
-    "color": "#353b45",
-    "thumbnail": "assets/zoo-thumbnails/xhand_right.png",
-    "constrained": "xhand"
+    "thumbnail": "assets/zoo-thumbnails/partnet_dishwasher_11622.png"
+  },
+  {
+    "id": "partnet_door_8997",
+    "name": "Door",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/partnet_door_8997.png"
+  },
+  {
+    "id": "partnet_faucet_1370",
+    "name": "Faucet",
+    "family": "articulated",
+    "color": "#abb1b7",
+    "thumbnail": "assets/zoo-thumbnails/partnet_faucet_1370.png",
+    "constrained": "faucet"
+  },
+  {
+    "id": "partnet_lamp_16208",
+    "name": "Lamp",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/partnet_lamp_16208.png"
+  },
+  {
+    "id": "partnet_oven_7187",
+    "name": "Oven",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/partnet_oven_7187.png"
+  },
+  {
+    "id": "partnet_switch_100935",
+    "name": "Switch",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/partnet_switch_100935.png"
+  },
+  {
+    "id": "partnet_toilet_102676",
+    "name": "Toilet",
+    "family": "articulated",
+    "thumbnail": "assets/zoo-thumbnails/partnet_toilet_102676.png"
+  },
+  {
+    "id": "partnet_window_103051",
+    "name": "Window",
+    "family": "articulated",
+    "color": "#b3c9d1",
+    "thumbnail": "assets/zoo-thumbnails/partnet_window_103051.png",
+    "geometry": "partnet_window_103051.json"
   },
   {
     "id": "smal_bovidae",
@@ -214,5 +332,23 @@
     "color": "#d0c6b3",
     "thumbnail": "assets/zoo-thumbnails/164-sheep.png",
     "geometry": "164-sheep.json"
+  },
+  {
+    "id": "049-ball",
+    "name": "Soft ball",
+    "family": "deformable",
+    "thumbnail": "assets/zoo-thumbnails/049-ball.png"
+  },
+  {
+    "id": "097-pillow",
+    "name": "Pillow",
+    "family": "deformable",
+    "thumbnail": "assets/zoo-thumbnails/097-pillow.png"
+  },
+  {
+    "id": "188-foam-roll-small",
+    "name": "Foam roll",
+    "family": "deformable",
+    "thumbnail": "assets/zoo-thumbnails/188-foam-roll-small.png"
   }
 ]

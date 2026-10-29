@@ -117,3 +117,10 @@
 .chart-tick{font-size:9px;fill:#80909d;font-family:inherit}
 .chart-label{font-size:9px;fill:#7c8b98;font-family:inherit}
 @media(max-width:600px){.grasp-charts{grid-template-columns:1fr;gap:18px;padding:16px}.grasp-joint-plot{grid-template-columns:90px minmax(0,1fr)}#grasp-joint-legend li{font-size:11px}.grasp-charts svg{height:155px}}
+
+/* Compact source-image catalogue: five objects per row at every width. */
+.object-lab #lab-object-list{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;padding-inline:10px}
+.object-lab #lab-object-list button{padding:3px 2px 5px;min-width:0}
+.object-lab #lab-object-list img{aspect-ratio:1.28;object-fit:contain;background:#fff}
+.object-lab #lab-object-list span{font-size:9px;line-height:1.15;min-height:21px;display:flex;align-items:center;justify-content:center;overflow-wrap:anywhere}
+@media(max-width:760px){.object-lab .object-drawer{display:flex}.object-lab #lab-object-list{max-height:290px}.lab-pca-player{width:100%}}

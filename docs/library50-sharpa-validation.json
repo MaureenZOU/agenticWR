@@ -1,0 +1,548 @@
+{
+  "counts": {
+    "articulated": 30,
+    "skinned": 7,
+    "deformable": 13
+  },
+  "media": [
+    {
+      "id": "unitree_go2",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "unitree_h1",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "spot_with_arm",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "anymal_c",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "aloha",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "franka_panda",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "kinova_gen3",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "shadow_dexee",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "allegro_hand_v3",
+      "frames": 24,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "xhand_right",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "book",
+      "frames": 16,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "cabinet",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "cardboardbox",
+      "frames": 16,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "clamp",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "foldingrule",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "globe",
+      "frames": 16,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "laptop",
+      "frames": 16,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "microwave",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "pliers",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "rubikscube",
+      "frames": 16,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "treasurebox",
+      "frames": 16,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "tripod",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "partnet_dishwasher_11622",
+      "frames": 16,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "partnet_door_8997",
+      "frames": 32,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "partnet_faucet_1370",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "partnet_lamp_16208",
+      "frames": 32,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "partnet_oven_7187",
+      "frames": 32,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "partnet_switch_100935",
+      "frames": 32,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "partnet_toilet_102676",
+      "frames": 32,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "partnet_window_103051",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "smal_bovidae",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "smal_canidae",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "smal_equidae",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "smal_felidae",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "smal_hippopotamidae",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "smpl_female",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "smpl_male",
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "008-pink-cloth",
+      "frames": 34,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "043-dog",
+      "frames": 12,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "045-cat",
+      "frames": 12,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "051-cube",
+      "frames": 26,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "056-makeup-sponge",
+      "frames": 23,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "081-stripe-rope",
+      "frames": 30,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "095-watermelon",
+      "frames": 12,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "096-octopus",
+      "frames": 29,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "121-croissant-plush",
+      "frames": 12,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "164-sheep",
+      "frames": 12,
+      "size": [
+        1440,
+        800
+      ]
+    },
+    {
+      "id": "049-ball",
+      "frames": 25,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "097-pillow",
+      "frames": 23,
+      "size": [
+        720,
+        400
+      ]
+    },
+    {
+      "id": "188-foam-roll-small",
+      "frames": 31,
+      "size": [
+        720,
+        400
+      ]
+    }
+  ],
+  "preserved_approved_replays": [
+    "assets/lab/grasp/xhand-mug.json",
+    "assets/lab/grasp/xhand-duck.json",
+    "assets/lab/grasp/xhand-dumbbell.json",
+    "assets/lab/grasp/xhand-bottle.json",
+    "assets/lab/grasp/xhand-apple.json",
+    "assets/lab/grasp/allegro-mug.json",
+    "assets/lab/grasp/allegro-duck.json",
+    "assets/lab/grasp/allegro-dumbbell.json",
+    "assets/lab/grasp/allegro-bottle.json",
+    "assets/lab/grasp/allegro-apple.json"
+  ],
+  "sharpa": [
+    {
+      "object": "mug",
+      "lift_min": 0.16306,
+      "contacts_min": 2,
+      "max_penetration": 0.00054,
+      "table_penetration_m": 0.0,
+      "self_penetration_m": 0.0,
+      "tilt_max_deg": 21.39,
+      "digit_contact_min": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "digit_contact_max": [
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "arm_ik_max_error_m": 7.027576850815064e-11,
+      "arm_surface_clearance_m": 0.006255886005334332
+    },
+    {
+      "object": "duck",
+      "lift_min": 0.17321,
+      "contacts_min": 4,
+      "max_penetration": 0.00081,
+      "table_penetration_m": 0.0,
+      "self_penetration_m": 0.00042292764976645594,
+      "tilt_max_deg": 11.15,
+      "digit_contact_min": [
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "digit_contact_max": [
+        1,
+        1,
+        1,
+        0,
+        2
+      ],
+      "arm_ik_max_error_m": 8.42194547010213e-11,
+      "arm_surface_clearance_m": 0.030913673662723795
+    },
+    {
+      "object": "dumbbell",
+      "lift_min": 0.17999,
+      "contacts_min": 5,
+      "max_penetration": 0.00028,
+      "table_penetration_m": 0.0,
+      "self_penetration_m": 0.0,
+      "tilt_max_deg": 1.4,
+      "digit_contact_min": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "digit_contact_max": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "arm_ik_max_error_m": 2.4488055600862054e-10,
+      "arm_surface_clearance_m": 0.12753219662246607
+    },
+    {
+      "object": "bottle",
+      "lift_min": 0.18067,
+      "contacts_min": 4,
+      "max_penetration": 0.00043,
+      "table_penetration_m": 0.0,
+      "self_penetration_m": 2.7379225846427616e-05,
+      "tilt_max_deg": 1.79,
+      "digit_contact_min": [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "digit_contact_max": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "arm_ik_max_error_m": 2.3218616658258716e-10,
+      "arm_surface_clearance_m": 0.12244158982675912
+    },
+    {
+      "object": "apple",
+      "lift_min": 0.18089,
+      "contacts_min": 5,
+      "max_penetration": 0.00038,
+      "table_penetration_m": 0.0,
+      "self_penetration_m": 0.0,
+      "tilt_max_deg": 1.91,
+      "digit_contact_min": [
+        1,
+        0,
+        1,
+        2,
+        1
+      ],
+      "digit_contact_max": [
+        1,
+        0,
+        1,
+        2,
+        1
+      ],
+      "arm_ik_max_error_m": 1.0566704474250897e-10,
+      "arm_surface_clearance_m": 0.07440101803594223
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 /* Three page navigation and the five chapters of the Overview. */
-:root { --site-header-height: 78px; --chapter-nav-height: 52px; }
+:root { --site-header-height: 78px; --chapter-nav-height: 0px; }
 html:has(.combined-project) { scroll-padding-top: 0; }
 .chapter-nav { position: sticky; top: var(--site-header-height); z-index: 15; background: rgba(255,255,255,.97); border-bottom: 1px solid #f1edf5; }
 .chapter-nav-inner { display: flex; gap: 28px; width: 92%; max-width: 1280px; margin-inline: auto; overflow-x: auto; scrollbar-width: none; }

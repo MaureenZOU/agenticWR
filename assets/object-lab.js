@@ -2,7 +2,7 @@ import {THREE,createStage,addRobot,handleOverlay,resource} from './lab-scene.js'
 import {createObject} from './lab-objects.js';
 export async function mountObjectLab(){
  const root=document.querySelector('#object-lab'),host=root.querySelector('.lab-canvas'),stage=createStage(host,{workspace:true});
- const [catalog,demos,{placements},left,right]=await Promise.all([resource('./lab/objects.json'),resource('./demos/catalog.json'),resource('./lab/placements.json'),addRobot(stage,'left'),addRobot(stage,'right')]);
+ const [catalog,demos,{placements},left,right]=await Promise.all([resource('./lab/objects.json?v=20261029-library50-sharpa'),resource('./demos/catalog.json?v=20261029-library50-sharpa'),resource('./lab/placements.json'),addRobot(stage,'left'),addRobot(stage,'right')]);
  const entries=[['pliers','pliers','Pliers','#c18b6c'],['faucet','partnet_faucet_1370','Faucet','#7ba9b8'],['human','smpl_female','Human','#91c6d4'],['horse','smal_equidae','Horse','#b88b61'],['cow','smal_bovidae','Cow','#9caa8f'],['hippo','smal_hippopotamidae','Hippo','#9b9db9'],['toilet',null,'Toilet','#d6dfdb'],['cabinet','cabinet','Cabinet','#96704c']];
  const instances=new Map(),buttons=new Map();let selected=null,playing=true,visible=false,time=0,last=0,revision=0,mode='sdf',normal=false,family='all',zooId='cabinet',pcaPlaying=true;
  const robots={left,right};
@@ -38,7 +38,7 @@ export async function mountObjectLab(){
  host.addEventListener('pointercancel',()=>down=null,true);
  const tiles=root.querySelector('#lab-object-list'),image=root.querySelector('#lab-pca-image');
  function showPca(){const demo=demos.find(d=>d.id===zooId);image.src=pcaPlaying?demo.src:demo.poster;image.alt=`${demo.name}: projected PCA keypoints and corresponding occupancy`;root.querySelector('#lab-pca-play').textContent=pcaPlaying?'Pause':'Play';tiles.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.object===zooId)));root.dataset.pcaObject=zooId;}
- function fill(){tiles.replaceChildren();for(const object of catalog.filter(o=>family==='all'||o.family===family)){const b=document.createElement('button');b.type='button';b.dataset.object=object.id;b.setAttribute('aria-label',`Play ${object.name} PCA animation`);b.innerHTML=`<img loading="lazy" src="${object.thumbnail}" alt=""><span>${object.name}</span>`;b.addEventListener('click',()=>{zooId=object.id;pcaPlaying=true;showPca();});tiles.append(b);}showPca();}
+ function fill(){tiles.replaceChildren();for(const object of catalog.filter(o=>family==='all'||o.family===family)){const b=document.createElement('button');b.type='button';b.dataset.object=object.id;b.setAttribute('aria-label',`Play ${object.name} PCA animation`);b.innerHTML=`<img loading="lazy" src="${object.thumbnail}?v=20261029-library50-sharpa" alt=""><span>${object.name}</span>`;b.addEventListener('click',()=>{zooId=object.id;pcaPlaying=true;showPca();});tiles.append(b);}showPca();}
  root.querySelectorAll('[data-lab-family]').forEach(b=>b.addEventListener('click',()=>{family=b.dataset.labFamily;root.querySelectorAll('[data-lab-family]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));fill();}));
  root.querySelector('#lab-pca-play').addEventListener('click',()=>{pcaPlaying=!pcaPlaying;showPca();});fill();
  root.querySelector('.lab-loading').hidden=true;root.dataset.ready='true';root.dataset.objectCount=String(instances.size);

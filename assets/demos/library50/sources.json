@@ -1,0 +1,316 @@
+{
+  "objects": [
+    {
+      "object": "unitree_go2",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "unitree_h1",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "spot_with_arm",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "anymal_c",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "aloha",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "franka_panda",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "kinova_gen3",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "shadow_dexee",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "allegro_hand_v3",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry",
+      "frames": 24,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "book",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 16,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "cardboardbox",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 16,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "globe",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 16,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "laptop",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 16,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "rubikscube",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 16,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "treasurebox",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 16,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "partnet_dishwasher_11622",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 16,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "partnet_door_8997",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 32,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "partnet_lamp_16208",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 32,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "partnet_oven_7187",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 32,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "partnet_switch_100935",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 32,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "partnet_toilet_102676",
+      "checkpoint": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Exact native FK, one joint at a time, within original limits",
+      "frames": 32,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "049-ball",
+      "checkpoint": "/workspace/worldstring-general/runs/ws_deform30_single_episode40k_20260919/train/step_040000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Time-ordered uniformly sampled held-out source frames",
+      "frames": 25,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "097-pillow",
+      "checkpoint": "/workspace/worldstring-general/runs/ws_deform30_single_episode40k_20260919/train/step_040000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Time-ordered uniformly sampled held-out source frames",
+      "frames": 23,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    },
+    {
+      "object": "188-foam-roll-small",
+      "checkpoint": "/workspace/worldstring-general/runs/ws_deform30_single_episode40k_20260919/train/step_040000.pth",
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "sampling": "Time-ordered uniformly sampled held-out source frames",
+      "frames": 31,
+      "coordinates": "native checkpoint voxel256 query coordinates; stride 2",
+      "surface": "unmodified frozen occupancy logits, marching cubes zero level"
+    }
+  ]
+}

@@ -50,28 +50,28 @@
     "src": "allegro-apple.json"
   },
   {
-    "hand": "shadow",
+    "hand": "sharpa",
     "object": "mug",
-    "src": "shadow-mug.json"
+    "src": "sharpa-mug.json"
   },
   {
-    "hand": "shadow",
+    "hand": "sharpa",
     "object": "duck",
-    "src": "shadow-duck.json"
+    "src": "sharpa-duck.json"
   },
   {
-    "hand": "shadow",
+    "hand": "sharpa",
     "object": "dumbbell",
-    "src": "shadow-dumbbell.json"
+    "src": "sharpa-dumbbell.json"
   },
   {
-    "hand": "shadow",
+    "hand": "sharpa",
     "object": "bottle",
-    "src": "shadow-bottle.json"
+    "src": "sharpa-bottle.json"
   },
   {
-    "hand": "shadow",
+    "hand": "sharpa",
     "object": "apple",
-    "src": "shadow-apple.json"
+    "src": "sharpa-apple.json"
   }
 ]
