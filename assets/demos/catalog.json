@@ -1,19 +1,19 @@
 [
   {
-    "id": "unitree_go2",
-    "name": "Go2",
+    "id": "ikea",
+    "name": "Writing desk",
     "family": "articulated",
     "animated": true,
-    "src": "assets/demos/library50/unitree_go2.gif",
-    "poster": "assets/demos/library50/unitree_go2.png"
+    "src": "assets/demos/library50/ikea.gif",
+    "poster": "assets/demos/library50/ikea.png"
   },
   {
-    "id": "unitree_h1",
-    "name": "H1",
+    "id": "partnet_refrigerator_10036",
+    "name": "Refrigerator",
     "family": "articulated",
     "animated": true,
-    "src": "assets/demos/library50/unitree_h1.gif",
-    "poster": "assets/demos/library50/unitree_h1.png"
+    "src": "assets/demos/library50/partnet_refrigerator_10036.gif",
+    "poster": "assets/demos/library50/partnet_refrigerator_10036.png"
   },
   {
     "id": "spot_with_arm",

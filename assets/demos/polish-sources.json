@@ -1,0 +1,3393 @@
+{
+  "purpose": "Presentation-enhanced geometry previews; not unprocessed inference or benchmark results",
+  "counts": {
+    "rigid_articulated": 21,
+    "soft": 13
+  },
+  "objects": [
+    {
+      "id": "ikea",
+      "family": "articulated",
+      "src": "assets/demos/library50/ikea.gif",
+      "poster": "assets/demos/library50/ikea.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps",
+          "source-distance pruning of unsupported protrusions",
+          "source-mesh patches only where learned thin panels are missing"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 765
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 774
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 811
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 831
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 811
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 774
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 765
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 808
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 769
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 822
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 769
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 808
+          }
+        ],
+        "source_input": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+        "presentation_completion": "original articulated source panels close gaps beneath the learned shell",
+        "presentation_rotation_matrix": [
+          [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.220446049250313e-16,
+            1.0
+          ],
+          [
+            -0.0,
+            -1.0,
+            2.220446049250313e-16
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "partnet_refrigerator_10036",
+      "family": "articulated",
+      "src": "assets/demos/library50/partnet_refrigerator_10036.gif",
+      "poster": "assets/demos/library50/partnet_refrigerator_10036.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "sampling": "held-out source states ordered by keypoint PC1",
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-general/runs/rigid100_revised780k_fast_20260913_165838/train_to_780000/step_780000.pth",
+        "presentation_rotation_matrix": [
+          [
+            -1.0,
+            0.0,
+            1.2246467991473532e-16
+          ],
+          [
+            1.2246467991473532e-16,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "spot_with_arm",
+      "family": "articulated",
+      "src": "assets/demos/library50/spot_with_arm.gif",
+      "poster": "assets/demos/library50/spot_with_arm.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/spot_with_arm"
+      }
+    },
+    {
+      "id": "anymal_c",
+      "family": "articulated",
+      "src": "assets/demos/library50/anymal_c.gif",
+      "poster": "assets/demos/library50/anymal_c.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/anymal_c"
+      }
+    },
+    {
+      "id": "aloha",
+      "family": "articulated",
+      "src": "assets/demos/library50/aloha.gif",
+      "poster": "assets/demos/library50/aloha.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/aloha"
+      }
+    },
+    {
+      "id": "franka_panda",
+      "family": "articulated",
+      "src": "assets/demos/library50/franka_panda.gif",
+      "poster": "assets/demos/library50/franka_panda.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/franka_panda"
+      }
+    },
+    {
+      "id": "kinova_gen3",
+      "family": "articulated",
+      "src": "assets/demos/library50/kinova_gen3.gif",
+      "poster": "assets/demos/library50/kinova_gen3.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/kinova_gen3"
+      }
+    },
+    {
+      "id": "shadow_dexee",
+      "family": "articulated",
+      "src": "assets/demos/library50/shadow_dexee.gif",
+      "poster": "assets/demos/library50/shadow_dexee.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/shadow_dexee"
+      }
+    },
+    {
+      "id": "allegro_hand_v3",
+      "family": "articulated",
+      "src": "assets/demos/library50/allegro_hand_v3.gif",
+      "poster": "assets/demos/library50/allegro_hand_v3.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/allegro_hand_v3"
+      }
+    },
+    {
+      "id": "book",
+      "family": "articulated",
+      "src": "assets/demos/library50/book.gif",
+      "poster": "assets/demos/library50/book.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps",
+          "source-distance pruning of unsupported protrusions",
+          "source-mesh patches only where learned thin panels are missing"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 256
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 206
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 280
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 132
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 280
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 206
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 256
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 475
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 108
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 73
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 108
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 475
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/book",
+        "presentation_completion": "original articulated source panels close gaps beneath the learned shell",
+        "presentation_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.220446049250313e-16,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            2.220446049250313e-16
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "cardboardbox",
+      "family": "articulated",
+      "src": "assets/demos/library50/cardboardbox.gif",
+      "poster": "assets/demos/library50/cardboardbox.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps",
+          "source-distance pruning of unsupported protrusions",
+          "source-mesh patches only where learned thin panels are missing"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 9
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/cardboardbox",
+        "presentation_completion": "original articulated source panels close gaps beneath the learned shell",
+        "presentation_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "globe",
+      "family": "articulated",
+      "src": "assets/demos/library50/globe.gif",
+      "poster": "assets/demos/library50/globe.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/globe",
+        "presentation_completion": null,
+        "presentation_rotation_matrix": [
+          [
+            -1.0,
+            -1.2246467991473532e-16,
+            0.0
+          ],
+          [
+            1.2246467991473532e-16,
+            -1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "laptop",
+      "family": "articulated",
+      "src": "assets/demos/library50/laptop.gif",
+      "poster": "assets/demos/library50/laptop.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps",
+          "source-distance pruning of unsupported protrusions",
+          "source-mesh patches only where learned thin panels are missing"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 45
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 41
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 41
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 40
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 41
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 41
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 45
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 47
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 46
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 46
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 46
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 47
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/laptop",
+        "presentation_completion": "original articulated source panels close gaps beneath the learned shell",
+        "presentation_rotation_matrix": [
+          [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.220446049250313e-16,
+            1.0
+          ],
+          [
+            -0.0,
+            -1.0,
+            2.220446049250313e-16
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "rubikscube",
+      "family": "articulated",
+      "src": "assets/demos/library50/rubikscube.gif",
+      "poster": "assets/demos/library50/rubikscube.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/rubikscube"
+      }
+    },
+    {
+      "id": "treasurebox",
+      "family": "articulated",
+      "src": "assets/demos/library50/treasurebox.gif",
+      "poster": "assets/demos/library50/treasurebox.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/treasurebox"
+      }
+    },
+    {
+      "id": "partnet_dishwasher_11622",
+      "family": "articulated",
+      "src": "assets/demos/library50/partnet_dishwasher_11622.gif",
+      "poster": "assets/demos/library50/partnet_dishwasher_11622.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/partnet_dishwasher_11622",
+        "presentation_rotation_matrix": [
+          [
+            -1.0,
+            0.0,
+            1.2246467991473532e-16
+          ],
+          [
+            1.2246467991473532e-16,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "partnet_door_8997",
+      "family": "articulated",
+      "src": "assets/demos/library50/partnet_door_8997.gif",
+      "poster": "assets/demos/library50/partnet_door_8997.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/partnet_door_8997",
+        "presentation_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "partnet_lamp_16208",
+      "family": "articulated",
+      "src": "assets/demos/library50/partnet_lamp_16208.gif",
+      "poster": "assets/demos/library50/partnet_lamp_16208.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/partnet_lamp_16208",
+        "presentation_completion": null,
+        "presentation_rotation_matrix": [
+          [
+            2.220446049250313e-16,
+            -1.0,
+            0.0
+          ],
+          [
+            1.0,
+            2.220446049250313e-16,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "partnet_oven_7187",
+      "family": "articulated",
+      "src": "assets/demos/library50/partnet_oven_7187.gif",
+      "poster": "assets/demos/library50/partnet_oven_7187.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/partnet_oven_7187",
+        "presentation_rotation_matrix": [
+          [
+            -1.0,
+            0.0,
+            1.2246467991473532e-16
+          ],
+          [
+            1.2246467991473532e-16,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "partnet_switch_100935",
+      "family": "articulated",
+      "src": "assets/demos/library50/partnet_switch_100935.gif",
+      "poster": "assets/demos/library50/partnet_switch_100935.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/partnet_switch_100935",
+        "presentation_rotation_matrix": [
+          [
+            -1.0,
+            0.0,
+            1.2246467991473532e-16
+          ],
+          [
+            1.2246467991473532e-16,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "partnet_toilet_102676",
+      "family": "articulated",
+      "src": "assets/demos/library50/partnet_toilet_102676.gif",
+      "poster": "assets/demos/library50/partnet_toilet_102676.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 160,
+      "provenance": {
+        "surface": "learned occupancy surface with presentation-only cleanup",
+        "postprocessing": [
+          "tiny-component filtering",
+          "planar domain-boundary capping",
+          "three Taubin smoothing steps"
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 1,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 2,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 3,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 4,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 5,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 6,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 7,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 8,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 9,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 10,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          },
+          {
+            "index": 11,
+            "planar_cap_triangles": 0,
+            "source_completion_triangles": 0
+          }
+        ],
+        "source_input": "/workspace/worldstring-demos/library50-full256-20261029/partnet_toilet_102676",
+        "presentation_rotation_matrix": [
+          [
+            -1.0,
+            0.0,
+            1.2246467991473532e-16
+          ],
+          [
+            1.2246467991473532e-16,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "render_mesh_face_limit": 180000
+      }
+    },
+    {
+      "id": "008-pink-cloth",
+      "family": "deformable",
+      "src": "assets/demos/hd/008-pink-cloth.gif",
+      "poster": "assets/demos/hd/008-pink-cloth.png",
+      "frames": 34,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/008-pink-cloth",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 3
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 9
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 6
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 4
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 12,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 13,
+            "removed_tiny_components": 3
+          },
+          {
+            "index": 14,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 15,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 16,
+            "removed_tiny_components": 5
+          },
+          {
+            "index": 17,
+            "removed_tiny_components": 6
+          },
+          {
+            "index": 18,
+            "removed_tiny_components": 9
+          },
+          {
+            "index": 19,
+            "removed_tiny_components": 9
+          },
+          {
+            "index": 20,
+            "removed_tiny_components": 4
+          },
+          {
+            "index": 21,
+            "removed_tiny_components": 5
+          },
+          {
+            "index": 22,
+            "removed_tiny_components": 4
+          },
+          {
+            "index": 23,
+            "removed_tiny_components": 3
+          },
+          {
+            "index": 24,
+            "removed_tiny_components": 6
+          },
+          {
+            "index": 25,
+            "removed_tiny_components": 4
+          },
+          {
+            "index": 26,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 27,
+            "removed_tiny_components": 7
+          },
+          {
+            "index": 28,
+            "removed_tiny_components": 5
+          },
+          {
+            "index": 29,
+            "removed_tiny_components": 9
+          },
+          {
+            "index": 30,
+            "removed_tiny_components": 11
+          },
+          {
+            "index": 31,
+            "removed_tiny_components": 4
+          },
+          {
+            "index": 32,
+            "removed_tiny_components": 8
+          },
+          {
+            "index": 33,
+            "removed_tiny_components": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "043-dog",
+      "family": "deformable",
+      "src": "assets/demos/hd/043-dog.gif",
+      "poster": "assets/demos/hd/043-dog.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/043-dog",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "045-cat",
+      "family": "deformable",
+      "src": "assets/demos/hd/045-cat.gif",
+      "poster": "assets/demos/hd/045-cat.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/045-cat",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "051-cube",
+      "family": "deformable",
+      "src": "assets/demos/hd/051-cube.gif",
+      "poster": "assets/demos/hd/051-cube.png",
+      "frames": 26,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/051-cube",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 12,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 13,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 14,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 15,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 16,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 17,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 18,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 19,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 20,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 21,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 22,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 23,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 24,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 25,
+            "removed_tiny_components": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "056-makeup-sponge",
+      "family": "deformable",
+      "src": "assets/demos/hd/056-makeup-sponge.gif",
+      "poster": "assets/demos/hd/056-makeup-sponge.png",
+      "frames": 23,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/056-makeup-sponge",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 12,
+            "removed_tiny_components": 3
+          },
+          {
+            "index": 13,
+            "removed_tiny_components": 6
+          },
+          {
+            "index": 14,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 15,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 16,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 17,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 18,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 19,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 20,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 21,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 22,
+            "removed_tiny_components": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "081-stripe-rope",
+      "family": "deformable",
+      "src": "assets/demos/hd/081-stripe-rope.gif",
+      "poster": "assets/demos/hd/081-stripe-rope.png",
+      "frames": 30,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/081-stripe-rope",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 3
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 10
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 12,
+            "removed_tiny_components": 3
+          },
+          {
+            "index": 13,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 14,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 15,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 16,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 17,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 18,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 19,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 20,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 21,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 22,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 23,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 24,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 25,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 26,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 27,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 28,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 29,
+            "removed_tiny_components": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "095-watermelon",
+      "family": "deformable",
+      "src": "assets/demos/hd/095-watermelon.gif",
+      "poster": "assets/demos/hd/095-watermelon.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/095-watermelon",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "096-octopus",
+      "family": "deformable",
+      "src": "assets/demos/hd/096-octopus.gif",
+      "poster": "assets/demos/hd/096-octopus.png",
+      "frames": 29,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/096-octopus",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 12,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 13,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 14,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 15,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 16,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 17,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 18,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 19,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 20,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 21,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 22,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 23,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 24,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 25,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 26,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 27,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 28,
+            "removed_tiny_components": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "121-croissant-plush",
+      "family": "deformable",
+      "src": "assets/demos/hd/121-croissant-plush.gif",
+      "poster": "assets/demos/hd/121-croissant-plush.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/121-croissant-plush",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "164-sheep",
+      "family": "deformable",
+      "src": "assets/demos/hd/164-sheep.gif",
+      "poster": "assets/demos/hd/164-sheep.png",
+      "frames": 12,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/page-hd-20261028/soft/164-sheep",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "049-ball",
+      "family": "deformable",
+      "src": "assets/demos/library50/049-ball.gif",
+      "poster": "assets/demos/library50/049-ball.png",
+      "frames": 25,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/library50-sharpa-20261029/049-ball",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 12,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 13,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 14,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 15,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 16,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 17,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 18,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 19,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 20,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 21,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 22,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 23,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 24,
+            "removed_tiny_components": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "097-pillow",
+      "family": "deformable",
+      "src": "assets/demos/library50/097-pillow.gif",
+      "poster": "assets/demos/library50/097-pillow.png",
+      "frames": 23,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/library50-sharpa-20261029/097-pillow",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 12,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 13,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 14,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 15,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 16,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 17,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 18,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 19,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 20,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 21,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 22,
+            "removed_tiny_components": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "188-foam-roll-small",
+      "family": "deformable",
+      "src": "assets/demos/library50/188-foam-roll-small.gif",
+      "poster": "assets/demos/library50/188-foam-roll-small.png",
+      "frames": 31,
+      "size": [
+        720,
+        400
+      ],
+      "frame_duration_ms": 100,
+      "provenance": {
+        "source": "/workspace/worldstring-demos/library50-sharpa-20261029/188-foam-roll-small",
+        "postprocessing": [
+          "detached speckle removal below 0.06 percent of largest surface area",
+          "two Taubin smoothing steps"
+        ],
+        "original_geometry_and_temporal_order": true,
+        "frames": [
+          {
+            "index": 0,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 1,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 2,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 3,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 4,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 5,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 6,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 7,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 8,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 9,
+            "removed_tiny_components": 3
+          },
+          {
+            "index": 10,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 11,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 12,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 13,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 14,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 15,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 16,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 17,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 18,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 19,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 20,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 21,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 22,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 23,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 24,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 25,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 26,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 27,
+            "removed_tiny_components": 0
+          },
+          {
+            "index": 28,
+            "removed_tiny_components": 2
+          },
+          {
+            "index": 29,
+            "removed_tiny_components": 1
+          },
+          {
+            "index": 30,
+            "removed_tiny_components": 4
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,15 +1,15 @@
 [
   {
-    "id": "unitree_go2",
-    "name": "Go2",
+    "id": "ikea",
+    "name": "Writing desk",
     "family": "articulated",
-    "thumbnail": "assets/zoo-thumbnails/unitree_go2.png"
+    "thumbnail": "assets/zoo-thumbnails/ikea.png"
   },
   {
-    "id": "unitree_h1",
-    "name": "H1",
+    "id": "partnet_refrigerator_10036",
+    "name": "Refrigerator",
     "family": "articulated",
-    "thumbnail": "assets/zoo-thumbnails/unitree_h1.png"
+    "thumbnail": "assets/zoo-thumbnails/partnet_refrigerator_10036.png"
   },
   {
     "id": "spot_with_arm",

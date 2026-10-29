@@ -1,0 +1,18 @@
+"""Remove detached speckles and render the soft gallery with its existing pastel palette."""
+from pathlib import Path
+import importlib.util,json,sys
+import numpy as np,trimesh
+BASE=Path('/workspace/worldstring-general');OUT=Path('/workspace/worldstring-demos/zoo-polish-20261030')
+spec=importlib.util.spec_from_file_location('renderlib',Path(__file__).with_name('render-library50-media.py'));lib=importlib.util.module_from_spec(spec);spec.loader.exec_module(lib);lib.OUT=OUT
+ITEMS={'008-pink-cloth':('Pink cloth','#FFAFBC'),'043-dog':('Dog plush','#97DBD0'),'045-cat':('Cat plush','#F1A8D3'),'051-cube':('Soft cube','#A6BFEA'),'056-makeup-sponge':('Makeup sponge','#E3AEDB'),'081-stripe-rope':('Striped rope','#96DBE1'),'095-watermelon':('Watermelon','#BADD87'),'096-octopus':('Octopus plush','#D0B2F0'),'121-croissant-plush':('Croissant plush','#F4BC81'),'164-sheep':('Sheep plush','#C4C8F2'),'049-ball':('Soft ball','#A6BFEA'),'097-pillow':('Pillow','#A8CADF'),'188-foam-roll-small':('Foam roll','#96CFD1')}
+for name in sys.argv[1:] or ITEMS:
+ dest=OUT/name;dest.mkdir(exist_ok=True)
+ if (dest/'complete.json').exists():continue
+ if name in ['049-ball','097-pillow','188-foam-roll-small']:
+  source=Path('/workspace/worldstring-demos/library50-sharpa-20261029')/name;root=BASE/'data/ws_deform30_single_episode_20260919'/name;records=json.load(open(root/'split.json'))['records'];ids=[i for i,r in enumerate(records) if r['split']=='test'];times=np.array([records[i]['source_frame'] for i in ids]);chosen=np.unique(np.argmin(abs(times[:,None]-np.linspace(times.min(),times.max(),32)[None]),axis=0));ids=[ids[i] for i in chosen];coords=dict(np.load(root/'rigid_coordinates.npz'));kp=coords['keypoints_canonical'][ids];train=coords['keypoints_canonical'][[i for i,r in enumerate(records) if r['split']=='train']][:100];flat=train.reshape(len(train),-1);mean=flat.mean(0);_,_,basis=np.linalg.svd(flat-mean,full_matrices=False);tr=(flat-mean)@basis[:2].T;xy=(kp.reshape(len(kp),-1)-mean)@basis[:2].T;scale=max(np.linalg.norm(tr,axis=1).max(),np.linalg.norm(xy,axis=1).max())*1.05;meta={'display_trajectory_xy':(xy/scale).tolist(),'display_train_xy':(tr/scale).tolist()};chosen=np.arange(len(ids))
+ else:
+  source=Path('/workspace/worldstring-demos/page-hd-20261028/soft')/name;plan=json.load(open(source/'plan.json')) if (source/'plan.json').exists() else json.load(open(Path('/workspace/worldstring-object-zoo-five-20261026')/name/'plan.json'));meta=json.load(open('/workspace/worldstring-general-gallery30-20260926/geometry/softbody/'+name+'/metadata.json'));chosen=np.array([meta['display_frame_ids'].index(i) for i in plan['dataset_frames']])
+ frames=sorted(source.glob('surface_*.npz'));assert len(frames)==len(chosen);stats=[]
+ for i,path in enumerate(frames):
+  z=np.load(path);mesh=trimesh.Trimesh(z['vertices'],z['faces'],process=False);parts=mesh.split(only_watertight=False);a=max(p.area for p in parts);kept=[p for p in parts if p.area>a*.0006];mesh=trimesh.util.concatenate(kept);trimesh.smoothing.filter_taubin(mesh,lamb=.4,nu=.45,iterations=2);np.savez_compressed(dest/f'surface_{i:03d}.npz',vertices=mesh.vertices.astype('f4'),faces=mesh.faces,normals=np.asarray(mesh.vertex_normals,'f4'));stats.append({'index':i,'removed_tiny_components':len(parts)-len(kept)})
+ lib.OBJECTS[name]=ITEMS[name];lib.render_object(name,meta,chosen,stats);(dest/'provenance.json').write_text(json.dumps({'source':str(source),'postprocessing':['detached speckle removal below 0.06 percent of largest surface area','two Taubin smoothing steps'],'original_geometry_and_temporal_order':True,'frames':stats},indent=2))

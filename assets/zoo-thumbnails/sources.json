@@ -8,30 +8,30 @@
   },
   "objects": [
     {
-      "id": "unitree_go2",
+      "id": "ikea",
       "source": "paper/figures/assets.png",
       "panel": "articulated",
-      "row": 0,
-      "column": 0,
+      "row": 1,
+      "column": 6,
       "crop_pixels": [
-        1152,
-        146,
-        1477,
-        400
+        3147,
+        408,
+        3472,
+        663
       ],
       "image_kind": "original source photograph or native material render; not a field reconstruction"
     },
     {
-      "id": "unitree_h1",
+      "id": "partnet_refrigerator_10036",
       "source": "paper/figures/assets.png",
       "panel": "articulated",
-      "row": 0,
-      "column": 1,
+      "row": 5,
+      "column": 8,
       "crop_pixels": [
-        1485,
-        146,
-        1810,
-        400
+        3812,
+        1459,
+        4137,
+        1714
       ],
       "image_kind": "original source photograph or native material render; not a field reconstruction"
     },

@@ -6,7 +6,7 @@
   },
   "media": [
     {
-      "id": "unitree_go2",
+      "id": "ikea",
       "frames": 12,
       "size": [
         720,
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "id": "unitree_h1",
+      "id": "partnet_refrigerator_10036",
       "frames": 12,
       "size": [
         720,
@@ -305,80 +305,80 @@
       "id": "008-pink-cloth",
       "frames": 34,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "043-dog",
       "frames": 12,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "045-cat",
       "frames": 12,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "051-cube",
       "frames": 26,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "056-makeup-sponge",
       "frames": 23,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "081-stripe-rope",
       "frames": 30,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "095-watermelon",
       "frames": 12,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "096-octopus",
       "frames": 29,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "121-croissant-plush",
       "frames": 12,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
       "id": "164-sheep",
       "frames": 12,
       "size": [
-        1440,
-        800
+        720,
+        400
       ]
     },
     {
@@ -421,53 +421,53 @@
   "sharpa": [
     {
       "object": "mug",
-      "lift_min": 0.16306,
-      "contacts_min": 2,
-      "max_penetration": 0.00054,
+      "lift_min": 0.16639,
+      "contacts_min": 5,
+      "max_penetration": 0.00029,
       "table_penetration_m": 0.0,
-      "self_penetration_m": 0.0,
-      "tilt_max_deg": 21.39,
+      "self_penetration_m": 1.2794892114411857e-05,
+      "tilt_max_deg": 9.12,
       "digit_contact_min": [
-        1,
-        1,
+        2,
+        3,
         0,
         0,
         0
       ],
       "digit_contact_max": [
         2,
-        2,
+        3,
         0,
         0,
         0
       ],
-      "arm_ik_max_error_m": 7.027576850815064e-11,
-      "arm_surface_clearance_m": 0.006255886005334332
+      "arm_ik_max_error_m": 1.1615359105089097e-10,
+      "arm_surface_clearance_m": 0.15438751995775513
     },
     {
       "object": "duck",
-      "lift_min": 0.17321,
-      "contacts_min": 4,
-      "max_penetration": 0.00081,
-      "table_penetration_m": 0.0,
-      "self_penetration_m": 0.00042292764976645594,
-      "tilt_max_deg": 11.15,
+      "lift_min": 0.17928,
+      "contacts_min": 10,
+      "max_penetration": 0.00023,
+      "table_penetration_m": 5e-05,
+      "self_penetration_m": 4.8039149273126566e-05,
+      "tilt_max_deg": 1.47,
       "digit_contact_min": [
+        3,
+        2,
+        2,
         1,
-        1,
-        1,
-        0,
-        1
-      ],
-      "digit_contact_max": [
-        1,
-        1,
-        1,
-        0,
         2
       ],
-      "arm_ik_max_error_m": 8.42194547010213e-11,
-      "arm_surface_clearance_m": 0.030913673662723795
+      "digit_contact_max": [
+        3,
+        2,
+        2,
+        1,
+        2
+      ],
+      "arm_ik_max_error_m": 3.635179631075153e-11,
+      "arm_surface_clearance_m": 0.01910285995549732
     },
     {
       "object": "dumbbell",
@@ -544,38 +544,5 @@
       "arm_ik_max_error_m": 1.0566704474250897e-10,
       "arm_surface_clearance_m": 0.07440101803594223
     }
-  ],
-  "full_resolution_rigid_media": {
-    "objects": [
-      "unitree_go2",
-      "unitree_h1",
-      "spot_with_arm",
-      "anymal_c",
-      "aloha",
-      "franka_panda",
-      "kinova_gen3",
-      "shadow_dexee",
-      "allegro_hand_v3",
-      "book",
-      "cardboardbox",
-      "globe",
-      "laptop",
-      "rubikscube",
-      "treasurebox",
-      "partnet_dishwasher_11622",
-      "partnet_door_8997",
-      "partnet_lamp_16208",
-      "partnet_oven_7187",
-      "partnet_switch_100935",
-      "partnet_toilet_102676"
-    ],
-    "grid": [
-      256,
-      256,
-      256
-    ],
-    "frames_each": 12,
-    "decoded": true,
-    "input_recipe": "Checkpoint native keypoint reader, including revised robot bank"
-  }
+  ]
 }

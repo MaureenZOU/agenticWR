@@ -35,6 +35,8 @@ def config(kind,name=None,angle=None,roll=0,style=None):
  if style in ('duck-front','bottle-front'):
   # Palm normal faces -X (away from the arm); fingers point down around the body.
   rot=R.from_euler('x',roll if kind=='sharpa' else 0,degrees=True).as_matrix()@R.from_euler('y',tilt,degrees=True).as_matrix()@np.diag([-1.,1.,-1.])
+ elif style=='mug-handle':
+  rot=R.from_euler('z',tilt,degrees=True).as_matrix()@R.from_euler('x',roll,degrees=True).as_matrix()@np.array([[0.,-1.,0.],[-1.,0.,0.],[0.,0.,-1.]])
  elif style=='duck-overview':
   rot=R.from_euler('x',roll,degrees=True).as_matrix()@R.from_euler('y',tilt,degrees=True).as_matrix()@np.array(duck_reference()['rotation'])
  elif style in ('apple-top','dumbbell-top','bottle-top'):
@@ -185,7 +187,7 @@ def initial(h,kind):
   closed[i]=np.clip(closed[i],lo,hi)
  return q,closed
 
-def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=False,custom=None,custom_open=None,angle=None,roll=0,close_start=1.2,close_end=3.,style=None):
+def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=False,custom=None,custom_open=None,angle=None,roll=0,close_start=1.2,close_end=3.,style=None,approach_vector=None,contact_balance=None):
  m,d,h,local,rot,parts,samples,xml=build(kind,name,scale,angle,roll,style)
  adr=np.array([m.jnt_qposadr[m.joint(j['name']).id] for j in h['joints']]);oa=int(m.jnt_qposadr[m.joint('object_free').id]);bid=m.body('object').id
  wa=int(m.jnt_qposadr[m.joint('wrist_free').id]);wb=m.body('dynamic_wrist').id
@@ -208,6 +210,7 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
  elif style=='duck-overview':approach=-rot@np.array([0,-1,0] if kind=='shadow' else [1,0,0])*.11+np.array([0,0,.012])
  elif style in ('apple-top','dumbbell-top','bottle-top'):approach=np.array([0,0,.12])
  elif style=='bottle-wrap':approach=-rot@np.array([0,-1,0] if kind=='shadow' else [1,0,0])*.11+np.array([0,0,.008])
+ if approach_vector is not None:approach=np.asarray(approach_vector,dtype=float)
  d.qpos[oa:oa+3]=center;d.qpos[oa+3:oa+7]=[1,0,0,0];d.qpos[adr]=qopen;d.mocap_pos[0]=wrist+approach;d.mocap_quat[0]=quat;d.qpos[wa:wa+7]=np.r_[d.mocap_pos[0],quat];d.ctrl[:]=qopen;mujoco.mj_forward(m,d)
  history=[]
  # Surface/keypoint objective is evaluated at the planned palm pose.
@@ -242,7 +245,7 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
   history.insert(0,[*qopen.tolist(),loss(qopen)]);history.append([*qclose.tolist(),loss(qclose)])
  # Reset before stepping; object pose is never written again.
  mujoco.mj_resetData(m,d);d.qpos[oa:oa+3]=center;d.qpos[oa+3:oa+7]=[1,0,0,0];d.qpos[adr]=qopen;d.mocap_pos[0]=wrist+approach;d.mocap_quat[0]=quat;d.qpos[wa:wa+7]=np.r_[d.mocap_pos[0],quat];d.ctrl[:]=qopen
- frames=[];lifts=[];contacts=[];pen=0.;start=None;slips=[];tilts=[];table_pen=0.;prelift_drift=0.;servo_offset=np.zeros(3);region_contacts=[];wrong_contacts=[];digit_contact_counts=[];self_pen=0.
+ frames=[];lifts=[];contacts=[];pen=0.;start=None;slips=[];tilts=[];table_pen=0.;prelift_drift=0.;servo_offset=np.zeros(3);region_contacts=[];wrong_contacts=[];digit_contact_counts=[];self_pen=0.;approach_drift=0.;non_tip_counts=[];first_contact={};contact_holds={}
  smooth=lambda x:(lambda y:y*y*(3-2*y))(np.clip(x,0,1))
  for step in range(4000):
   t=step*.002
@@ -250,12 +253,24 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
   elif t<3:pos=wrist;ctrl=qopen+(qclose-qopen)*smooth((t-1.2)/1.8);phase=1
   elif t<5:pos=wrist+np.array([0,0,.18*smooth((t-3)/2)]);ctrl=qclose;phase=2
   else:pos=wrist+np.array([.045*np.sin((t-5)*2*np.pi/1.5)*np.sin(np.pi*min(t-5,3)/3)**.5,0,.18]);ctrl=qclose;phase=3
-  if name=='mug':
+  if name=='mug' and approach_vector is None:
    if t<3:servo_offset[:2]=-np.clip(d.xpos[bid,:2]-center[:2],-.04,.04)
    pos=pos+servo_offset
   if t<3:ctrl=qopen+(qclose-qopen)*smooth((t-close_start)/(close_end-close_start))
+  if contact_balance is not None:
+   # A digit that touches early waits for the opposing digits. The controller
+   # changes only bounded joint targets, never the free object's state.
+   ctrl=ctrl.copy()
+   for digit in ['thumb','index','middle','ring','pinky']:
+    indices=[i for i,j in enumerate(h['joints']) if digit in j['name']]
+    touching=any((m.geom_bodyid[c.geom1]==bid and digit in m.body(m.geom_bodyid[c.geom2]).name) or (m.geom_bodyid[c.geom2]==bid and digit in m.body(m.geom_bodyid[c.geom1]).name) for c in d.contact if c.dist<.0002)
+    if touching and digit not in contact_holds:contact_holds[digit]=d.qpos[adr[indices]].copy()
+    if digit in contact_holds:
+     hold=contact_holds[digit];limit=contact_balance.get('hold_preload',.025) if t>=2.8 else contact_balance.get('touch_preload',.003)
+     ctrl[indices]=hold+np.clip(ctrl[indices]-hold,-limit,limit)
   d.mocap_pos[0]=pos;d.ctrl[:]=ctrl;mujoco.mj_step(m,d)
   if step==100:start=d.xpos[bid,2]
+  if t<1.2:approach_drift=max(approach_drift,float(np.linalg.norm(d.xpos[bid,:2]-center[:2])))
   if t<3:prelift_drift=max(prelift_drift,float(np.linalg.norm(d.xpos[bid,:2]-center[:2])))
   floor_contacts=[c for c in d.contact if c.geom1==0 or c.geom2==0];table_pen=max(table_pen,max([-c.dist for c in floor_contacts if m.geom_contype[c.geom1]==2 or m.geom_contype[c.geom2]==2]+[0]))
   cs=[c for c in d.contact if (m.geom_bodyid[c.geom1]==bid or m.geom_bodyid[c.geom2]==bid)]
@@ -266,7 +281,12 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
    object_geoms=[c.geom1 if m.geom_bodyid[c.geom1]==bid else c.geom2 for c in handcs];indices=[int(m.geom(g).name.split('_')[-1]) for g in object_geoms];region_contacts.append(sum(i>=25 for i in indices) if name=='mug' else sum(i==0 for i in indices) if name in ['dumbbell','bottle'] else len(indices));wrong_contacts.append(sum(i<25 for i in indices) if name=='mug' else sum(i>0 for i in indices) if name=='dumbbell' else 0)
   if kind=='sharpa':
    self_pen=max(self_pen,max([-c.dist for c in d.contact if m.geom_contype[c.geom1]==2 and m.geom_contype[c.geom2]==2]+[0]))
+   for c in handcs:
+    g=c.geom1 if m.geom_contype[c.geom1]==2 else c.geom2
+    digit=next((f for f in ['thumb','index','middle','ring','pinky'] if f in m.body(m.geom_bodyid[g]).name),'palm')
+    if c.dist<0:first_contact.setdefault(digit,round(t,4))
    if t>=5:
+    non_tip_counts.append(sum('fingertip' not in m.geom(c.geom1 if m.geom_contype[c.geom1]==2 else c.geom2).name for c in handcs))
     touched=[m.body(m.geom_bodyid[c.geom1 if m.geom_contype[c.geom1]==2 else c.geom2]).name for c in handcs]
     digit_contact_counts.append([sum(digit in body for body in touched) for digit in ['thumb','index','middle','ring','pinky']])
   if t>=5:lifts.append(float(d.xpos[bid,2]-(start or center[2])));contacts.append(len(handcs));slips.append(float(np.linalg.norm(d.xpos[bid]-pos-rot@local)))
@@ -276,8 +296,12 @@ def trial(kind,name,offset=(0,0,0),scale=1,close_scale=1.,record=False,optimize=
    frames.append([round(t,4),*np.round(d.qpos[adr],6).tolist(),*np.round(d.xpos[wb],6).tolist(),*np.round(d.xpos[bid],6).tolist(),*np.round(d.xquat[bid],7).tolist(),phase,*np.round(d.xquat[wb],7).tolist(),round(measured,7)])
  result={'hand':kind,'object':name,'offset':list(offset),'scale':scale,'closure':close_scale,'qtarget':qclose.tolist(),'qopen':qopen.tolist(),'angle':angle or 0,'roll':roll,'style':style,'close_start':close_start,'close_end':close_end,'lift_min':round(min(lifts),5),'lift_max':round(max(lifts),5),'contacts_min':min(contacts),'max_penetration':round(pen,5),'slip_max':round(max(slips),5),'tilt_max_deg':round(max(tilts),2),'table_penetration_m':round(table_pen,6),'prelift_drift_m':round(prelift_drift,5),'region_contacts_min':min(region_contacts),'wrong_contacts_max':max(wrong_contacts),'success':(name!='mug' or (min(region_contacts)>0 and max(wrong_contacts)==0)) and (name!='dumbbell' or min(region_contacts)>0) and min(lifts)>.12 and min(contacts)>0 and pen<.004 and table_pen<.003 and (name=='apple' or max(tilts)<28) and prelift_drift<.045}
  if kind=='sharpa':
-  result.update(digit_contact_min=np.min(digit_contact_counts,axis=0).tolist(),digit_contact_max=np.max(digit_contact_counts,axis=0).tolist(),self_penetration_m=self_pen)
+  result.update(contact_balance=contact_balance,approach_vector=approach.tolist() if approach_vector is not None else None,approach_drift_m=approach_drift,first_contact_seconds=first_contact,non_tip_contacts_min=min(non_tip_counts),digit_contact_min=np.min(digit_contact_counts,axis=0).tolist(),digit_contact_max=np.max(digit_contact_counts,axis=0).tolist(),self_penetration_m=self_pen)
   if name=='mug':result['success']=result['success'] and all(v>0 for v in result['digit_contact_min'][:2]) and not any(result['digit_contact_max'][2:])
+ if kind=='sharpa' and name=='mug' and approach_vector is not None:
+  result['success']=result['success'] and approach_drift<.0001 and prelift_drift<.003 and abs(first_contact.get('thumb',99)-first_contact.get('index',0))<.05
+ if kind=='sharpa' and name=='duck' and contact_balance is not None:
+  result['success']=result['success'] and min(result['digit_contact_min'])>0 and result['non_tip_contacts_min']>=4 and prelift_drift<.003 and max(tilts)<5
  if record:
   result['replay']={'hand':kind,'object':name,'fps':50,'duration':8,'wristQuaternion':quat.tolist(),'parts':parts,'jointNames':[j['name'] for j in h['joints']],'frames':frames,'optimization':history,'frameLayout':'time, hand qpos, wrist position(3), object position(3), object quaternion wxyz(4), phase, wrist quaternion wxyz(4), grasp optimization loss, arm qpos(7)', 'physics':{k:v for k,v in result.items() if k!='replay'}}
   if name=='duck' and style in ('duck-front','duck-overview'):result['replay']['objectMesh']='duck-native.json';result['replay']['objectGeometry']=native_duck()['provenance']

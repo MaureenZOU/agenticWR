@@ -16,7 +16,7 @@ function propMesh(parts){
 function dispose(group){group?.traverse(o=>{o.geometry?.dispose();if(o.material)for(const m of Array.isArray(o.material)?o.material:[o.material])m.dispose();});group?.removeFromParent();}
 export async function mountGraspLab(){
  const root=document.querySelector('#grasp-lab'),$=s=>root.querySelector(s),stage=createStage($('#grasp-canvas'),{compact:true});
- const [rigs,armData]=await Promise.all([resource('./lab/rigs.json?v=20261029-library50-sharpa-v2'),resource('./lab/arm.json')]);
+ const [rigs,armData]=await Promise.all([resource('./lab/rigs.json?v=20261029-grasp-zoo-polish-v3'),resource('./lab/arm.json')]);
  const arm=new NativeHand(armData);arm.root.position.fromArray(armData.mount.pos);arm.root.quaternion.copy(quaternion(armData.mount.quat));stage.native.add(arm.root);
  const experiment=new THREE.Group();stage.native.add(experiment);
  const points=new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({color:0x58aab5,size:.008,sizeAttenuation:true,depthTest:false,depthWrite:false,transparent:true,opacity:.9}));points.frustumCulled=false;points.renderOrder=20;stage.scene.add(points);
@@ -57,7 +57,7 @@ export async function mountGraspLab(){
   if(root._chartIndex!==index){drawCharts(index);root._chartIndex=index;}
  }
  async function choose(){const token=++selection;playing=false;data=null;$('#grasp-loading').hidden=false;$('#grasp-loading').textContent='Loading grasp…';sync();
-  try{const replay=await resource(`./lab/grasp/${kind}-${object}.json`);if(token!==selection)return;
+  try{const replay=await resource(`./lab/grasp/${kind}-${object}.json?v=20261029-grasp-zoo-polish-v3`);if(token!==selection)return;
    dispose(hand?.root);dispose(prop);hand=new NativeHand(kind==='xhand'?rigs.right.hand:rigs[kind]);hand.root.traverse(o=>{if(o.isMesh&&kind!=='sharpa')o.material.color.set(kind==='xhand'?0x343b44:kind==='allegro'?0x42484c:0x78838c);});experiment.add(hand.root);prop=propMesh(replay.parts);experiment.add(prop);
    // A continuous cup rim and handle cover the same compound collision surface.
    if(object==='mug'){

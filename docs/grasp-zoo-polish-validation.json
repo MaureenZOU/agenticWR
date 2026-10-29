@@ -1,0 +1,90 @@
+{
+  "baseline": "1c10d13",
+  "preserved_replays": [
+    "assets/lab/grasp/xhand-mug.json",
+    "assets/lab/grasp/xhand-duck.json",
+    "assets/lab/grasp/xhand-bottle.json",
+    "assets/lab/grasp/xhand-apple.json",
+    "assets/lab/grasp/xhand-dumbbell.json",
+    "assets/lab/grasp/allegro-mug.json",
+    "assets/lab/grasp/allegro-duck.json",
+    "assets/lab/grasp/allegro-bottle.json",
+    "assets/lab/grasp/allegro-apple.json",
+    "assets/lab/grasp/allegro-dumbbell.json",
+    "assets/lab/grasp/sharpa-bottle.json",
+    "assets/lab/grasp/sharpa-apple.json",
+    "assets/lab/grasp/sharpa-dumbbell.json"
+  ],
+  "grasps": [
+    {
+      "object": "mug",
+      "approach_drift_m": 2.523822021580319e-07,
+      "prelift_drift_m": 0.00142,
+      "first_contact_seconds": {
+        "index": 2.596,
+        "thumb": 2.608
+      },
+      "lift_min": 0.16639,
+      "tilt_max_deg": 9.12,
+      "digit_contact_min": [
+        2,
+        3,
+        0,
+        0,
+        0
+      ],
+      "non_tip_contacts_min": 1,
+      "max_penetration": 0.00029,
+      "self_penetration_m": 1.2794892114411857e-05,
+      "arm_surface_clearance_m": 0.15438751995775513,
+      "held_palm_gap_max_m": 0.06485942538528794,
+      "reconstructed_contact_count_min": 5
+    },
+    {
+      "object": "duck",
+      "approach_drift_m": 0.0008058828407436605,
+      "prelift_drift_m": 0.00136,
+      "first_contact_seconds": {
+        "pinky": 2.608,
+        "index": 2.634,
+        "middle": 2.758,
+        "ring": 2.786,
+        "thumb": 2.828
+      },
+      "lift_min": 0.17928,
+      "tilt_max_deg": 1.47,
+      "digit_contact_min": [
+        3,
+        2,
+        2,
+        1,
+        2
+      ],
+      "non_tip_contacts_min": 5,
+      "max_penetration": 0.00023,
+      "self_penetration_m": 4.8039149273126566e-05,
+      "arm_surface_clearance_m": 0.01910285995549732,
+      "held_palm_gap_max_m": 0.0012079636338715324,
+      "reconstructed_contact_count_min": 10
+    }
+  ],
+  "media": {
+    "counts": {
+      "articulated": 30,
+      "skinned": 7,
+      "deformable": 13
+    },
+    "decoded_animated_gifs": 50,
+    "source_image_thumbnails": 50,
+    "reprocessed_animations": 34,
+    "visual_review": "four time points per GIF across all 50 cases; two views of each revised grasp",
+    "removed_ids": [
+      "unitree_go2",
+      "unitree_h1"
+    ],
+    "replacement_ids": [
+      "ikea",
+      "partnet_refrigerator_10036"
+    ]
+  }
+}
