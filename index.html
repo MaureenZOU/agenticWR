@@ -133,14 +133,13 @@
    <p>The hand and object networks stay frozen. Gradients pass through both fields to the hand keypoints, then through hand kinematics to finger joint angles.</p>
    <svg class="grasp-gradient" viewBox="0 0 420 465" role="img" aria-label="Loss gradients split through the frozen hand network and frozen object network in parallel, combine at hand keypoints, and backpropagate through forward kinematics to finger joint angles q.">
     <defs><marker id="lab-flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#a38ab5"/></marker></defs>
-    <g class="gradient-node loss"><rect x="100" y="381" width="220" height="66" rx="12"/><text x="210" y="409">Grasp loss</text><text class="gradient-detail" x="210" y="429">Contact · balance · penetration</text></g>
+    <g class="gradient-node loss"><rect x="100" y="381" width="220" height="66" rx="12"/><text x="210" y="420">Grasp loss</text></g>
     <path class="gradient-wire" d="M210 380V358H103V330"/><path class="gradient-wire" d="M210 380V358H317V330"/>
     <g class="gradient-node"><rect x="12" y="246" width="183" height="76" rx="12"/><text x="103" y="276">Hand network</text><text class="gradient-frozen" x="103" y="302">FROZEN</text></g>
     <g class="gradient-node"><rect x="225" y="246" width="183" height="76" rx="12"/><text x="317" y="276">Object network</text><text class="gradient-frozen" x="317" y="302">FROZEN</text></g>
     <path class="gradient-wire" d="M103 245V211H210V182"/><path class="gradient-wire" d="M317 245V211H210V182"/>
     <g class="gradient-node keypoints"><rect x="90" y="116" width="240" height="58" rx="12"/><text x="210" y="151">Hand keypoints</text></g>
     <path class="gradient-wire" d="M210 115V70"/>
-    <text class="gradient-detail" x="282" y="89">Kinematics</text>
     <g class="gradient-node joints"><rect x="90" y="11" width="240" height="50" rx="12"/><text x="210" y="42">Finger joint angles · q</text></g>
    </svg>
   </aside>
