@@ -18,8 +18,8 @@
   <link rel="stylesheet" href="assets/story-layout.css">
   <link rel="stylesheet" href="assets/pages.css">
   <link rel="stylesheet" href="assets/refined-pages.css">
-  <script type="module" src="app.js"></script>
-  <link rel="stylesheet" href="assets/research-pages.css">
+  <script type="module" src="app.js?v=20261029-results-tables-v1"></script>
+  <link rel="stylesheet" href="assets/research-pages.css?v=20261029-results-tables-v1">
   <link rel="stylesheet" href="assets/project-page.css">
 </head>
 <body class="story-layout multipage-layout" data-page="results">
@@ -37,10 +37,7 @@
   </div>
 </header>
 <main id="main"><section class="section wrap" id="results"><div class="stacked-heading"><h1>AWR in reconstruction and action</h1><p>Shared object geometry, grasp optimization, and transfer to the real robot.</p></div>
-<section class="result-block"><h2>Reconstructing object geometry</h2><div id="result-family" class="result-filter" role="group" aria-label="Object family"></div><div class="chart-grid"><div id="chart-occupancy" class="chart-card"></div><div id="chart-sdf" class="chart-card"></div></div></section>
-<section class="result-block"><h2>Grasping in simulation</h2><div class="chart-grid"><div id="chart-grasp" class="chart-card"></div><div id="chart-convergence" class="chart-card"></div></div></section>
-<section class="result-block" id="real-world-transfer"><h2>Real-world transfer</h2><div id="chart-real" class="chart-card wide-chart"></div></section>
-<details class="results-details"><summary>Full experimental tables <span aria-hidden="true">＋</span></summary><div id="detailed-results"></div></details></section></main>
+<div id="detailed-results" aria-busy="true"><p role="status">Loading results…</p></div></section></main>
 <nav class="page-pagination wrap" aria-label="Page navigation">
   <a class="previous-page" href="method.html"><span aria-hidden="true">←</span><span><small>Previous</small>Method</span></a>
 </nav>

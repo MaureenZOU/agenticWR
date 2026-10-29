@@ -66,27 +66,13 @@ body[data-page="real-robot"] .page-pagination,body[data-page="results"] .page-pa
 .real-object-grid img{width:100%;height:138px;object-fit:contain;display:block}
 .real-object-grid figcaption{font-size:14px;color:#807088;margin-top:7px}
 .method-article{width:88%;max-width:1120px;padding-top:36px}
-.method-article>section{margin-top:50px}.method-article h2,.result-block>h2{font-size:25px;font-weight:500;letter-spacing:-.025em;margin:0 0 17px}
+.method-article>section{margin-top:50px}.method-article h2{font-size:25px;font-weight:500;letter-spacing:-.025em;margin:0 0 17px}
 .method-article p{color:#796c83;font-size:17px;line-height:1.8;max-width:1020px}
 .method-equation{text-align:center;font:italic 23px/1.8 Georgia,'Times New Roman',serif;padding:23px 12px;color:#564562;overflow-x:auto}
 .method-equation span{font-size:20px}.method-equation sub,.method-equation sup{font-size:.65em}
 .method-figure{display:block;width:100%;height:auto;margin:18px 0 0;background:white}
 .method-teaser{padding:0;margin:30px 0 0;scroll-margin-top:100px}
-.result-block{margin:36px 0 50px}.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.result-filter{display:flex;gap:8px;margin:0 0 20px;flex-wrap:wrap}
-.result-filter button{border:1px solid #e5ddea;border-radius:7px;background:white;color:#7e698d;padding:8px 19px;font:inherit;font-size:14px}
-.result-filter button[aria-pressed="true"]{background:#f1eaf7;border-color:#af91c4;color:#70488b}
-.chart-card{border:1px solid #ebe6f0;border-radius:13px;padding:23px 20px 12px;min-width:0;background:#fff}
-.chart-card h3{font-size:18px;font-weight:500;letter-spacing:-.02em;margin:0 0 6px}
-.chart-card>p{font-size:13px;color:#93849f;margin:0 0 16px}
-.chart-card svg{display:block;width:100%;height:auto;overflow:visible}
-.chart-card svg text{font-family:Outfit,sans-serif}.chart-card .chart-gridline{stroke:#eee9f3;stroke-width:1}.chart-card .chart-tick{fill:#a396ae;font-size:11px}.chart-card .chart-label{fill:#81708e;font-size:11px}.chart-card .chart-value{fill:#62516d;font-size:12px}
-.chart-legend{display:flex;gap:24px;font-size:13px;color:#82718e;justify-content:center;margin:0 0 10px}
-.chart-legend i{width:12px;height:12px;border-radius:3px;display:inline-block;vertical-align:-1px;margin-right:6px;background:var(--key-color)}
-.wide-chart{max-width:none}.results-details{margin-top:55px;border-top:1px solid #ded5e5;border-bottom:1px solid #ded5e5;padding:0 0 3px}
-.results-details>summary{padding:22px 0;cursor:pointer;font-size:21px;font-weight:450;list-style:none;display:flex;justify-content:space-between}
-.results-details[open]>summary span{transform:rotate(45deg)}
-#detailed-results h3{font-size:22px;font-weight:450;margin:35px 0 14px}#detailed-results .table-scroll{margin-bottom:25px}#detailed-results caption{text-align:left;font-size:15px;font-weight:450;padding:12px 0}#detailed-results table{font-size:13px}#detailed-results .protocol{font-size:14px;color:#8a7995;margin:9px 0 22px}
+#detailed-results .table-scroll{margin-bottom:16px}#detailed-results caption{text-align:left;font-size:15px;font-weight:450;padding:12px 0}#detailed-results table{font-size:13px}#detailed-results .protocol{font-size:14px;color:#8a7995;margin:9px 0 22px}
 .table-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;border-bottom:1px solid #e8e1ed;padding-bottom:12px}
 .table-tabs button{font:inherit;font-size:15px;padding:11px 18px;border:0;border-radius:8px;background:transparent;color:#85728f;cursor:pointer}
 .table-tabs button[aria-selected="true"]{background:#f1eaf7;color:#70488b}
@@ -99,7 +85,7 @@ body[data-page="real-robot"] .page-pagination,body[data-page="results"] .page-pa
 #detailed-results th,#detailed-results td{font-variant-numeric:tabular-nums;white-space:nowrap}
 #real-world-transfer{scroll-margin-top:100px}
 @media(min-width:761px) and (max-width:1100px){.real-comparison-layout{gap:26px}.real-sidebar{padding-top:45px;gap:24px}.real-transfer-copy h2{font-size:22px}.real-transfer-copy p{font-size:14px}.real-object-grid{gap:12px}.real-object-grid img{height:100px}}
-@media(max-width:760px){:is(body[data-page="action"], [data-chapter="action"]) .policy-layout{grid-template-columns:1fr}.action-media-column{grid-row:1}.gradient-flow{max-width:440px}.zoo-stage{aspect-ratio:16/10;height:auto}.real-comparison-layout{grid-template-columns:1fr;gap:28px}.real-sidebar{padding-top:0;gap:25px}.real-transfer-copy h2{max-width:none;font-size:23px}.real-object-grid{max-width:440px;width:100%;align-self:center}.real-object-grid img{height:135px}.real-video-row,.real-column-titles{gap:7px}.real-column-titles{font-size:14px}.real-video-cell{aspect-ratio:9/16;max-height:none}.split-label{font-size:13px}.unavailable-video span{font-size:12px}.unavailable-video p{font-size:10px;text-align:center}.chart-grid{grid-template-columns:1fr}.chart-card{padding:18px 12px 10px}.method-article{width:92%}.method-article p{font-size:15px}.method-equation{font-size:18px}.method-equation span{font-size:16px}.method-article>section{margin-top:36px}
+@media(max-width:760px){:is(body[data-page="action"], [data-chapter="action"]) .policy-layout{grid-template-columns:1fr}.action-media-column{grid-row:1}.gradient-flow{max-width:440px}.zoo-stage{aspect-ratio:16/10;height:auto}.real-comparison-layout{grid-template-columns:1fr;gap:28px}.real-sidebar{padding-top:0;gap:25px}.real-transfer-copy h2{max-width:none;font-size:23px}.real-object-grid{max-width:440px;width:100%;align-self:center}.real-object-grid img{height:135px}.real-video-row,.real-column-titles{gap:7px}.real-column-titles{font-size:14px}.real-video-cell{aspect-ratio:9/16;max-height:none}.split-label{font-size:13px}.unavailable-video span{font-size:12px}.unavailable-video p{font-size:10px;text-align:center}.method-article{width:92%}.method-article p{font-size:15px}.method-equation{font-size:18px}.method-equation span{font-size:16px}.method-article>section{margin-top:36px}
 :is(body[data-page="action"], [data-chapter="action"]) .policy-layout[data-stage="optimize"]{grid-template-columns:minmax(0,1fr);grid-template-areas:"intro" "scene" "gradient" "next";grid-template-rows:auto;gap:20px}
 .policy-layout[data-stage="optimize"] .policy-intro{grid-template-columns:1fr;gap:12px}
 .policy-layout[data-stage="optimize"] .gradient-flow{max-width:none;padding:18px}

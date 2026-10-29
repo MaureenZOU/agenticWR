@@ -50,7 +50,7 @@ async function initZoo() {
 
 async function initRealRobot() {}
 async function initResults() {
- const {mountResults} = await import('./assets/results-page.js');
+ const {mountResults} = await import('./assets/results-page.js?v=20261029-results-tables-v1');
  await mountResults();
 }
 
