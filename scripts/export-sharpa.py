@@ -8,7 +8,7 @@ sys.path.insert(0,str(ROOT/'reports/representation_page_20261028/python-deps'))
 import fast_simplification
 source=ast.parse((SITE/'scripts/export-lab-assets.py').read_text())
 exec(compile(ast.Module(body=[n for n in source.body if isinstance(n,ast.FunctionDef)],type_ignores=[]),'export-functions','exec'))
-src=SITE/'.preview/library50-sharpa-20261029/menagerie/sharpa_wave'
+src=Path(sys.argv[1]) if len(sys.argv)>1 else SITE/'.preview/library50-sharpa-20261029/menagerie/sharpa_wave'
 m=mujoco.MjModel.from_xml_path(str(src/'right_hand.xml'));d=mujoco.MjData(m);mujoco.mj_forward(m,d)
 h=hand(m,1,d.qpos)
 for i,item in enumerate(h['bodies']):

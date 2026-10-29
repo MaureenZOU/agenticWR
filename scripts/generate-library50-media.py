@@ -1,11 +1,12 @@
 """Frozen checkpoint reconstructions for 21 additional rigid and three soft assets."""
-import os,sys,json,importlib.util,time
+import os,sys,json,importlib.util,time,shutil
 from pathlib import Path
 import numpy as np,torch,trimesh
 from skimage.measure import marching_cubes
-BASE=Path('/workspace/worldstring-general');OUT=Path('/workspace/worldstring-demos/library50-sharpa-20261029')
+BASE=Path('/workspace/worldstring-general');OUT=Path('/workspace/worldstring-demos/library50-full256-20261029')
 sys.path[:0]=[str(BASE/'awr'),str(BASE/'WorldString_data_gen'),str(BASE/'scripts/ws_deform30_single_episode')]
 from modeling.rigid_simple import RigidSimpleModel
+from dataset.rigid_sampling_recipe import keypoints_for_model
 from runtime import SingleEpisodeModel
 spec=importlib.util.spec_from_file_location('renderlib',Path(__file__).with_name('render-library50-media.py'));lib=importlib.util.module_from_spec(spec);spec.loader.exec_module(lib);lib.OUT=OUT
 spec=importlib.util.spec_from_file_location('fk',BASE/'viz/general_gallery20/code/rigid_gallery.py');fk=importlib.util.module_from_spec(spec);spec.loader.exec_module(fk)
@@ -20,22 +21,23 @@ if worker==0:
 else:
  net=SingleEpisodeModel(ck['recipe']['model_config']);net.load_state_dict({k.removeprefix('net.'):v for k,v in ck['model_state_dict'].items()});stats=ck
 net.cuda().eval().requires_grad_(False)
-N=128;axis=torch.arange(N,device='cuda').float()*2;queries=torch.stack(torch.meshgrid(axis,axis,axis,indexing='ij'),-1).reshape(-1,3)
-for name in RIGID if worker==0 else SOFT:
+N=256 if worker==0 else 128;stride=256/N;axis=torch.arange(N,device='cuda').float()*stride;queries=torch.stack(torch.meshgrid(axis,axis,axis,indexing='ij'),-1).reshape(-1,3)
+selected=(RIGID[int(sys.argv[2])::2] if sys.argv[2].isdigit() else [sys.argv[2]]) if len(sys.argv)>2 else RIGID
+for name in selected if worker==0 else SOFT:
  dest=OUT/name;dest.mkdir(exist_ok=True,parents=True)
  if (dest/'complete.json').exists():continue
  if worker==0:
   row=next(r for r in registry if r['object_name']==name);root=Path(row['root']);test=sorted((root/'test').glob('*.da'));trainfiles=sorted((root/'train').glob('*.da'))
-  train=np.stack([torch.load(f,map_location='cpu',weights_only=False)['keypoints'].numpy() for f in trainfiles[::max(1,len(trainfiles)//60)][:60]])
+  train=np.stack([keypoints_for_model(torch.load(f,map_location='cpu',weights_only=False),ck['config'],str(f)).numpy()/256-.5 for f in trainfiles[::max(1,len(trainfiles)//60)][:60]])
   if name in RIGID[:12]:
    rr,jn,lo,hi,fn,category=fk.partnet_motion(name) if name.startswith('partnet') else fk.rbo_motion(name)
    poses=[]
-   for active in range(min(2,len(jn))):
-    for t in np.linspace(0,2*np.pi,16,endpoint=False):
+   for active in range(1):
+    for t in np.linspace(0,2*np.pi,12,endpoint=False):
      q=lo+.48*(hi-lo);q[active]+=.43*(hi[active]-lo[active])*np.sin(t);poses.append(fn(q))
    kp=np.asarray(poses);timeline='Exact native FK, one joint at a time, within original limits'
   else:
-   samples=[torch.load(f,map_location='cpu',weights_only=False)['keypoints'].numpy() for f in test[::max(1,len(test)//24)][:24]];kp=np.stack(samples);flat=kp.reshape(len(kp),-1);_,_,v=np.linalg.svd(flat-flat.mean(0),full_matrices=False);order=np.argsort((flat-flat.mean(0))@v[0]);kp=kp[order];timeline='Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry'
+   samples=[keypoints_for_model(torch.load(f,map_location='cpu',weights_only=False),ck['config'],str(f)).numpy()/256-.5 for f in test[::max(1,len(test)//12)][:12]];kp=np.stack(samples);flat=kp.reshape(len(kp),-1);_,_,v=np.linalg.svd(flat-flat.mean(0),full_matrices=False);order=np.argsort((flat-flat.mean(0))@v[0]);kp=kp[order];timeline='Held-out valid joint states ordered by keypoint PC1; sampled poses, no interpolated geometry'
   oid=stats['objects'].index(name);rows=stats['static_rows'][oid:oid+1].cuda();mask=stats['token_mask'][oid:oid+1].cuda();k=int(mask.sum());kp=kp[:,:k];train=train[:,:k];keys=(kp+.5)*256
   orientation=np.eye(3) if name.startswith('partnet') else np.array([[1,0,0],[0,0,-1],[0,1,0]])
  else:
@@ -48,19 +50,22 @@ for name in RIGID if worker==0 else SOFT:
   points=kp.reshape(-1,3);_,_,orientation=np.linalg.svd(points-points.mean(0),full_matrices=False);orientation=orientation.T
   if np.linalg.det(orientation)<0:orientation[:,2]*=-1
  flat=train.reshape(len(train),-1);mean=flat.mean(0);_,_,basis=np.linalg.svd(flat-mean,full_matrices=False);tr=(flat-mean)@basis[:2].T;xy=(kp.reshape(len(kp),-1)-mean)@basis[:2].T;scale=max(np.linalg.norm(tr,axis=1).max(),np.linalg.norm(xy,axis=1).max())*1.05;tr/=scale;xy/=scale
- meta={'display_trajectory_xy':xy.tolist(),'display_train_xy':tr.tolist()};statsout=[]
+ meta={'display_trajectory_xy':xy.tolist(),'display_train_xy':tr.tolist(),'frame_duration_ms':200 if worker==0 else 100};statsout=[]
+ seen_inputs={}
  for i,key in enumerate(keys):
-  target=dest/f'surface_{i:03d}.npz';start=time.monotonic()
+  target=dest/f'surface_{i:03d}.npz';start=time.monotonic();input_bytes=np.asarray(key,dtype=np.float32).tobytes()
+  if not target.exists() and input_bytes in seen_inputs:shutil.copy2(seen_inputs[input_bytes],target)
   if not target.exists():
    key=torch.tensor(key,dtype=torch.float32,device='cuda')[None];length=torch.tensor([k],device='cuda')
    with torch.inference_mode(),torch.autocast('cuda',dtype=torch.bfloat16):
     context=net.encode_nodes(key,length,rows,mask);vals=[]
-    for q in queries.split(65536):
+    for q in queries.split(262144):
      logits=net.decode_queries(q[None],context,key,length)[0].float();vals.append((logits[:,1]-logits[:,0]).cpu().numpy())
-   volume=np.concatenate(vals).reshape((N,)*3);v,f,_,_=marching_cubes(volume,0,gradient_direction='ascent',allow_degenerate=False);v=(v*2+(.5 if worker else 0))/256-.5
+   volume=np.concatenate(vals).reshape((N,)*3);v,f,_,_=marching_cubes(volume,0,gradient_direction='ascent',allow_degenerate=False);v=(v*stride+(.5 if worker else 0))/256-.5
    if worker:v=v@coords['rotation'][ids[i]]+coords['translation_normalized'][ids[i]]
    v=v@orientation;mesh=trimesh.Trimesh(v,f,process=False);np.savez_compressed(target,vertices=v.astype('f4'),faces=f,normals=np.asarray(mesh.vertex_normals,'f4'))
+  seen_inputs[input_bytes]=target
   statsout.append({'index':i});print(name,i+1,len(keys),round(time.monotonic()-start,1),flush=True)
  lib.OBJECTS[name]=(TITLES[name],'#B3BED8' if worker==0 else '#E3AEDB');lib.render_object(name,meta,np.arange(len(keys)),statsout)
- (dest/'provenance.json').write_text(json.dumps({'object':name,'checkpoint':str(ckpath),'grid':[N]*3,'sampling':timeline,'frames':len(keys),'coordinates':'native checkpoint voxel256 query coordinates; stride 2','surface':'unmodified frozen occupancy logits, marching cubes zero level'},indent=2))
+ (dest/'provenance.json').write_text(json.dumps({'object':name,'checkpoint':str(ckpath),'grid':[N]*3,'sampling':timeline,'frames':len(keys),'coordinates':'native checkpoint voxel256 query coordinates; stride '+str(stride)+'','surface':'unmodified frozen occupancy logits, marching cubes zero level','keypoints':'checkpoint rigid_sampling_recipe.keypoints_for_model; actual revised KP bank for robots'},indent=2))
 print('WORKER_COMPLETE',worker,flush=True)

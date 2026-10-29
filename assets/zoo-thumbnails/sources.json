@@ -333,13 +333,13 @@
       "id": "partnet_door_8997",
       "source": "paper/figures/assets.png",
       "panel": "articulated",
-      "row": 4,
-      "column": 0,
+      "row": 3,
+      "column": 9,
       "crop_pixels": [
-        1152,
-        1197,
-        1477,
-        1451
+        4144,
+        934,
+        4469,
+        1188
       ],
       "image_kind": "original source photograph or native material render; not a field reconstruction"
     },

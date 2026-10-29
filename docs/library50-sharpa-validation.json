@@ -7,7 +7,7 @@
   "media": [
     {
       "id": "unitree_go2",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -15,7 +15,7 @@
     },
     {
       "id": "unitree_h1",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -23,7 +23,7 @@
     },
     {
       "id": "spot_with_arm",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -31,7 +31,7 @@
     },
     {
       "id": "anymal_c",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -39,7 +39,7 @@
     },
     {
       "id": "aloha",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -47,7 +47,7 @@
     },
     {
       "id": "franka_panda",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -55,7 +55,7 @@
     },
     {
       "id": "kinova_gen3",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -63,7 +63,7 @@
     },
     {
       "id": "shadow_dexee",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -71,7 +71,7 @@
     },
     {
       "id": "allegro_hand_v3",
-      "frames": 24,
+      "frames": 12,
       "size": [
         720,
         400
@@ -87,7 +87,7 @@
     },
     {
       "id": "book",
-      "frames": 16,
+      "frames": 12,
       "size": [
         720,
         400
@@ -103,7 +103,7 @@
     },
     {
       "id": "cardboardbox",
-      "frames": 16,
+      "frames": 12,
       "size": [
         720,
         400
@@ -127,7 +127,7 @@
     },
     {
       "id": "globe",
-      "frames": 16,
+      "frames": 12,
       "size": [
         720,
         400
@@ -135,7 +135,7 @@
     },
     {
       "id": "laptop",
-      "frames": 16,
+      "frames": 12,
       "size": [
         720,
         400
@@ -159,7 +159,7 @@
     },
     {
       "id": "rubikscube",
-      "frames": 16,
+      "frames": 12,
       "size": [
         720,
         400
@@ -167,7 +167,7 @@
     },
     {
       "id": "treasurebox",
-      "frames": 16,
+      "frames": 12,
       "size": [
         720,
         400
@@ -183,7 +183,7 @@
     },
     {
       "id": "partnet_dishwasher_11622",
-      "frames": 16,
+      "frames": 12,
       "size": [
         720,
         400
@@ -191,7 +191,7 @@
     },
     {
       "id": "partnet_door_8997",
-      "frames": 32,
+      "frames": 12,
       "size": [
         720,
         400
@@ -207,7 +207,7 @@
     },
     {
       "id": "partnet_lamp_16208",
-      "frames": 32,
+      "frames": 12,
       "size": [
         720,
         400
@@ -215,7 +215,7 @@
     },
     {
       "id": "partnet_oven_7187",
-      "frames": 32,
+      "frames": 12,
       "size": [
         720,
         400
@@ -223,7 +223,7 @@
     },
     {
       "id": "partnet_switch_100935",
-      "frames": 32,
+      "frames": 12,
       "size": [
         720,
         400
@@ -231,7 +231,7 @@
     },
     {
       "id": "partnet_toilet_102676",
-      "frames": 32,
+      "frames": 12,
       "size": [
         720,
         400
@@ -544,5 +544,38 @@
       "arm_ik_max_error_m": 1.0566704474250897e-10,
       "arm_surface_clearance_m": 0.07440101803594223
     }
-  ]
+  ],
+  "full_resolution_rigid_media": {
+    "objects": [
+      "unitree_go2",
+      "unitree_h1",
+      "spot_with_arm",
+      "anymal_c",
+      "aloha",
+      "franka_panda",
+      "kinova_gen3",
+      "shadow_dexee",
+      "allegro_hand_v3",
+      "book",
+      "cardboardbox",
+      "globe",
+      "laptop",
+      "rubikscube",
+      "treasurebox",
+      "partnet_dishwasher_11622",
+      "partnet_door_8997",
+      "partnet_lamp_16208",
+      "partnet_oven_7187",
+      "partnet_switch_100935",
+      "partnet_toilet_102676"
+    ],
+    "grid": [
+      256,
+      256,
+      256
+    ],
+    "frames_each": 12,
+    "decoded": true,
+    "input_recipe": "Checkpoint native keypoint reader, including revised robot bank"
+  }
 }
