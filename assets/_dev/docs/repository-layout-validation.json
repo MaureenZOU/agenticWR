@@ -1,0 +1,159 @@
+{
+  "baseline": "d3f33e4",
+  "root_entries": [
+    ".gitignore",
+    "README.md",
+    "assets",
+    "index.html"
+  ],
+  "builder": "ghcr.io/actions/jekyll-build-pages:v1.0.13 (github-pages 232 / Jekyll 3.10.0)",
+  "public_files_compared": 399,
+  "public_bytes_compared": 739682180,
+  "public_paths_and_bytes_unchanged": true,
+  "local_preview_matches_build": true,
+  "http_checks": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 16476
+    },
+    {
+      "path": "method.html",
+      "status": 200,
+      "bytes": 5709
+    },
+    {
+      "path": "results.html",
+      "status": 200,
+      "bytes": 3189
+    },
+    {
+      "path": "action.html",
+      "status": 200,
+      "bytes": 592
+    },
+    {
+      "path": "representation.html",
+      "status": 200,
+      "bytes": 600
+    },
+    {
+      "path": "real-robot.html",
+      "status": 200,
+      "bytes": 588
+    },
+    {
+      "path": "zoo.html",
+      "status": 200,
+      "bytes": 600
+    },
+    {
+      "path": "app.js",
+      "status": 200,
+      "bytes": 4652
+    },
+    {
+      "path": "styles.css",
+      "status": 200,
+      "bytes": 53389
+    },
+    {
+      "path": "assets/vendor/three.module.js",
+      "status": 200,
+      "bytes": 603113
+    },
+    {
+      "path": "assets/representation/catalog.json",
+      "status": 200,
+      "bytes": 51579
+    },
+    {
+      "path": "assets/lab/poses/pliers.json",
+      "status": 200,
+      "bytes": 19847
+    },
+    {
+      "path": "assets/lab/poses/pliers.bin.gz",
+      "status": 200,
+      "bytes": 6995993
+    },
+    {
+      "path": "assets/lab/grasp/sharpa-mug.json",
+      "status": 200,
+      "bytes": 172052
+    },
+    {
+      "path": "assets/demos/catalog.json",
+      "status": 200,
+      "bytes": 10636
+    },
+    {
+      "videoRangeStatus": 206,
+      "contentRange": "bytes 100-1123/1851540"
+    }
+  ],
+  "browser_checks": {
+    "realDeepLink": "Real robot",
+    "tables": [
+      {
+        "category": "Reconstruction",
+        "charts": 0,
+        "visible": [
+          "Articulated \u00b7 100 articulated objects"
+        ]
+      },
+      {
+        "category": "Ablations",
+        "charts": 0,
+        "visible": [
+          "Structural conditioning \u00b7 10 rigid objects"
+        ]
+      },
+      {
+        "category": "Grasp optimization",
+        "charts": 0,
+        "visible": [
+          "Duck \u00b7 simulation"
+        ]
+      },
+      {
+        "category": "Real robot",
+        "charts": 0,
+        "visible": [
+          "In-distribution"
+        ]
+      }
+    ],
+    "method": {
+      "brokenImages": 0,
+      "title": "Geometry that exposes gradients."
+    },
+    "object": {
+      "controls": 1,
+      "frame": "8",
+      "pose": "{\"j_0_1\":8}",
+      "ready": "true",
+      "references": 29,
+      "revision": "1"
+    },
+    "legacyRedirect": "http://127.0.0.1:4176/agenticWR/index.html#representation",
+    "zoo": {
+      "softTiles": 13,
+      "selected": "008-pink-cloth"
+    },
+    "grasp": {
+      "hand": "sharpa",
+      "object": "mug",
+      "phase": "Hold & shake",
+      "time": "8.00",
+      "validated": "true"
+    },
+    "actionRedirect": "http://127.0.0.1:4176/agenticWR/index.html#optimization",
+    "errors": []
+  },
+  "geometry_checks": {
+    "legacy_poses": 1125,
+    "inferred_object_poses": 244,
+    "passed": true
+  }
+}

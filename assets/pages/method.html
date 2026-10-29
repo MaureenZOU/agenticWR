@@ -1,0 +1,56 @@
+---
+layout: null
+permalink: /method.html
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agentic World Representation (AWR) connects structured object geometry to robot action through differentiable grasp optimization and policy learning.">
+  <meta name="theme-color" content="#7846B8">
+  <title>Method | Agentic World Representation</title>
+  <meta property="og:title" content="Method | Agentic World Representation">
+  <meta property="og:description" content="Structured object geometry for grasp optimization and robot policy learning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maureenzou.github.io/agenticWR/method.html">
+  <link rel="canonical" href="https://maureenzou.github.io/agenticWR/method.html">
+  <link rel="icon" href="assets/project-icon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/palette/style-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/story-layout.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link rel="stylesheet" href="assets/refined-pages.css">
+  <script type="module" src="app.js"></script>
+  <link rel="stylesheet" href="assets/research-pages.css">
+  <link rel="stylesheet" href="assets/project-page.css">
+</head>
+<body class="story-layout multipage-layout" data-page="method">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="header">
+  <div class="nav-wrap">
+    <a class="project-home" href="index.html" translate="no" aria-label="Agentic World Representation home">Agentic World Representation</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">＋</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="method.html" class="active" aria-current="page">Method</a>
+      <a href="results.html">Results</a>
+    </nav>
+    <span class="lab-name" translate="no">IEI Lab</span>
+  </div>
+</header>
+<main id="main"><article class="method-article wrap"><header class="stacked-heading"><h1>Geometry that exposes gradients.</h1><p>From WorldString to ∂O<sub>θ</sub>: structured object models for reconstruction and action optimization.</p></header>
+<img id="partial-teaser" class="method-figure method-teaser" src="assets/research/partial-teaser.png" width="2800" height="1368" alt="Partial O theta teaser: learning shared neural objects across articulated, skinned and deformable identities, then optimizing hand keypoints through frozen geometry">
+<section><h2>WorldString: one model, one object</h2><p>WorldString conditions learnable object embeddings on an ordered set of structural keypoints K. A State Transformer encodes the configuration, an Object Transformer integrates the features, and a Voxel Transformer predicts occupancy at any spatial query x.</p><div class="method-equation">O<sub>θ</sub>(x; K) = Φ<sub>v</sub>(Pos(x), Φ<sub>o</sub>(Φ<sub>s</sub>(ω<sub>0</sub>, K)))</div><img class="method-figure" src="assets/research/worldstring-method.png" alt="Original WorldString architecture: state, object and voxel transformers"></section>
+<section><h2>∂O<sub>θ</sub>: shared structure, changing configuration</h2><p>A shared neural object separates persistent structure z from current keypoints K and global position c. PCA identifies coordinated motion in observed keypoints; the complementary features encode the object's persistent structure. Shared query features support occupancy and signed distance, with surface normals obtained from the SDF gradient.</p><div class="method-equation">O<sub>θ</sub>(x; z, K, c) → {p<sup>occ</sup>(x), d(x), n(x)}<br><span>n(x) = ∇<sub>x</sub>d(x) / max(‖∇<sub>x</sub>d(x)‖, ε)</span></div><img class="method-figure" src="assets/research/partial-representation.png" alt="Partial O theta shared representation and PCA structure-configuration decomposition"></section>
+<section><h2>Frozen geometry, optimized actions</h2><p>The hand and target object provide differentiable distance and normal queries. Contact, force balance, torque balance and penetration objectives guide the hand configuration. Model weights remain fixed while gradients update joint angles and hand pose. The optimized trajectories provide state–action demonstrations for policy learning.</p><div class="method-equation">u = (q, t, ω), &nbsp; u<sup>(k+1)</sup> = u<sup>(k)</sup> − η ∇<sub>u</sub>ℒ<br><span>∇<sub>q</sub>ℒ = (∂K<sub>H</sub> / ∂q)<sup>T</sup> ∇<sub>K<sub>H</sub></sub>ℒ</span></div><img class="method-figure" src="assets/research/partial-optimization.png" alt="Grasp objectives backpropagate through frozen hand and object models to optimize XHand configurations"></section>
+</article></main>
+<nav class="page-pagination wrap" aria-label="Page navigation">
+  <a class="previous-page" href="index.html#experiments"><span aria-hidden="true">←</span><span><small>Previous</small>Overview</span></a>
+  <a class="next-page" href="results.html"><span><small>Next</small>Results</span><span aria-hidden="true">→</span></a>
+</nav>
+<footer class="footer project-footer wrap"><div class="footer-content"><p>Agentic World Representation</p><div class="footer-links"><a href="method.html">Method</a><a href="#main">Back to top ↑</a></div></div></footer>
+<noscript><p class="noscript-note">Enable JavaScript for interactive geometry, animations, and result tables. The navigation links work without JavaScript.</p></noscript>
+</body>
+</html>

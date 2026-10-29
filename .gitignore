@@ -3,3 +3,6 @@
 node_modules/
 __pycache__/
 *.pyc
+_site/
+.jekyll-cache/
+.jekyll-metadata
