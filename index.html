@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="assets/refined-pages.css">
   <link rel="stylesheet" href="assets/representation.css">
   <link rel="stylesheet" href="assets/homepage.css">
-  <script type="module" src="app.js?v=20261029-constrained-poses-v1"></script>
+  <script type="module" src="app.js?v=20261029-grasp-layout-v1"></script>
   <script type="module" src="assets/homepage.js"></script>
-  <script type="module" src="assets/gradient-embedding.js?v=20261029-real-embedding-v1"></script>
+  <script type="module" src="assets/gradient-embedding.js?v=20261029-grasp-layout-v1"></script>
   <link rel="stylesheet" href="assets/research-pages.css">
   <link rel="stylesheet" href="assets/project-page.css?v=20261029-constrained-poses-v1">
-  <link rel="stylesheet" href="assets/lab.css?v=20261029-real-embedding-v1">
+  <link rel="stylesheet" href="assets/lab.css?v=20261029-grasp-layout-v1">
 </head>
 <body class="story-layout multipage-layout combined-project" data-page="overview">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -181,12 +181,12 @@
      <rect x="6" y="104" width="408" height="245" rx="12"/>
      <text x="210" y="129">Hand keypoints</text>
      <g id="gradient-row-labels"></g>
-     <foreignObject x="48" y="150" width="198" height="162"><div xmlns="http://www.w3.org/1999/xhtml" class="gradient-heatmap-wrap"><canvas id="gradient-heatmap" width="256" height="180" role="img" aria-label="18 by 128 recorded keypoint embedding heatmap"></canvas></div></foreignObject>
-     <use href="#gradient-native-hand" transform="translate(257 147)" aria-hidden="true"/>
-     <text class="gradient-embedding-label" id="gradient-matrix-caption" x="147" y="327">ΔE this step · 18 × 128</text>
-     <text class="gradient-embedding-label" x="327" y="327">XHand · 18 KP</text>
-     <foreignObject x="48" y="334" width="198" height="6"><div xmlns="http://www.w3.org/1999/xhtml" class="gradient-color-legend"></div></foreignObject>
-     <text class="gradient-range-label" id="gradient-range-low" x="45" y="340">−</text><text class="gradient-range-label" id="gradient-range-high" x="254" y="340">+</text>
+     <foreignObject x="48" y="158" width="148" height="144"><div xmlns="http://www.w3.org/1999/xhtml" class="gradient-heatmap-wrap"><canvas id="gradient-heatmap" width="256" height="180" role="img" aria-label="18 by 128 recorded keypoint embedding heatmap"></canvas></div></foreignObject>
+     <use href="#gradient-native-hand" transform="translate(213 134) scale(1.25)" aria-hidden="true"/>
+     <text class="gradient-embedding-label" id="gradient-matrix-caption" x="122" y="320">ΔE this step · 18 × 128</text>
+     <text class="gradient-embedding-label" x="303" y="339">XHand · 18 KP</text>
+     <foreignObject x="48" y="330" width="148" height="6"><div xmlns="http://www.w3.org/1999/xhtml" class="gradient-color-legend"></div></foreignObject>
+     <text class="gradient-range-label" id="gradient-range-low" x="45" y="336">−</text><text class="gradient-range-label" id="gradient-range-high" x="204" y="336">+</text>
     </g>
     <path class="gradient-wire" d="M210 103V70"/>
     <g class="gradient-node joints"><rect x="90" y="11" width="240" height="50" rx="12"/><text x="210" y="42">Finger joint angles · q</text></g>

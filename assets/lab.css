@@ -41,7 +41,7 @@
 #lab-object-list button[aria-pressed=true] { border-color: #a58bba; background: #f8f4fb; }
 #lab-object-list img { width: 100%; aspect-ratio: 1.25; object-fit: contain; }
 #lab-object-list span { display: block; font-size: 10px; line-height: 1.15; color: #73657e; }
-.grasp-layout { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(300px,1fr); align-items: stretch; gap: 36px; }
+.grasp-layout { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(300px,1fr); align-items: start; gap: 36px; }
 .grasp-workbench { min-width: 0; overflow: hidden; border: 1px solid #e0e5e9; border-radius: 14px; }
 .grasp-choices { display: grid; gap: 12px; padding: 17px 18px; border-bottom: 1px solid #e2e6eb; }
 .grasp-choice-row { display: flex; align-items: center; gap: 14px; }
@@ -55,7 +55,7 @@
 .grasp-scene-heading span { color: #83909a; font-variant-numeric: tabular-nums; }
 .grasp-playback { position: absolute; bottom: 14px; right: 16px; display: flex; gap: 7px; }
 .grasp-playback button { cursor: pointer; background: #ffffffde; padding: 7px 12px; border: 1px solid #d8dfe5; color: #637280; border-radius: 6px; font-size: 12px; }
-.grasp-charts { display: grid; grid-template-columns: 1fr 1fr; background: #fff; border-top: 1px solid #e2e6eb; padding: 13px 17px 5px; gap: 23px; }
+.grasp-charts { display: grid; grid-template-columns: minmax(0,1fr); background: #fff; border-top: 1px solid #e2e6eb; padding: 13px 17px 5px; gap: 23px; }
 .grasp-charts h4 { display: flex; justify-content: space-between; color: #65737e; font-size: 12px; margin: 0 0 3px; font-weight: 400; }
 .grasp-charts output { color: #a284b8; font-variant-numeric: tabular-nums; }
 .grasp-charts svg { display: block; width: 100%; height: 72px; }
@@ -143,19 +143,20 @@
 #grasp-timeline{position:absolute;bottom:19px;left:18px;width:calc(100% - 195px);accent-color:#9b7bb3;height:4px;cursor:pointer}
 .grasp-viewport{height:450px}
 @media(min-width:761px){.object-lab .lab-pane,.object-lab .object-drawer{height:600px}.object-lab .lab-viewport{height:auto;min-height:0;flex:1}.object-lab #lab-object-list{min-height:0;max-height:none}}
-.grasp-charts{gap:20px;padding:16px 17px 10px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.grasp-charts{gap:16px;padding:18px 20px 14px}
+.grasp-charts>div+div{border-top:1px solid #edf0f3;padding-top:16px}
 .grasp-charts h4{font-size:12px;font-weight:500;margin-bottom:10px;gap:10px}
 .grasp-charts h4>span{color:#98a0a8;font-weight:400;font-size:10px}
 .grasp-charts svg{height:148px;overflow:visible}
-.grasp-joint-plot{display:grid;grid-template-columns:80px minmax(0,1fr);gap:3px;align-items:start}
-#grasp-joint-legend{list-style:none;padding:10px 0 0;margin:0;display:grid;gap:10px}
-#grasp-joint-legend li{display:flex;align-items:center;gap:5px;color:#697582;font-size:9px;white-space:nowrap}
+.grasp-joint-plot{display:block}
+#grasp-joint-legend{list-style:none;padding:0;margin:0 0 10px;display:flex;flex-wrap:wrap;gap:8px 14px}
+#grasp-joint-legend li{display:flex;align-items:center;gap:5px;color:#697582;font-size:10px;white-space:nowrap}
 #grasp-joint-legend i{width:11px;height:2px;display:block;flex-shrink:0}
 .chart-grid{stroke:#e9edf0;stroke-width:1;stroke-dasharray:3 3}
 .chart-axis{stroke:#aab4be;stroke-width:1;fill:none}
-.chart-tick{font-size:9px;fill:#80909d;font-family:inherit}
-.chart-label{font-size:9px;fill:#7c8b98;font-family:inherit}
-@media(max-width:600px){.grasp-charts{grid-template-columns:1fr;gap:18px;padding:16px}.grasp-joint-plot{grid-template-columns:90px minmax(0,1fr)}#grasp-joint-legend li{font-size:11px}.grasp-charts svg{height:155px}}
+.chart-tick{font-size:10px;fill:#80909d;font-family:inherit}
+.chart-label{font-size:10px;fill:#7c8b98;font-family:inherit}
+@media(max-width:600px){.grasp-charts{gap:18px;padding:16px}#grasp-joint-legend li{font-size:11px}.grasp-charts svg{height:148px}}
 
 /* Compact source-image catalogue: five objects per row at every width. */
 .object-lab #lab-object-list{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;padding-inline:10px}

@@ -42,10 +42,12 @@ export async function mountGraspLab(){
  }
  function drawCharts(index){
   const n=data.jointNames.length,frames=data.frames.slice(0,index+1),stride=Math.max(1,Math.floor(frames.length/100)),sample=frames.filter((_,i)=>i%stride===0);if(sample.at(-1)!==frames.at(-1))sample.push(frames.at(-1));
+  const chartWidth=Math.max(180,$('#grasp-loss').clientWidth);
+  for(const chart of [$('#grasp-joints'),$('#grasp-loss')])chart.setAttribute('viewBox',`0 0 ${chartWidth} 148`);
   const peak=Math.max(...data.frames.map(f=>f[n+16]),.01),unit=10**Math.floor(Math.log10(peak)),maximum=Math.ceil(peak/unit)*unit;
-  const lossAxes=plotAxes(350,0,maximum,[0,maximum/2,maximum],'Loss');
+  const lossAxes=plotAxes(chartWidth,0,maximum,[0,maximum/2,maximum],'Loss');
   $('#grasp-loss').innerHTML=lossAxes.markup+`<polyline points="${sample.map(f=>`${lossAxes.x(f[0])},${lossAxes.y(f[n+16])}`).join(' ')}" fill="none" stroke="#9970b9" stroke-width="2"/>`;
-  const axes=plotAxes(260,-20,120,[0,60,120],'Angle (°)');
+  const axes=plotAxes(chartWidth,-20,120,[0,60,120],'Angle (°)');
   $('#grasp-joints').innerHTML=axes.markup+chartJoints.map(j=>`<polyline points="${sample.map(f=>`${axes.x(f[0])},${axes.y(f[1+j.index]*180/Math.PI)}`).join(' ')}" fill="none" stroke="${j.color}" stroke-width="1.7"/>`).join('');
   $('#grasp-loss-value').textContent=data.frames[index][n+16].toFixed(3);
  }
@@ -79,5 +81,6 @@ export async function mountGraspLab(){
  for(const [id,name] of Object.entries(names)){const b=document.createElement('button');b.type='button';b.dataset.hand=id;b.textContent=name;b.setAttribute('aria-pressed',String(id===kind));b.addEventListener('click',()=>{kind=id;$('#grasp-hands').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));choose();});$('#grasp-hands').append(b);}
  $('#grasp-play').addEventListener('click',()=>{playing=!playing;sync();});$('#grasp-restart').addEventListener('click',()=>{time=0;playing=true;sync();showFrame();});$('#grasp-timeline').addEventListener('input',e=>{time=Number(e.target.value);playing=false;sync();showFrame();});
  await choose();root.dataset.ready='true';new IntersectionObserver(([e])=>{visible=e.isIntersecting;sync();}).observe(root);
+ new ResizeObserver(()=>{if(data)drawCharts(Math.min(data.frames.length-1,Math.floor(time*50)));}).observe($('.grasp-charts'));
  function tick(now){requestAnimationFrame(tick);const dt=Math.min((now-last)/1000,.05);last=now;if(!visible||document.hidden)return;if(playing){time+=dt;if(time>8.8)time=0;}showFrame();stage.render();}requestAnimationFrame(tick);
 }

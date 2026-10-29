@@ -44,7 +44,7 @@ async function initOverview() {
 }
 
 async function initAction() {
-  const {mountGraspLab} = await import('./assets/grasp-lab.js?v=20261029-constrained-poses-v1');
+  const {mountGraspLab} = await import('./assets/grasp-lab.js?v=20261029-grasp-layout-v1');
   await mountGraspLab();
 }
 async function initZoo() {

@@ -25,6 +25,8 @@ function mount() {
   }
   function build() {
     const hand=$('#gradient-native-hand'), labels=$('#gradient-row-labels');
+    const heatmapBox=canvas.closest('foreignObject'), rowHeight=Number(heatmapBox.getAttribute('height'))/18;
+    const rowWidth=Number(heatmapBox.getAttribute('x'))+Number(heatmapBox.getAttribute('width'))-13;
     nativeLines=data.manifest.edges.map(edge=>({edge,line:node('line',{class:'gradient-native-bone'},hand)}));
     nativePoints=data.manifest.keypoint_names.map((name,i)=>{
       const p=node('circle',{r:3.8,class:'gradient-native-kp','data-kp':i},hand);
@@ -32,11 +34,11 @@ function mount() {
       return p;
     });
     for(let row=0;row<18;row++) {
-      const y=150+row*9;
+      const y=Number(heatmapBox.getAttribute('y'))+row*rowHeight;
       const group=node('g',{'data-kp-row':row,tabindex:0,role:'button','aria-label':`Inspect keypoint ${row}: ${data.manifest.keypoint_names[row]}`},labels);
-      const hit=node('rect',{x:13,y:y-.5,width:235,height:9,rx:1,class:'gradient-row-hit'},group);rowHits.push(hit);
-      node('text',{x:25,y:y+6.7,class:'gradient-row-number'},group).textContent=row;
-      rowSwatches.push(node('rect',{x:32,y:y+.7,width:9,height:7,class:'gradient-row-swatch'},group));
+      const hit=node('rect',{x:13,y:y-.5,width:rowWidth,height:rowHeight,rx:1,class:'gradient-row-hit'},group);rowHits.push(hit);
+      node('text',{x:25,y:y+rowHeight*.75,class:'gradient-row-number'},group).textContent=row;
+      rowSwatches.push(node('rect',{x:32,y:y+.7,width:9,height:rowHeight-2,class:'gradient-row-swatch'},group));
       group.addEventListener('pointerenter',()=>select(row));group.addEventListener('pointerleave',()=>select(-1));
       group.addEventListener('click',()=>{paused=true;sync();select(row);detail.textContent=`KP ${row} · ${data.manifest.keypoint_names[row]}`;});
       group.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();group.dispatchEvent(new Event('click'));}});
