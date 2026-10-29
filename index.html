@@ -22,9 +22,10 @@
   <link rel="stylesheet" href="assets/homepage.css">
   <script type="module" src="app.js?v=20261029-constrained-poses-v1"></script>
   <script type="module" src="assets/homepage.js"></script>
+  <script type="module" src="assets/gradient-embedding.js?v=20261029-real-embedding-v1"></script>
   <link rel="stylesheet" href="assets/research-pages.css">
   <link rel="stylesheet" href="assets/project-page.css?v=20261029-constrained-poses-v1">
-  <link rel="stylesheet" href="assets/lab.css?v=20261029-keypoint-embedding-v2">
+  <link rel="stylesheet" href="assets/lab.css?v=20261029-real-embedding-v1">
 </head>
 <body class="story-layout multipage-layout combined-project" data-page="overview">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -131,27 +132,23 @@
   <aside class="grasp-method" id="gradient-flow">
    <h3>From geometry to joint updates</h3>
    <p>The hand and object networks stay frozen. Gradients pass through both fields to the hand keypoints, then through hand kinematics to finger joint angles.</p>
-   <svg class="grasp-gradient" viewBox="0 0 420 613" role="img" aria-label="Optimization grasp loss propagates upward through the fixed hand and object networks to hand keypoints and joint angles. Colored hand keypoints move with articulated fingers and correspond to rows of an illustrative embedding matrix. Duck geometry stays still while its keypoint colors change independently of the neural networks. Snowflakes indicate fixed network weights.">
+   <div class="gradient-replay-controls" aria-label="Recorded embedding playback">
+    <div class="gradient-modes" role="group" aria-label="Embedding values"><button type="button" data-embedding-mode="delta" aria-pressed="true" disabled>ΔE</button><button type="button" data-embedding-mode="embedding" aria-pressed="false" disabled>E</button><button type="button" data-embedding-mode="gradient" aria-pressed="false" disabled>∂L/∂E</button></div>
+    <button type="button" id="gradient-replay-toggle" aria-label="Pause recorded optimization" disabled>Pause</button><output id="gradient-replay-step">Loading recorded run…</output>
+   </div>
+   <svg class="grasp-gradient" viewBox="0 0 420 708" role="img" aria-label="Recorded optimization of native XHand against a learned duck field. Each of 18 keypoints maps to one row of 128 actual network features. E, per-step change Delta E, and the loss gradient are available. Skeleton motion uses the same recorded forward kinematics. Both networks remain frozen.">
     <defs>
      <marker id="lab-flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#a38ab5"/></marker>
      <g id="gradient-snowflake" class="gradient-snowflake"><path d="M0-8V8M-7-4L7 4M-7 4L7-4M-3-6L0-3L3-6M-3 6L0 3L3 6M-7-1L-3.5-2L-4-5.5M7 1L3.5 2L4 5.5M-4 5.5L-3.5 2L-7 1M4-5.5L3.5-2L7-1"/></g>
-     <g id="gradient-hand-pose" class="gradient-hand-pose">
-      <path class="gradient-hand-palm" d="M27 54Q48 48 75 56L78 73Q77 86 65 94L64 106H41L40 94Q24 87 22 73Z"/>
-      <path class="gradient-hand-metacarpals" d="M41 91L30 55M49 90L46 51M57 90L62 54M65 90L76 60M41 91L27 72"/>
-      <g transform="translate(27 72)" class="gradient-kp-thumb"><g class="gradient-finger" style="--bend:-13deg;--phase:-.4s"><path class="gradient-hand-bone" d="M0 0L-13-10L-21-22"/><circle class="gradient-hand-knuckle" r="4"/><circle class="gradient-hand-knuckle" cx="-13" cy="-10" r="3.5"/><circle class="gradient-hand-tip" cx="-21" cy="-22" r="4.5"/></g></g>
-      <g transform="translate(30 55)" class="gradient-kp-index"><g class="gradient-finger" style="--bend:12deg;--phase:0s"><path class="gradient-hand-bone" d="M0 0L-2-19"/><circle class="gradient-hand-knuckle" r="4"/><g transform="translate(-2 -19)"><g class="gradient-finger-tip" style="--curl:14deg"><path class="gradient-hand-bone" d="M0 0L1-14L3-25"/><circle class="gradient-hand-knuckle" r="3.5"/><circle class="gradient-hand-knuckle" cx="1" cy="-14" r="3"/><circle class="gradient-hand-tip" cx="3" cy="-25" r="4.5"/></g></g></g></g>
-      <g transform="translate(46 51)" class="gradient-kp-middle"><g class="gradient-finger" style="--bend:7deg;--phase:-.25s"><path class="gradient-hand-bone" d="M0 0L0-21"/><circle class="gradient-hand-knuckle" r="4"/><g transform="translate(0 -21)"><g class="gradient-finger-tip" style="--curl:18deg"><path class="gradient-hand-bone" d="M0 0L1-15L3-27"/><circle class="gradient-hand-knuckle" r="3.5"/><circle class="gradient-hand-knuckle" cx="1" cy="-15" r="3"/><circle class="gradient-hand-tip" cx="3" cy="-27" r="4.5"/></g></g></g></g>
-      <g transform="translate(62 54)" class="gradient-kp-ring"><g class="gradient-finger" style="--bend:3deg;--phase:-.5s"><path class="gradient-hand-bone" d="M0 0L1-19"/><circle class="gradient-hand-knuckle" r="4"/><g transform="translate(1 -19)"><g class="gradient-finger-tip" style="--curl:22deg"><path class="gradient-hand-bone" d="M0 0L2-14L3-24"/><circle class="gradient-hand-knuckle" r="3.5"/><circle class="gradient-hand-knuckle" cx="2" cy="-14" r="3"/><circle class="gradient-hand-tip" cx="3" cy="-24" r="4.5"/></g></g></g></g>
-      <g transform="translate(76 60)" class="gradient-kp-little"><g class="gradient-finger" style="--bend:-7deg;--phase:-.75s"><path class="gradient-hand-bone" d="M0 0L4-15"/><circle class="gradient-hand-knuckle" r="4"/><g transform="translate(4 -15)"><g class="gradient-finger-tip" style="--curl:24deg"><path class="gradient-hand-bone" d="M0 0L2-11L2-20"/><circle class="gradient-hand-knuckle" r="3.5"/><circle class="gradient-hand-knuckle" cx="2" cy="-11" r="3"/><circle class="gradient-hand-tip" cx="2" cy="-20" r="4.5"/></g></g></g></g>
-     </g>
+     <g id="gradient-native-hand"></g>
     </defs>
-    <g class="gradient-node loss"><rect x="65" y="517" width="290" height="78" rx="12"/><text x="210" y="549">Optimization Grasp Loss</text><text class="gradient-loss-terms" x="210" y="574">Contact, Banlance, Penetration</text></g>
-    <path class="gradient-wire" d="M210 516V490H103V468"/><path class="gradient-wire" d="M210 516V490H317V468"/>
-    <g class="gradient-node gradient-network" transform="translate(6 310)">
+    <g class="gradient-node loss"><rect x="65" y="612" width="290" height="78" rx="12"/><text x="210" y="644">Optimization Grasp Loss</text><text class="gradient-loss-terms" x="210" y="669">Contact, Banlance, Penetration</text></g>
+    <path class="gradient-wire" d="M210 611V585H103V563"/><path class="gradient-wire" d="M210 611V585H317V563"/>
+    <g class="gradient-node gradient-network" transform="translate(6 405)">
      <rect width="191" height="150" rx="14"/>
      <use href="#gradient-snowflake" x="17" y="18"/>
      <text class="gradient-network-title" x="105" y="29">Hand network</text>
-     <use class="gradient-hand" href="#gradient-hand-pose" transform="translate(14 51) scale(.81)" aria-hidden="true"/>
+     <use class="gradient-hand" href="#gradient-native-hand" transform="translate(13 48) scale(.54)" aria-hidden="true"/>
      <g class="gradient-neural" transform="translate(108 57)" aria-hidden="true">
       <g class="gradient-neural-edges gradient-neural-lower"><path d="M5 72L5 40M5 72L31 40M5 72L57 40M31 72L5 40M31 72L31 40M31 72L57 40M57 72L5 40M57 72L31 40M57 72L57 40"/></g>
       <g class="gradient-neural-edges gradient-neural-upper"><path d="M5 40L5 8M5 40L31 8M5 40L57 8M31 40L5 8M31 40L31 8M31 40L57 8M57 40L5 8M57 40L31 8M57 40L57 8"/></g>
@@ -160,7 +157,7 @@
       <g class="gradient-neural-layer gradient-neural-output"><circle cx="5" cy="8" r="5.5"/><circle cx="31" cy="8" r="5.5"/><circle cx="57" cy="8" r="5.5"/></g>
      </g>
     </g>
-    <g class="gradient-node gradient-network" transform="translate(223 310)">
+    <g class="gradient-node gradient-network" transform="translate(223 405)">
      <rect width="191" height="150" rx="14"/>
      <use href="#gradient-snowflake" x="17" y="18"/>
      <text class="gradient-network-title" x="105" y="29">Object network</text>
@@ -168,8 +165,8 @@
       <path class="gradient-duck-body" d="M7 48L2 37Q14 43 24 38Q31 34 40 36L43 26Q37 21 40 13Q43 3 54 3Q67 2 70 13Q73 23 64 29L62 38Q78 43 77 54Q74 72 53 75Q27 79 12 66Q5 59 7 48Z"/>
       <path class="gradient-duck-beak" d="M69 16L81 20L69 25L64 22Z"/>
       <path class="gradient-duck-wing" d="M21 49Q35 40 52 49Q48 63 31 62Q24 58 21 49Z"/>
-      <path class="gradient-duck-links" d="M9 43L26 48L48 52L67 52M26 48L30 65L54 68L67 52M48 52L52 36L55 16M52 36L67 52"/>
-      <g class="gradient-duck-keypoints"><circle cx="9" cy="43" r="2.6"/><circle cx="26" cy="48" r="2.6"/><circle cx="48" cy="52" r="2.6"/><circle cx="67" cy="52" r="2.6"/><circle cx="30" cy="65" r="2.6"/><circle cx="54" cy="68" r="2.6"/><circle cx="52" cy="36" r="2.6"/><circle cx="55" cy="16" r="2.6"/></g>
+
+      <g class="gradient-duck-keypoints"><circle id="gradient-duck-center" cx="43" cy="51" r="3.5"><title>Duck: one fixed canonical center keypoint; color shows its actual embedding gradient magnitude.</title></circle></g>
      </g>
      <g class="gradient-neural" transform="translate(108 57)" aria-hidden="true">
       <g class="gradient-neural-edges gradient-neural-lower"><path d="M5 72L5 40M5 72L31 40M5 72L57 40M31 72L5 40M31 72L31 40M31 72L57 40M57 72L5 40M57 72L31 40M57 72L57 40"/></g>
@@ -179,24 +176,23 @@
       <g class="gradient-neural-layer gradient-neural-output"><circle cx="5" cy="8" r="5.5"/><circle cx="31" cy="8" r="5.5"/><circle cx="57" cy="8" r="5.5"/></g>
      </g>
     </g>
-    <path class="gradient-wire" d="M103 309V282H210V257"/><path class="gradient-wire" d="M317 309V282H210V257"/>
+    <path class="gradient-wire" d="M103 404V378H210V357"/><path class="gradient-wire" d="M317 404V378H210V357"/>
     <g class="gradient-node keypoints">
-     <rect x="62" y="104" width="296" height="145" rx="12"/>
-     <text x="210" y="128">Hand keypoints</text>
-     <use href="#gradient-hand-pose" transform="translate(89 143) scale(.86)" aria-hidden="true"/>
-     <path class="gradient-embedding-arrow" d="M174 193H198M194 189L198 193L194 197"/>
-     <text class="gradient-embedding-label" x="275" y="150">KP embeddings</text>
-     <g class="gradient-embedding" aria-hidden="true">
-      <g class="gradient-embedding-row gradient-kp-thumb" transform="translate(223 159)"><text x="-13" y="8">k₁</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
-      <g class="gradient-embedding-row gradient-kp-index" transform="translate(223 175)"><text x="-13" y="8">k₂</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
-      <g class="gradient-embedding-row gradient-kp-middle" transform="translate(223 191)"><text x="-13" y="8">k₃</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
-      <g class="gradient-embedding-row gradient-kp-ring" transform="translate(223 207)"><text x="-13" y="8">k₄</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
-      <g class="gradient-embedding-row gradient-kp-little" transform="translate(223 223)"><text x="-13" y="8">k₅</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
-     </g>
+     <rect x="6" y="104" width="408" height="245" rx="12"/>
+     <text x="210" y="129">Hand keypoints</text>
+     <g id="gradient-row-labels"></g>
+     <foreignObject x="48" y="150" width="198" height="162"><div xmlns="http://www.w3.org/1999/xhtml" class="gradient-heatmap-wrap"><canvas id="gradient-heatmap" width="256" height="180" role="img" aria-label="18 by 128 recorded keypoint embedding heatmap"></canvas></div></foreignObject>
+     <use href="#gradient-native-hand" transform="translate(257 147)" aria-hidden="true"/>
+     <text class="gradient-embedding-label" id="gradient-matrix-caption" x="147" y="327">ΔE this step · 18 × 128</text>
+     <text class="gradient-embedding-label" x="327" y="327">XHand · 18 KP</text>
+     <foreignObject x="48" y="334" width="198" height="6"><div xmlns="http://www.w3.org/1999/xhtml" class="gradient-color-legend"></div></foreignObject>
+     <text class="gradient-range-label" id="gradient-range-low" x="45" y="340">−</text><text class="gradient-range-label" id="gradient-range-high" x="254" y="340">+</text>
     </g>
     <path class="gradient-wire" d="M210 103V70"/>
     <g class="gradient-node joints"><rect x="90" y="11" width="240" height="50" rx="12"/><text x="210" y="42">Finger joint angles · q</text></g>
    </svg>
+   <div class="gradient-replay-timeline"><input id="gradient-replay-time" type="range" min="0" max="0" step="1" value="0" aria-label="Recorded optimization step" disabled><output id="gradient-recorded-loss">Recorded XHand · Duck optimization</output></div>
+   <output id="gradient-embedding-detail" class="gradient-embedding-detail">Each row corresponds to one native keypoint</output>
   </aside>
  </div>
 </section>

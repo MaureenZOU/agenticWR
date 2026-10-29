@@ -62,7 +62,7 @@
 .grasp-method { padding-top: 13px; }
 .grasp-method h3 { font-size: clamp(21px,2vw,27px); font-weight: 500; line-height: 1.2; letter-spacing: -.5px; margin: 0 0 15px; color: #594b65; }
 .grasp-method > p { font-size: 15px; line-height: 1.65; color: #8a7b96; margin: 0 0 16px; max-width: 400px; }
-.grasp-gradient { width: 100%; max-height: 613px; display: block; }
+.grasp-gradient { width: 100%; max-height: 708px; display: block; }
 .gradient-node rect { fill: #faf8fc; stroke: #dfd5e7; stroke-width: 1; }
 .gradient-node.loss rect { fill: #f4eef8; }
 .gradient-node.keypoints rect { fill: #f2f7f8; stroke: #d8e6e8; }
@@ -71,51 +71,44 @@
 .gradient-node .gradient-detail,.gradient-detail { fill: #9785a4; text-anchor: middle; font-size: 11px; }
 .gradient-network .gradient-network-title { font-size: 16px; }
 .gradient-snowflake { fill: none; stroke: #7cacc5; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.gradient-hand-palm { fill: #eaf0f4; stroke: #bdcdd8; stroke-width: 1.3; }
-.gradient-hand-metacarpals { fill: none; stroke: #c4d1db; stroke-width: 2.5; stroke-linecap: round; }
-.gradient-hand-bone { fill: none; stroke: #a9bbc9; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.gradient-hand-knuckle { fill: #fff; stroke: currentColor; stroke-width: 2; }
-.gradient-hand-tip { fill: currentColor; stroke: #fff; stroke-width: 1.3; }
-.gradient-kp-thumb { color: #d68d79; }
-.gradient-kp-index { color: #54a5a1; }
-.gradient-kp-middle { color: #739ad0; }
-.gradient-kp-ring { color: #a57fc0; }
-.gradient-kp-little { color: #c1a052; }
-.gradient-finger,.gradient-finger-tip { transform-origin: 0 0; animation: gradient-finger-flex 6.8s ease-in-out infinite; animation-delay: var(--phase,0s); }
-.gradient-finger-tip { animation-name: gradient-finger-curl; }
-@keyframes gradient-finger-flex { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(var(--bend)); } }
-@keyframes gradient-finger-curl { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(var(--curl)); } }
-.gradient-embedding-arrow { fill: none; stroke: #a4b5bd; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.gradient-node .gradient-embedding-label { fill: #7c8d98; font-size: 11px; }
-.gradient-embedding-row text { fill: currentColor; font-size: 11px; }
-.gradient-node.keypoints .gradient-embedding-row rect { fill: currentColor; stroke: none; opacity: .55; animation: gradient-embedding-value 6.8s ease-in-out infinite; animation-delay: calc(var(--cell-phase,0s) + var(--row-phase,0s)); }
-.gradient-embedding-row:nth-child(2) { --row-phase: -.45s; }
-.gradient-embedding-row:nth-child(3) { --row-phase: -.9s; }
-.gradient-embedding-row:nth-child(4) { --row-phase: -1.35s; }
-.gradient-embedding-row:nth-child(5) { --row-phase: -1.8s; }
-.gradient-embedding-row rect:nth-of-type(2n) { --cell-phase: -1.7s; }
-.gradient-embedding-row rect:nth-of-type(3n) { --cell-phase: -3.4s; }
-.gradient-embedding-row rect:nth-of-type(5n) { --cell-phase: -5.1s; }
-@keyframes gradient-embedding-value { 0%,100% { opacity: .3; } 50% { opacity: .95; } }
 .gradient-node .gradient-loss-terms { fill: #9985aa; font-size: 12px; }
 .gradient-duck-body { fill: #f5e5be; stroke: #ceb275; stroke-width: 1.3; stroke-linejoin: round; }
 .gradient-duck-beak { fill: #eac98e; stroke: #c9a467; stroke-width: 1; }
 .gradient-duck-wing { fill: #eddaa8; stroke: #d1b77d; stroke-width: 1; }
-.gradient-duck-links { fill: none; stroke: #a78bb3; stroke-width: 1; stroke-dasharray: 2 3; opacity: .75; }
-.gradient-duck-keypoints circle { fill: #7898bd; stroke: #fff; stroke-width: 1; animation: gradient-kp-color 7.4s ease-in-out infinite; }
-.gradient-duck-keypoints circle:nth-child(2n) { animation-delay: -1.85s; }
-.gradient-duck-keypoints circle:nth-child(3n) { animation-delay: -3.7s; }
-.gradient-duck-keypoints circle:nth-child(5n) { animation-delay: -5.55s; }
-@keyframes gradient-kp-color { 0%,100% { fill: #7898bd; } 33% { fill: #c184a9; } 66% { fill: #78ad91; } }
-/* Fixed topology and a stationary snowflake; only gradient signals change color. */
-.gradient-neural-layer,.gradient-neural-edges { color: #aa8ac5; animation: gradient-neural-signal 3.6s ease-in-out infinite; }
-.gradient-neural-layer { fill: currentColor; stroke: #fff; stroke-width: 1.5; }
-.gradient-neural-edges { fill: none; stroke: currentColor; stroke-width: 1.1; opacity: .55; }
-.gradient-neural-lower { animation-delay: .25s; }
-.gradient-neural-hidden { animation-delay: .5s; }
-.gradient-neural-upper { animation-delay: .75s; }
-.gradient-neural-output { animation-delay: 1s; }
-@keyframes gradient-neural-signal { 0%,100% { color: #aa8ac5; } 28% { color: #5eaaa9; } 56% { color: #e5a064; } 80% { color: #9270b5; } }
+/* Native FK and learned features are painted from the same recorded step. */
+.gradient-duck-keypoints circle { fill: #7898bd; stroke: #fff; stroke-width: 1; }
+.gradient-neural-layer { fill: #aa8ac5; stroke: #fff; stroke-width: 1.5; }
+.gradient-neural-edges { fill: none; stroke: #b7adc3; stroke-width: 1.1; opacity: .55; }
+.gradient-native-bone { stroke: #7690af; stroke-width: 1.8; stroke-linecap: round; }
+.gradient-native-kp { stroke: #fff; stroke-width: .85; fill: #4f3d95; }
+.gradient-native-kp.is-highlighted { stroke: #40305b; stroke-width: 2.2; }
+.gradient-node .gradient-embedding-label { fill: #7c8d98; font-size: 10px; }
+.gradient-node .gradient-row-number { fill: #84909a; font-size: 7.8px; text-anchor: end; }
+.gradient-node.keypoints .gradient-row-swatch { stroke: none; }
+.gradient-node.keypoints .gradient-row-hit { fill: transparent; stroke: none; }
+.gradient-node.keypoints .gradient-row-hit.is-highlighted { fill: #b9a2d12b; }
+.gradient-node.keypoints g[role=button] { cursor: pointer; outline: none; }
+.gradient-node.keypoints g[role=button]:focus-visible .gradient-row-hit { stroke: #9876b6; stroke-width: 1; }
+.gradient-node .gradient-range-label { fill: #9aa3a9; font-size: 9px; }
+.gradient-heatmap-wrap,#gradient-heatmap { display: block; width: 100%; height: 100%; }
+#gradient-heatmap { image-rendering: pixelated; cursor: crosshair; }
+.gradient-color-legend { width: 100%; height: 100%; background: linear-gradient(90deg,#4f3d95,#2b7fbe,#35b19b,#60b879,#f3cf53,#ef933c,#d94e47); }
+.gradient-replay-controls { display: flex; align-items: center; gap: 9px; margin: 3px 0 12px; font-size: 11px; color: #8c7b99; }
+.gradient-modes { display: flex; padding: 2px; border-radius: 6px; background: #f1edf5; }
+.gradient-replay-controls button { padding: 4px 8px; border: 0; border-radius: 4px; background: none; color: #8a7897; cursor: pointer; font-size: 11px; }
+.gradient-modes button[aria-pressed=true] { background: #fff; color: #73558b; box-shadow: 0 1px 3px #3d285610; }
+.gradient-replay-controls button:disabled { opacity: .55; cursor: default; }
+#gradient-replay-step { margin-left: auto; font-variant-numeric: tabular-nums; }
+.gradient-replay-timeline { display: flex; align-items: center; gap: 10px; margin: 8px 8px 0; }
+#gradient-replay-time { min-width: 0; flex: 1; height: 3px; accent-color: #a082b9; cursor: pointer; }
+#gradient-recorded-loss { font-size: 10px; color: #8c7d98; font-variant-numeric: tabular-nums; }
+.gradient-embedding-detail { display: block; margin: 9px 8px 0; min-height: 17px; font-size: 10px; color: #94a0a8; }
+[data-embedding-playback=paused] .gradient-wire { animation-play-state: paused; }
+@media(min-width:581px) and (max-width:850px) {
+ .grasp-method .gradient-replay-controls,.grasp-method .gradient-replay-timeline,.grasp-method .gradient-embedding-detail { grid-column: 2; }
+ .grasp-method .gradient-replay-controls { grid-row: 1; align-self: start; }
+ .grasp-method .grasp-gradient { grid-row: 2 / 4; }
+}
 .gradient-wire { stroke: #ad95bf; stroke-width: 1.6; fill: none; marker-end: url(#lab-flow-arrow); stroke-dasharray: 5 5; animation: gradient-travel 1.8s linear infinite; }
 .is-paused .grasp-gradient * { animation-play-state: paused; }
 @keyframes gradient-travel { to { stroke-dashoffset: -30; } }
