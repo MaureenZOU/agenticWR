@@ -15,7 +15,7 @@
 .lab-canvas,#grasp-canvas { position: absolute; inset: 0; }
 .lab-canvas canvas,#grasp-canvas canvas { width: 100%; height: 100%; display: block; touch-action: none; }
 .lab-keypoints { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.lab-keypoint { position: absolute; left: 0; top: 0; width: 10px; height: 10px; border: 1.5px solid white; padding: 0; background: #ac85ca; border-radius: 50%; box-shadow: 0 0 0 2px #75538b22; pointer-events: auto; touch-action: none; cursor: grab; }
+.lab-keypoint { position: absolute; left: 0; top: 0; width: 14px; height: 14px; border: 2px solid white; padding: 0; background: #ac85ca; border-radius: 50%; box-shadow: 0 0 0 2px #75538b22; pointer-events: auto; touch-action: none; cursor: grab; }
 .lab-keypoint::after { content: ''; position: absolute; inset: -5px; }
 .lab-keypoint:hover,.lab-keypoint:focus-visible,.lab-keypoint.dragging { background: #f39b58; box-shadow: 0 0 0 4px #f39b5830; outline: none; }
 .hand-points .lab-keypoint { background: #5c9eaa; }
@@ -124,3 +124,7 @@
 .object-lab #lab-object-list img{aspect-ratio:1.28;object-fit:contain;background:#fff}
 .object-lab #lab-object-list span{font-size:9px;line-height:1.15;min-height:21px;display:flex;align-items:center;justify-content:center;overflow-wrap:anywhere}
 @media(max-width:760px){.object-lab .object-drawer{display:flex}.object-lab #lab-object-list{max-height:290px}.lab-pca-player{width:100%}}
+
+/* Sparse draggable controls, quiet non-interactive keypoint references. */
+.lab-keypoint-reference { position: absolute; left: 0; top: 0; width: 3px; height: 3px; border-radius: 50%; background: #786789; border: .5px solid #ffffffb8; opacity: .68; pointer-events: none; }
+.lab-interaction-hint { position: absolute; left: 12px; bottom: 11px; margin: 0; padding: 5px 8px; border-radius: 5px; background: #ffffffdc; color: #68717a; font-size: 10px; pointer-events: none; max-width: calc(100% - 24px); }

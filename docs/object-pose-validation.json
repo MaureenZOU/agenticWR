@@ -1,0 +1,34 @@
+[
+  {
+    "id": "pliers",
+    "poses": 31,
+    "controls": 1,
+    "references": 29,
+    "endpointChecks": 2,
+    "wholeSurfaceMatches": true
+  },
+  {
+    "id": "faucet",
+    "poses": 81,
+    "controls": 2,
+    "references": 41,
+    "endpointChecks": 4,
+    "wholeSurfaceMatches": true
+  },
+  {
+    "id": "toilet",
+    "poses": 51,
+    "controls": 2,
+    "references": 41,
+    "endpointChecks": 4,
+    "wholeSurfaceMatches": true
+  },
+  {
+    "id": "cabinet",
+    "poses": 81,
+    "controls": 2,
+    "references": 41,
+    "endpointChecks": 4,
+    "wholeSurfaceMatches": true
+  }
+]

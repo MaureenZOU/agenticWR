@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
-    "check": "node --check app.js && node --check assets/interactive-scenes.js && node --check assets/overview.js && node --check assets/method-results.js && node --check assets/policy-motion.js && node --check assets/policy-scenes.js && node --check assets/representation-workbench.js && node --check assets/representation-constraints.js && node --check assets/representation-splats.js && node --check assets/representation-splat-sort.js && node --check assets/results-page.js && node --check assets/action-page.js && node --check assets/zoo-page.js && node --check server.mjs && node --check assets/project-page.js && node --check assets/homepage.js && node --check assets/lab-scene.js && node --check assets/lab-objects.js && node --check assets/object-lab.js && node --check assets/grasp-lab.js",
-    "check:geometry": "node scripts/check-geometry.mjs && node scripts/check-policy-motion.mjs"
+    "check": "node --check app.js && node --check assets/interactive-scenes.js && node --check assets/overview.js && node --check assets/method-results.js && node --check assets/policy-motion.js && node --check assets/policy-scenes.js && node --check assets/representation-workbench.js && node --check assets/representation-constraints.js && node --check assets/representation-splats.js && node --check assets/representation-splat-sort.js && node --check assets/results-page.js && node --check assets/action-page.js && node --check assets/zoo-page.js && node --check server.mjs && node --check assets/project-page.js && node --check assets/homepage.js && node --check assets/lab-scene.js && node --check assets/lab-objects.js && node --check assets/object-lab.js && node --check assets/grasp-lab.js && node --check assets/object-pose-atlas.js",
+    "check:geometry": "node scripts/check-geometry.mjs && node scripts/check-policy-motion.mjs",
+    "check:objects": "node scripts/check-object-poses.mjs"
   },
   "type": "module"
 }

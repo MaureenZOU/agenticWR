@@ -39,10 +39,31 @@ export class NativeHand {
  solve(index,target,iterations=3){for(let n=0;n<iterations;n++){const before=this.q.slice(),p=this.points()[index],error=target.clone().sub(p);if(error.length()<.0005)break;const jac=[];for(let i=0;i<this.q.length;i++){const q=before.slice();q[i]+=.002;this.set(q);jac.push(this.points()[index].sub(p).multiplyScalar(500));}this.set(before);const denominator=.001+jac.reduce((s,v)=>s+v.lengthSq(),0);this.set(before.map((v,i)=>v+THREE.MathUtils.clamp(jac[i].dot(error)/denominator,-.10,.10)));}return this.q;}
 }
 export async function addRobot(stage,side){const rigs=await resource('./lab/rigs.json'),src=rigs[side];const arm=new THREE.Group();src.arm.forEach(p=>arm.add(meshPart(p)));stage.native.add(arm);const hand=new NativeHand(src.hand);hand.root.position.fromArray(src.hand.mount.pos);hand.root.quaternion.copy(matrixQuaternion(src.hand.mount.matrix));stage.native.add(hand.root);return {arm,hand,rigs};}
-export function handleOverlay(stage,layer,{points,drag,onStart=()=>{},label='Keypoint',labels=()=>[]}){
- let active=null,nodes=[];
- function rebuild(count){layer.replaceChildren();nodes=Array.from({length:count},(_,i)=>{const button=document.createElement('button');button.type='button';button.className='lab-keypoint';button.setAttribute('aria-label',`${label} ${i+1}`);button.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.preventDefault();e.stopPropagation();onStart();const p=points()[i];active={i,node:button,id:e.pointerId,plane:new THREE.Plane().setFromNormalAndCoplanarPoint(stage.camera.getWorldDirection(new THREE.Vector3()),p)};stage.controls.enabled=false;button.setPointerCapture(e.pointerId);button.classList.add('dragging');});button.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();onStart();const p=points()[i];p.addScaledVector(new THREE.Vector3().setFromMatrixColumn(stage.camera.matrixWorld,e.key==='ArrowLeft'||e.key==='ArrowRight'?0:1),e.key==='ArrowLeft'||e.key==='ArrowDown'?-.012:.012);drag(i,p);});layer.append(button);return button;});}
- function end(e){if(!active||e.pointerId!==active.id)return;active.node.classList.remove('dragging');if(active.node.hasPointerCapture(active.id))active.node.releasePointerCapture(active.id);active=null;stage.controls.enabled=true;}
- layer.addEventListener('pointermove',e=>{if(!active||e.pointerId!==active.id)return;const p=stage.ray(e).ray.intersectPlane(active.plane,new THREE.Vector3());if(p)drag(active.i,p);});layer.addEventListener('pointerup',end);layer.addEventListener('pointercancel',end);
- return {update(visible=true){const p=points();if(nodes.length!==p.length)rebuild(p.length);stage.camera.updateMatrixWorld();p.forEach((point,i)=>{const a=point.clone().project(stage.camera);nodes[i].setAttribute('aria-label',labels()[i]||`${label} ${i+1}`);nodes[i].title=labels()[i]||`${label} ${i+1}`;nodes[i].hidden=!visible||a.z< -1||a.z>1||Math.abs(a.x)>.96||Math.abs(a.y)>.94;nodes[i].style.transform=`translate(${(a.x*.5+.5)*stage.host.clientWidth-5}px,${(-a.y*.5+.5)*stage.host.clientHeight-5}px)`;});},get dragging(){return !!active;}};
+export function handleOverlay(stage,layer,{points,drag,onStart=()=>{},label='Keypoint',labels=()=>[],draggable=()=>true}){
+ let active=null,nodes=[],signature='';
+ function cancel(){if(!active)return;const old=active;active=null;old.node.classList.remove('dragging');if(old.node.hasPointerCapture(old.id))old.node.releasePointerCapture(old.id);stage.controls.enabled=true;}
+ function rebuild(mask){cancel();layer.replaceChildren();nodes=mask.map((enabled,i)=>{
+  const node=document.createElement(enabled?'button':'span');node.className=enabled?'lab-keypoint':'lab-keypoint-reference';
+  if(enabled){node.type='button';node.addEventListener('pointerdown',e=>{
+   if(e.button!==0||!draggable(i))return;e.preventDefault();e.stopPropagation();onStart();
+   const p=points()[i];active={i,node,id:e.pointerId,plane:new THREE.Plane().setFromNormalAndCoplanarPoint(stage.camera.getWorldDirection(new THREE.Vector3()),p)};
+   stage.controls.enabled=false;node.setPointerCapture(e.pointerId);node.classList.add('dragging');
+  });node.addEventListener('keydown',e=>{
+   if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)||!draggable(i))return;
+   e.preventDefault();onStart();const p=points()[i];
+   p.addScaledVector(new THREE.Vector3().setFromMatrixColumn(stage.camera.matrixWorld,e.key==='ArrowLeft'||e.key==='ArrowRight'?0:1),(e.key==='ArrowLeft'||e.key==='ArrowDown'?-1:1)*(e.shiftKey?.08:.04));drag(i,p);
+  });}else node.setAttribute('aria-hidden','true');
+  layer.append(node);return node;
+ });}
+ layer.addEventListener('pointermove',e=>{if(!active||e.pointerId!==active.id)return;const p=stage.ray(e).ray.intersectPlane(active.plane,new THREE.Vector3());if(p)drag(active.i,p);});
+ for(const name of ['pointerup','pointercancel','lostpointercapture'])layer.addEventListener(name,e=>{if(active&&e.pointerId===active.id)cancel();});
+ return {cancel,update(visible=true){
+  const p=points(),mask=p.map((_,i)=>draggable(i)),next=mask.map(x=>x?'1':'0').join('');
+  if(signature!==next){signature=next;rebuild(mask);}stage.camera.updateMatrixWorld();const names=labels();
+  p.forEach((point,i)=>{const a=point.clone().project(stage.camera),node=nodes[i];
+   if(mask[i]){node.setAttribute('aria-label',names[i]||`${label} ${i+1}`);node.title=(names[i]||`${label} ${i+1}`)+' — drag to move';}
+   node.hidden=!visible||a.z< -1||a.z>1||Math.abs(a.x)>.98||Math.abs(a.y)>.96;
+   node.style.transform=`translate(${(a.x*.5+.5)*stage.host.clientWidth}px,${(-a.y*.5+.5)*stage.host.clientHeight}px) translate(-50%,-50%)`;
+  });
+ },get dragging(){return !!active;}};
 }

@@ -30,17 +30,17 @@ $$('[data-recorded-media]').forEach(container => {
 const menu=$('.menu-toggle');function closeMenu(){menu.setAttribute('aria-expanded','false');$('#navigation').classList.remove('open');}menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));$('#navigation').classList.toggle('open',open);});$$('#navigation a').forEach(link=>link.addEventListener('click',closeMenu));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){closeMenu();menu.focus();}});
 
 async function initRepresentation() {
-  const { mountObjectLab } = await import('./assets/object-lab.js?v=20261029-grasp-zoo-polish-v3');
+  const { mountObjectLab } = await import('./assets/object-lab.js?v=20261029-constrained-poses-v1');
   await mountObjectLab();
 }
 
 async function initOverview() {
-  const { mountProjectPage } = await import('./assets/project-page.js?v=20261029-grasp-zoo-polish-v3');
+  const { mountProjectPage } = await import('./assets/project-page.js?v=20261029-constrained-poses-v1');
   mountProjectPage({ representation: initRepresentation, action: initAction });
 }
 
 async function initAction() {
-  const {mountGraspLab} = await import('./assets/grasp-lab.js?v=20261029-grasp-zoo-polish-v3');
+  const {mountGraspLab} = await import('./assets/grasp-lab.js?v=20261029-constrained-poses-v1');
   await mountGraspLab();
 }
 async function initZoo() {

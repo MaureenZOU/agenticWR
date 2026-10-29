@@ -20,11 +20,11 @@
   <link rel="stylesheet" href="assets/refined-pages.css">
   <link rel="stylesheet" href="assets/representation.css">
   <link rel="stylesheet" href="assets/homepage.css">
-  <script type="module" src="app.js?v=20261029-grasp-zoo-polish-v3"></script>
+  <script type="module" src="app.js?v=20261029-constrained-poses-v1"></script>
   <script type="module" src="assets/homepage.js"></script>
   <link rel="stylesheet" href="assets/research-pages.css">
-  <link rel="stylesheet" href="assets/project-page.css?v=20261029-grasp-zoo-polish-v3">
-  <link rel="stylesheet" href="assets/lab.css?v=20261029-grasp-zoo-polish-v3">
+  <link rel="stylesheet" href="assets/project-page.css?v=20261029-constrained-poses-v1">
+  <link rel="stylesheet" href="assets/lab.css?v=20261029-constrained-poses-v1">
 </head>
 <body class="story-layout multipage-layout combined-project" data-page="overview">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -108,7 +108,7 @@
  <div class="stacked-heading"><h2 id="objects-title">Neural simulation objects</h2><p>Explore the workspace, move a keypoint, and see the geometry respond.</p></div>
  <div id="object-lab" class="object-lab">
   <article class="lab-pane" aria-label="Interactive simulation workspace">
-   <div class="lab-viewport"><div class="lab-canvas" aria-label="Orbit, pan, and zoom the simulation; select an object to move its keypoints"></div><div class="lab-keypoints lab-object-handles"></div><div class="lab-keypoints lab-hand-handles hand-points"></div><span class="lab-loading" role="status">Loading workspace…</span><div class="lab-view-actions"><button type="button" id="lab-overview">Whole scene</button><button type="button" data-lab-play>Pause</button><button type="button" data-lab-reset>Reset</button></div></div>
+   <div class="lab-viewport"><div class="lab-canvas" aria-label="Orbit, pan, and zoom the simulation; select an object to move its keypoints"></div><div class="lab-keypoints lab-object-handles"></div><div class="lab-keypoints lab-hand-handles hand-points"></div><p class="lab-interaction-hint" role="status" hidden></p><span class="lab-loading" role="status">Loading workspace…</span><div class="lab-view-actions"><button type="button" id="lab-overview">Whole scene</button><button type="button" data-lab-play>Play</button><button type="button" data-lab-reset>Reset</button></div></div>
    <div class="lab-toolbar"><div id="lab-focus-list" role="group" aria-label="Focus an object or hand"></div><div class="lab-display-controls"><span id="lab-focus-name">Workspace</span><div class="lab-format" role="group" aria-label="Selected object format"><button type="button" data-lab-mode="occupancy" aria-pressed="false">Occupancy</button><button type="button" data-lab-mode="sdf" aria-pressed="true">SDF</button></div><label class="lab-normal"><input type="checkbox">Normal</label></div></div>
   </article>
   <aside class="object-drawer" aria-label="Object Zoo">
