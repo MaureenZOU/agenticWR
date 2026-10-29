@@ -24,7 +24,7 @@
   <script type="module" src="assets/homepage.js"></script>
   <link rel="stylesheet" href="assets/research-pages.css">
   <link rel="stylesheet" href="assets/project-page.css?v=20261029-constrained-poses-v1">
-  <link rel="stylesheet" href="assets/lab.css?v=20261029-network-gradient-v1">
+  <link rel="stylesheet" href="assets/lab.css?v=20261029-keypoint-embedding-v2">
 </head>
 <body class="story-layout multipage-layout combined-project" data-page="overview">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -131,22 +131,27 @@
   <aside class="grasp-method" id="gradient-flow">
    <h3>From geometry to joint updates</h3>
    <p>The hand and object networks stay frozen. Gradients pass through both fields to the hand keypoints, then through hand kinematics to finger joint angles.</p>
-   <svg class="grasp-gradient" viewBox="0 0 420 529" role="img" aria-label="Loss gradients travel upward through the hand and object neural networks in parallel, combine at hand keypoints, and backpropagate through forward kinematics to finger joint angles q. A hand skeleton and a duck with keypoints identify the two fields. Snowflakes indicate fixed network weights; changing colors illustrate gradient propagation.">
+   <svg class="grasp-gradient" viewBox="0 0 420 613" role="img" aria-label="Optimization grasp loss propagates upward through the fixed hand and object networks to hand keypoints and joint angles. Colored hand keypoints move with articulated fingers and correspond to rows of an illustrative embedding matrix. Duck geometry stays still while its keypoint colors change independently of the neural networks. Snowflakes indicate fixed network weights.">
     <defs>
      <marker id="lab-flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#a38ab5"/></marker>
      <g id="gradient-snowflake" class="gradient-snowflake"><path d="M0-8V8M-7-4L7 4M-7 4L7-4M-3-6L0-3L3-6M-3 6L0 3L3 6M-7-1L-3.5-2L-4-5.5M7 1L3.5 2L4 5.5M-4 5.5L-3.5 2L-7 1M4-5.5L3.5-2L7-1"/></g>
+     <g id="gradient-hand-pose" class="gradient-hand-pose">
+      <path class="gradient-hand-palm" d="M27 54Q48 48 75 56L78 73Q77 86 65 94L64 106H41L40 94Q24 87 22 73Z"/>
+      <path class="gradient-hand-metacarpals" d="M41 91L30 55M49 90L46 51M57 90L62 54M65 90L76 60M41 91L27 72"/>
+      <g transform="translate(27 72)" class="gradient-kp-thumb"><g class="gradient-finger" style="--bend:-13deg;--phase:-.4s"><path class="gradient-hand-bone" d="M0 0L-13-10L-21-22"/><circle class="gradient-hand-knuckle" r="4"/><circle class="gradient-hand-knuckle" cx="-13" cy="-10" r="3.5"/><circle class="gradient-hand-tip" cx="-21" cy="-22" r="4.5"/></g></g>
+      <g transform="translate(30 55)" class="gradient-kp-index"><g class="gradient-finger" style="--bend:12deg;--phase:0s"><path class="gradient-hand-bone" d="M0 0L-2-19"/><circle class="gradient-hand-knuckle" r="4"/><g transform="translate(-2 -19)"><g class="gradient-finger-tip" style="--curl:14deg"><path class="gradient-hand-bone" d="M0 0L1-14L3-25"/><circle class="gradient-hand-knuckle" r="3.5"/><circle class="gradient-hand-knuckle" cx="1" cy="-14" r="3"/><circle class="gradient-hand-tip" cx="3" cy="-25" r="4.5"/></g></g></g></g>
+      <g transform="translate(46 51)" class="gradient-kp-middle"><g class="gradient-finger" style="--bend:7deg;--phase:-.25s"><path class="gradient-hand-bone" d="M0 0L0-21"/><circle class="gradient-hand-knuckle" r="4"/><g transform="translate(0 -21)"><g class="gradient-finger-tip" style="--curl:18deg"><path class="gradient-hand-bone" d="M0 0L1-15L3-27"/><circle class="gradient-hand-knuckle" r="3.5"/><circle class="gradient-hand-knuckle" cx="1" cy="-15" r="3"/><circle class="gradient-hand-tip" cx="3" cy="-27" r="4.5"/></g></g></g></g>
+      <g transform="translate(62 54)" class="gradient-kp-ring"><g class="gradient-finger" style="--bend:3deg;--phase:-.5s"><path class="gradient-hand-bone" d="M0 0L1-19"/><circle class="gradient-hand-knuckle" r="4"/><g transform="translate(1 -19)"><g class="gradient-finger-tip" style="--curl:22deg"><path class="gradient-hand-bone" d="M0 0L2-14L3-24"/><circle class="gradient-hand-knuckle" r="3.5"/><circle class="gradient-hand-knuckle" cx="2" cy="-14" r="3"/><circle class="gradient-hand-tip" cx="3" cy="-24" r="4.5"/></g></g></g></g>
+      <g transform="translate(76 60)" class="gradient-kp-little"><g class="gradient-finger" style="--bend:-7deg;--phase:-.75s"><path class="gradient-hand-bone" d="M0 0L4-15"/><circle class="gradient-hand-knuckle" r="4"/><g transform="translate(4 -15)"><g class="gradient-finger-tip" style="--curl:24deg"><path class="gradient-hand-bone" d="M0 0L2-11L2-20"/><circle class="gradient-hand-knuckle" r="3.5"/><circle class="gradient-hand-knuckle" cx="2" cy="-11" r="3"/><circle class="gradient-hand-tip" cx="2" cy="-20" r="4.5"/></g></g></g></g>
+     </g>
     </defs>
-    <g class="gradient-node loss"><rect x="100" y="445" width="220" height="66" rx="12"/><text x="210" y="484">Grasp loss</text></g>
-    <path class="gradient-wire" d="M210 444V418H103V394"/><path class="gradient-wire" d="M210 444V418H317V394"/>
-    <g class="gradient-node gradient-network" transform="translate(6 236)">
+    <g class="gradient-node loss"><rect x="65" y="517" width="290" height="78" rx="12"/><text x="210" y="549">Optimization Grasp Loss</text><text class="gradient-loss-terms" x="210" y="574">Contact, Banlance, Penetration</text></g>
+    <path class="gradient-wire" d="M210 516V490H103V468"/><path class="gradient-wire" d="M210 516V490H317V468"/>
+    <g class="gradient-node gradient-network" transform="translate(6 310)">
      <rect width="191" height="150" rx="14"/>
      <use href="#gradient-snowflake" x="17" y="18"/>
      <text class="gradient-network-title" x="105" y="29">Hand network</text>
-     <g class="gradient-hand" transform="translate(15 51)" aria-hidden="true">
-      <path class="gradient-hand-palm" d="M25 44L39 40L52 43L63 49L60 69L45 83L29 77L19 61Z"/>
-      <path class="gradient-hand-bones" d="M37 83L29 64L16 54L9 42L4 35M37 83L25 44L23 28L22 15L23 7M37 83L39 40L39 23L39 10L39 2M37 83L52 43L54 28L55 16L55 8M37 83L63 49L67 37L69 28L68 21"/>
-      <g class="gradient-hand-joints"><circle cx="37" cy="83" r="3.8"/><circle cx="29" cy="64" r="2.8"/><circle cx="16" cy="54" r="2.7"/><circle cx="9" cy="42" r="2.4"/><circle cx="4" cy="35" r="2.4"/><circle cx="25" cy="44" r="3"/><circle cx="23" cy="28" r="2.7"/><circle cx="22" cy="15" r="2.4"/><circle cx="23" cy="7" r="2.4"/><circle cx="39" cy="40" r="3"/><circle cx="39" cy="23" r="2.7"/><circle cx="39" cy="10" r="2.4"/><circle cx="39" cy="2" r="2.4"/><circle cx="52" cy="43" r="3"/><circle cx="54" cy="28" r="2.7"/><circle cx="55" cy="16" r="2.4"/><circle cx="55" cy="8" r="2.4"/><circle cx="63" cy="49" r="3"/><circle cx="67" cy="37" r="2.7"/><circle cx="69" cy="28" r="2.4"/><circle cx="68" cy="21" r="2.4"/></g>
-     </g>
+     <use class="gradient-hand" href="#gradient-hand-pose" transform="translate(14 51) scale(.81)" aria-hidden="true"/>
      <g class="gradient-neural" transform="translate(108 57)" aria-hidden="true">
       <g class="gradient-neural-edges gradient-neural-lower"><path d="M5 72L5 40M5 72L31 40M5 72L57 40M31 72L5 40M31 72L31 40M31 72L57 40M57 72L5 40M57 72L31 40M57 72L57 40"/></g>
       <g class="gradient-neural-edges gradient-neural-upper"><path d="M5 40L5 8M5 40L31 8M5 40L57 8M31 40L5 8M31 40L31 8M31 40L57 8M57 40L5 8M57 40L31 8M57 40L57 8"/></g>
@@ -155,7 +160,7 @@
       <g class="gradient-neural-layer gradient-neural-output"><circle cx="5" cy="8" r="5.5"/><circle cx="31" cy="8" r="5.5"/><circle cx="57" cy="8" r="5.5"/></g>
      </g>
     </g>
-    <g class="gradient-node gradient-network" transform="translate(223 236)">
+    <g class="gradient-node gradient-network" transform="translate(223 310)">
      <rect width="191" height="150" rx="14"/>
      <use href="#gradient-snowflake" x="17" y="18"/>
      <text class="gradient-network-title" x="105" y="29">Object network</text>
@@ -174,9 +179,22 @@
       <g class="gradient-neural-layer gradient-neural-output"><circle cx="5" cy="8" r="5.5"/><circle cx="31" cy="8" r="5.5"/><circle cx="57" cy="8" r="5.5"/></g>
      </g>
     </g>
-    <path class="gradient-wire" d="M103 235V211H210V182"/><path class="gradient-wire" d="M317 235V211H210V182"/>
-    <g class="gradient-node keypoints"><rect x="90" y="116" width="240" height="58" rx="12"/><text x="210" y="151">Hand keypoints</text></g>
-    <path class="gradient-wire" d="M210 115V70"/>
+    <path class="gradient-wire" d="M103 309V282H210V257"/><path class="gradient-wire" d="M317 309V282H210V257"/>
+    <g class="gradient-node keypoints">
+     <rect x="62" y="104" width="296" height="145" rx="12"/>
+     <text x="210" y="128">Hand keypoints</text>
+     <use href="#gradient-hand-pose" transform="translate(89 143) scale(.86)" aria-hidden="true"/>
+     <path class="gradient-embedding-arrow" d="M174 193H198M194 189L198 193L194 197"/>
+     <text class="gradient-embedding-label" x="275" y="150">KP embeddings</text>
+     <g class="gradient-embedding" aria-hidden="true">
+      <g class="gradient-embedding-row gradient-kp-thumb" transform="translate(223 159)"><text x="-13" y="8">k₁</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
+      <g class="gradient-embedding-row gradient-kp-index" transform="translate(223 175)"><text x="-13" y="8">k₂</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
+      <g class="gradient-embedding-row gradient-kp-middle" transform="translate(223 191)"><text x="-13" y="8">k₃</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
+      <g class="gradient-embedding-row gradient-kp-ring" transform="translate(223 207)"><text x="-13" y="8">k₄</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
+      <g class="gradient-embedding-row gradient-kp-little" transform="translate(223 223)"><text x="-13" y="8">k₅</text><rect x="0" width="14" height="10" rx="2"/><rect x="18" width="14" height="10" rx="2"/><rect x="36" width="14" height="10" rx="2"/><rect x="54" width="14" height="10" rx="2"/><rect x="72" width="14" height="10" rx="2"/><rect x="90" width="14" height="10" rx="2"/></g>
+     </g>
+    </g>
+    <path class="gradient-wire" d="M210 103V70"/>
     <g class="gradient-node joints"><rect x="90" y="11" width="240" height="50" rx="12"/><text x="210" y="42">Finger joint angles · q</text></g>
    </svg>
   </aside>
